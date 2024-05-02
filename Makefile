@@ -27,6 +27,7 @@ format-check: ## format check
 
 .PHONY: format
 format: ## format code
+	poetry run isort .
 	poetry run black . --verbose
 
 .PHONY: lint
@@ -44,8 +45,8 @@ ci-test: install-deps-dev format-check lint test ## run CI tests
 # Docker
 # ---
 DOCKER_REPO_NAME ?= ks6088ts
-DOCKER_IMAGE_NAME ?= template-python
-DOCKER_COMMAND ?= python main.py
+DOCKER_IMAGE_NAME ?= azure-ai-services-solutions
+DOCKER_COMMAND ?= python main.py --help
 
 # Tools
 TOOLS_DIR ?= $(HOME)/.local/bin
@@ -75,3 +76,16 @@ docker-scan: ## scan Docker image
 
 .PHONY: ci-test-docker
 ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test for Docker
+
+# ---
+# Application
+# ---
+SOLUTION_NAME ?= "DEFAULT"
+
+.PHONY: backend
+backend: ## run backend
+	poetry run python main.py backend
+
+.PHONY: frontend
+frontend: ## run frontend
+	poetry run streamlit run main.py -- frontend -- --solution-name=$(SOLUTION_NAME)
