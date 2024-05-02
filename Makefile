@@ -76,3 +76,16 @@ docker-scan: ## scan Docker image
 
 .PHONY: ci-test-docker
 ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test for Docker
+
+# ---
+# Application
+# ---
+SOLUTION_NAME ?= "DEFAULT"
+
+.PHONY: backend
+backend: ## run backend
+	poetry run python main.py backend
+
+.PHONY: frontend
+frontend: ## run frontend
+	poetry run streamlit run main.py -- frontend -- --solution-name=$(SOLUTION_NAME)

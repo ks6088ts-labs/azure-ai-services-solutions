@@ -4,7 +4,7 @@
 
 # azure-ai-services-solutions
 
-This is a template repository for Python
+This repository contains a collection of solutions that leverage Azure AI services.
 
 ## Prerequisites
 

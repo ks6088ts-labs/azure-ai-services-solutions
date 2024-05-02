@@ -25,8 +25,16 @@ def backend(
 
 
 @app.command()
-def frontend():
-    print(f"Hello {getenv('APPLICATION_NAME')}")
+def frontend(
+    solution_name: Annotated[str, typer.Option(help="Solution name")] = getenv("SOLUTION_NAME"),
+    backend_url: Annotated[str, typer.Option(help="Backend URL")] = getenv("BACKEND_URL", "http://localhost:8000/"),
+):
+    from frontend.entrypoint import start
+
+    start(
+        solution_name=solution_name,
+        backend_url=backend_url,
+    )
 
 
 if __name__ == "__main__":
