@@ -1,6 +1,6 @@
-[![test](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/test.yaml?query=branch%3Amain)
-[![docker](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/docker.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/docker.yaml?query=branch%3Amain)
-[![docker-release](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/docker-release.yaml/badge.svg)](https://github.com/ks6088ts/azure-ai-services-solutions/actions/workflows/docker-release.yaml)
+[![test](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/test.yaml?query=branch%3Amain)
+[![docker](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/docker.yaml/badge.svg?branch=main)](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/docker.yaml?query=branch%3Amain)
+[![docker-release](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/docker-release.yaml/badge.svg)](https://github.com/ks6088ts-labs/azure-ai-services-solutions/actions/workflows/docker-release.yaml)
 
 # azure-ai-services-solutions
 

@@ -42,7 +42,7 @@ What kind of change does this Pull Request introduce?
 - Get the code
 
 ```
-git clone git@github.com:ks6088ts/azure-ai-services-solutions.git
+git clone git@github.com:ks6088ts-labs/azure-ai-services-solutions.git
 cd azure-ai-services-solutions
 ```
 
