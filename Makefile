@@ -27,6 +27,7 @@ format-check: ## format check
 
 .PHONY: format
 format: ## format code
+	poetry run isort .
 	poetry run black . --verbose
 
 .PHONY: lint
@@ -45,7 +46,7 @@ ci-test: install-deps-dev format-check lint test ## run CI tests
 # ---
 DOCKER_REPO_NAME ?= ks6088ts
 DOCKER_IMAGE_NAME ?= azure-ai-services-solutions
-DOCKER_COMMAND ?= python main.py
+DOCKER_COMMAND ?= python main.py --help
 
 # Tools
 TOOLS_DIR ?= $(HOME)/.local/bin
