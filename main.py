@@ -1,9 +1,20 @@
-from os import getenv
+import logging
+import os
 from typing import Annotated
 
 import typer
 from dotenv import load_dotenv
 
+debug = os.environ.get("DEBUG", "false").lower() not in ["false", "no", "0"]
+log_level = logging.DEBUG if debug else logging.INFO
+
+logging.basicConfig(
+    format="[%(asctime)s] %(levelname)7s from %(name)s in %(pathname)s:%(lineno)d: " "%(message)s",
+    level=log_level,
+    force=True,
+)
+
+logger = logging.getLogger(__name__)
 app = typer.Typer()
 
 
@@ -11,11 +22,11 @@ app = typer.Typer()
 def backend(
     host="0.0.0.0",
     port: Annotated[int, typer.Option(help="Port number")] = 8000,
-    log_level="info",
     reload: Annotated[bool, typer.Option(help="Enable auto-reload")] = False,
 ):
     from backend.entrypoint import start
 
+    logger.info("Starting backend...")
     start(
         host=host,
         port=port,
@@ -26,14 +37,16 @@ def backend(
 
 @app.command()
 def frontend(
-    solution_name: Annotated[str, typer.Option(help="Solution name")] = getenv("SOLUTION_NAME"),
-    backend_url: Annotated[str, typer.Option(help="Backend URL")] = getenv("BACKEND_URL", "http://localhost:8000/"),
+    solution_name: Annotated[str, typer.Option(help="Solution name")] = os.getenv("SOLUTION_NAME"),
+    backend_url: Annotated[str, typer.Option(help="Backend URL")] = os.getenv("BACKEND_URL", "http://localhost:8000/"),
 ):
     from frontend.entrypoint import start
 
+    logger.info("Starting frontend...")
     start(
         solution_name=solution_name,
         backend_url=backend_url,
+        log_level=log_level,
     )
 
 
