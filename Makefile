@@ -84,7 +84,7 @@ SOLUTION_NAME ?= "DEFAULT"
 
 .PHONY: backend
 backend: ## run backend
-	poetry run python main.py backend
+	poetry run python main.py backend --reload
 
 .PHONY: frontend
 frontend: ## run frontend

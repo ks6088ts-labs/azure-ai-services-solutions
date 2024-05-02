@@ -14,7 +14,6 @@ logging.basicConfig(
     force=True,
 )
 
-logger = logging.getLogger(__name__)
 app = typer.Typer()
 
 
@@ -26,7 +25,6 @@ def backend(
 ):
     from backend.entrypoint import start
 
-    logger.info("Starting backend...")
     start(
         host=host,
         port=port,
@@ -42,7 +40,6 @@ def frontend(
 ):
     from frontend.entrypoint import start
 
-    logger.info("Starting frontend...")
     start(
         solution_name=solution_name,
         backend_url=backend_url,
