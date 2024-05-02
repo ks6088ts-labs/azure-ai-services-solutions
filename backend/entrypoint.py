@@ -4,7 +4,7 @@ import uvicorn
 def start(
     host: str,
     port: int,
-    log_level: str,
+    log_level: int,
     reload: bool,
 ):
     uvicorn.run(
