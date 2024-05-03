@@ -39,9 +39,17 @@ def frontend(
     backend_url: Annotated[str, typer.Option(help="Backend URL")] = os.getenv("BACKEND_URL", "http://localhost:8000/"),
 ):
     from frontend.entrypoint import start
+    from frontend.solutions.types import SolutionType
+
+    # convert solution_name to SolutionType
+    try:
+        solution_type = SolutionType(solution_name.upper())
+    except ValueError:
+        typer.echo(f"Invalid solution name: {solution_name}", err=True)
+        raise typer.Exit(code=1)
 
     start(
-        solution_name=solution_name,
+        solution_type=solution_type,
         backend_url=backend_url,
         log_level=log_level,
     )

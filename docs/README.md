@@ -27,3 +27,12 @@
 
 - [Quickstart: Create a Python function in Azure from the command line](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=linux%2Cbash%2Cazure-cli%2Cbrowser)
 - [Using FastAPI Framework with Azure Functions](https://learn.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/fastapi-on-azure-functions/)
+
+### Azure AI Speech Service
+
+- [How to recognize speech > Recognize speech from a microphone](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-recognize-speech?pivots=programming-language-python#recognize-speech-from-a-microphone)
+- [Speech SDK trowing error: Exception with an error code: 0xe (SPXERR_MIC_NOT_AVAILABLE)](https://stackoverflow.com/a/75731356)
+- [Failed to initialize platform (azure-c-shared). Error: 2176 #2204](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/2204)
+- [Quickstart: Install the Speech SDK](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/quickstarts/setup-platform?tabs=linux%2Cubuntu%2Cdotnetcli%2Cdotnet%2Cjre%2Cmaven%2Cnodejs%2Cmac%2Cpypi&pivots=programming-language-python)
+- [How to recognize speech > Use continuous recognition](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-recognize-speech?pivots=programming-language-python#use-continuous-recognition)
+- [Task 02 - Perform speech requests with Streamlit (40 minutes)](https://microsoft.github.io/TechExcel-Implementing-automation-practices-using-Azure-OpenAI/docs/04_implement_audio_transcription/0402.html)
