@@ -1,27 +1,35 @@
 from logging import getLogger
-from os import getenv
 
 from openai import AzureOpenAI
 from openai.types.chat import ChatCompletion
 
+from backend.schemas import azure_openai as azure_openai_schemas
+from backend.settings import azure_openai as azure_openai_settings
+
 logger = getLogger(__name__)
 
+settings = azure_openai_settings.Settings()
 
-def create_chat_completion(content: str, stream: bool):
+
+def create_chat_completions(
+    body: azure_openai_schemas.ChatCompletionRequest,
+) -> azure_openai_schemas.ChatCompletionResponse:
     client = AzureOpenAI(
-        api_key=getenv("AZURE_OPENAI_API_KEY"),
-        api_version=getenv("AZURE_OPENAI_API_VERSION"),
-        azure_endpoint=getenv("AZURE_OPENAI_ENDPOINT"),
+        api_key=settings.api_key,
+        api_version=settings.api_version,
+        azure_endpoint=settings.endpoint,
     )
     response: ChatCompletion = client.chat.completions.create(
-        model=getenv("AZURE_OPENAI_MODEL_GPT"),
+        model=settings.gpt_model,
         messages=[
             {
                 "role": "user",
-                "content": content,
+                "content": body.content,
             },
         ],
-        stream=stream,
+        stream=body.stream,
     )
     logger.info(response)
-    return response.choices[0].message.content
+    return azure_openai_schemas.ChatCompletionResponse(
+        content=response.choices[0].message.content,
+    )

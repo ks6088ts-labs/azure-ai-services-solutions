@@ -8,6 +8,7 @@
 
 - [FastAPI](https://fastapi.tiangolo.com/#installation)
 - [FastAPI > Bigger Applications - Multiple Files](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
+- [FastAPI > Request Body](https://fastapi.tiangolo.com/tutorial/body/)
 
 ## Frontend
 
