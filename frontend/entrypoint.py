@@ -1,6 +1,6 @@
 import logging
 
-from frontend.solutions import sandbox, transcription
+from frontend.solutions import document_intelligence, sandbox, transcription
 from frontend.solutions.types import SolutionType
 
 logger = logging.getLogger(__name__)
@@ -11,13 +11,18 @@ def start(
     backend_url: str,
     log_level: int,
 ) -> None:
+    if solution_type == SolutionType.SANDBOX:
+        return sandbox.start(
+            backend_url=backend_url,
+            log_level=log_level,
+        )
     if solution_type == SolutionType.TRANSCRIPTION:
         return transcription.start(
             backend_url=backend_url,
             log_level=log_level,
         )
-    if solution_type == SolutionType.SANDBOX:
-        return sandbox.start(
+    if solution_type == SolutionType.DOCUMENT_INTELLIGENCE:
+        return document_intelligence.start(
             backend_url=backend_url,
             log_level=log_level,
         )

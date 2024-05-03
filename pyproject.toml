@@ -27,6 +27,8 @@ uvicorn = {extras = ["standard"], version = "^0.29.0"}
 openai = "^1.25.0"
 azure-identity = "^1.16.0"
 pydantic-settings = "^2.2.1"
+azure-ai-documentintelligence = "^1.0.0b3"
+python-multipart = "^0.0.9"
 
 
 [tool.poetry.group.frontend.dependencies]

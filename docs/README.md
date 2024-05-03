@@ -9,6 +9,7 @@
 - [FastAPI](https://fastapi.tiangolo.com/#installation)
 - [FastAPI > Bigger Applications - Multiple Files](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
 - [FastAPI > Request Body](https://fastapi.tiangolo.com/tutorial/body/)
+- [FastAPI > UploadFile class](https://fastapi.tiangolo.com/reference/uploadfile/)
 
 ## Frontend
 
@@ -16,6 +17,7 @@
 - [Streamlit API cheat sheet](https://docs.streamlit.io/develop/quick-reference/cheat-sheet)
 - [Streamlit > Display progress and status](https://docs.streamlit.io/develop/api-reference/status)
 - [aiohttp > Installing all speedups in one command](https://docs.aiohttp.org/en/stable/#installing-all-speedups-in-one-command)
+- [Python & aiohttp: How to upload files to a remote server](https://www.slingacademy.com/article/python-aiohttp-how-to-upload-files-to-a-remote-server/)
 
 ## Azure
 
@@ -36,3 +38,7 @@
 - [Quickstart: Install the Speech SDK](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/quickstarts/setup-platform?tabs=linux%2Cubuntu%2Cdotnetcli%2Cdotnet%2Cjre%2Cmaven%2Cnodejs%2Cmac%2Cpypi&pivots=programming-language-python)
 - [How to recognize speech > Use continuous recognition](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-recognize-speech?pivots=programming-language-python#use-continuous-recognition)
 - [Task 02 - Perform speech requests with Streamlit (40 minutes)](https://microsoft.github.io/TechExcel-Implementing-automation-practices-using-Azure-OpenAI/docs/04_implement_audio_transcription/0402.html)
+
+### Azure AI Document Intelligence
+
+- [Azure AI Document Intelligence client library for Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/README.md)
