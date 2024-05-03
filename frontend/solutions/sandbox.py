@@ -2,29 +2,12 @@ import asyncio
 import logging
 from urllib.parse import urljoin
 
-import aiohttp
 import streamlit as st
 
-from backend.schemas import azure_openai as azure_openai_schemas
+from backend.schemas import azure_openai as azure_openai_schemas  # FIXME: remove dependency on backend
+from frontend.solutions.utilities import http_get, http_post
 
 logger = logging.getLogger(__name__)
-
-
-async def http_get(url: str) -> dict:
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            response.raise_for_status()
-            return await response.json()
-
-
-async def http_post(url: str, data: dict) -> dict:
-    async with aiohttp.ClientSession() as session:
-        async with session.post(
-            url=url,
-            json=data,
-        ) as response:
-            response.raise_for_status()
-            return await response.json()
 
 
 def start(
