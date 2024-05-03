@@ -19,4 +19,11 @@
 
 ## Azure
 
+### Azure OpenAI Service
+
 - [Azure-Samples/openai](https://github.com/Azure-Samples/openai)
+
+### Azure Functions
+
+- [Quickstart: Create a Python function in Azure from the command line](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=linux%2Cbash%2Cazure-cli%2Cbrowser)
+- [Using FastAPI Framework with Azure Functions](https://learn.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/fastapi-on-azure-functions/)

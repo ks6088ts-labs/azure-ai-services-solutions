@@ -15,12 +15,12 @@ def create_chat_completions(
     body: azure_openai_schemas.ChatCompletionRequest,
 ) -> azure_openai_schemas.ChatCompletionResponse:
     client = AzureOpenAI(
-        api_key=settings.api_key,
-        api_version=settings.api_version,
-        azure_endpoint=settings.endpoint,
+        api_key=settings.azure_openai_api_key,
+        api_version=settings.azure_openai_api_version,
+        azure_endpoint=settings.azure_openai_endpoint,
     )
     response: ChatCompletion = client.chat.completions.create(
-        model=settings.gpt_model,
+        model=settings.azure_openai_gpt_model,
         messages=[
             {
                 "role": "user",

@@ -33,6 +33,10 @@ pydantic-settings = "^2.2.1"
 streamlit = "^1.33.0"
 aiohttp = {extras = ["speedups"], version = "^3.9.5"}
 
+
+[tool.poetry.group.azure-functions.dependencies]
+azure-functions = "^1.19.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
