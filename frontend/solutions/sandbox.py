@@ -4,7 +4,6 @@ from urllib.parse import urljoin
 
 import streamlit as st
 
-from backend.schemas import azure_openai as azure_openai_schemas  # FIXME: remove dependency on backend
 from frontend.solutions.utilities import http_get, http_post
 
 logger = logging.getLogger(__name__)
@@ -45,10 +44,10 @@ def start(
                 response = asyncio.run(
                     http_post(
                         url=urljoin(base=backend_url, url="/azure_openai/chat_completions/"),
-                        data=azure_openai_schemas.ChatCompletionRequest(
-                            content=prompt,
-                            stream=False,
-                        ).model_dump(),
+                        data={
+                            "content": prompt,
+                            "stream": False,
+                        },
                     )
                 )
             st.write(response)
