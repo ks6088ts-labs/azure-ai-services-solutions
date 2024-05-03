@@ -235,6 +235,20 @@ typing-extensions = ">=4.6.0"
 aio = ["aiohttp (>=3.0)"]
 
 [[package]]
+name = "azure-functions"
+version = "1.19.0"
+description = "Azure Functions for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "azure-functions-1.19.0.tar.gz", hash = "sha256:f3494913d137af9fd735e2b2497aa54fc308b64f4902aa286c19b328fa3ae278"},
+    {file = "azure_functions-1.19.0-py3-none-any.whl", hash = "sha256:1184cef20a587f4f63c9d4fbe20d6682163192b36bd1e16cc6e8261b2ba3fb61"},
+]
+
+[package.extras]
+dev = ["coverage", "flake8 (>=4.0.1,<4.1.0)", "flake8-logging-format", "mypy", "pytest", "pytest-cov", "requests (==2.*)"]
+
+[[package]]
 name = "azure-identity"
 version = "1.16.0"
 description = "Microsoft Azure Identity Library for Python"
@@ -3082,4 +3096,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "437b0210589abc21590594c24f5f40e2ed05936f76ca4e5b8dcfc784bccc04cb"
+content-hash = "26082d87d1ff9e0a41acad9818a3e2890e25b53cf3d361a02973b316d29b10b8"
