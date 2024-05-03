@@ -85,7 +85,7 @@ ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test f
 # ---
 # Application
 # ---
-SOLUTION_NAME ?= "DEFAULT"
+SOLUTION_NAME ?= "SANDBOX"
 
 .PHONY: backend
 backend: ## run backend
