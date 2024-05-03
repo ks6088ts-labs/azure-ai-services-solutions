@@ -14,7 +14,6 @@ settings = azure_openai_settings.Settings()
 def create_chat_completions(
     body: azure_openai_schemas.ChatCompletionRequest,
 ) -> azure_openai_schemas.ChatCompletionResponse:
-    print(settings.api_key)
     client = AzureOpenAI(
         api_key=settings.api_key,
         api_version=settings.api_version,
