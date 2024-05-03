@@ -10,6 +10,7 @@
 - [FastAPI > Bigger Applications - Multiple Files](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
 - [FastAPI > Request Body](https://fastapi.tiangolo.com/tutorial/body/)
 - [FastAPI > UploadFile class](https://fastapi.tiangolo.com/reference/uploadfile/)
+- [FastAPI > Extending OpenAPI](https://fastapi.tiangolo.com/how-to/extending-openapi/)
 
 ## Frontend
 

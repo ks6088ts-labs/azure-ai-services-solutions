@@ -114,3 +114,10 @@ azure-functions-functionapp-deploy: ## deploy Azure Functions App
 		--with backend,azure-functions \
 		--without-hashes
 	func azure functionapp publish $(shell jq -r '.FUNCTION_APP_NAME' < azure-functions.json)
+
+# ---
+# OpenAPI Client
+# ---
+.PHONY: generate-openapi-spec
+generate-openapi-spec: ## generate OpenAPI spec
+	poetry run python main.py generate-openapi-spec

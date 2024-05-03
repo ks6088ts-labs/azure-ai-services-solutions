@@ -55,6 +55,24 @@ def frontend(
     )
 
 
+@app.command()
+def generate_openapi_spec(
+    path: Annotated[str, typer.Option(help="Output file path")] = "./specs/openapi.json",
+):
+    import json
+
+    from backend.fastapi import app
+
+    # create directory if not exists
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+
+    # generate OpenAPI spec
+    with open(path, "w") as f:
+        api_spec = app.openapi()
+        f.write(json.dumps(api_spec, indent=2))
+    logging.info(f"OpenAPI spec generated at {path}")
+
+
 if __name__ == "__main__":
     load_dotenv()
     app()
