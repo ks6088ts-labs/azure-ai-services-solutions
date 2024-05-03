@@ -33,6 +33,7 @@ format: ## format code
 .PHONY: lint
 lint: ## lint
 	poetry run ruff check .
+	shellcheck scripts/*.sh
 
 .PHONY: test
 test: ## run tests
@@ -89,3 +90,27 @@ backend: ## run backend
 .PHONY: frontend
 frontend: ## run frontend
 	poetry run streamlit run main.py -- frontend -- --solution-name=$(SOLUTION_NAME)
+
+# ---
+# Azure Functions
+# ---
+.PHONY: azure-functions-start
+azure-functions-start: ## start Azure Functions
+	poetry run func start
+
+.PHONY: azure-functions-deploy
+azure-functions-deploy: ## deploy Azure Functions resources
+	sh ./scripts/deploy-azure-functions.sh
+
+.PHONY: azure-functions-destroy
+azure-functions-destroy: ## destroy Azure Functions resources
+	sh ./scripts/destroy-azure-functions.sh
+
+.PHONY: azure-functions-functionapp-deploy
+azure-functions-functionapp-deploy: ## deploy Azure Functions App
+	poetry export \
+		--format requirements.txt \
+		--output requirements.txt \
+		--with backend,azure-functions \
+		--without-hashes
+	func azure functionapp publish $(shell jq -r '.FUNCTION_APP_NAME' < azure-functions.json)
