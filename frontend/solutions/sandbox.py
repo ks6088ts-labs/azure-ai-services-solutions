@@ -4,9 +4,35 @@ from urllib.parse import urljoin
 
 import streamlit as st
 
-from frontend.solutions.utilities import http_get, http_post
+from frontend.solutions.utilities import http_get
 
 logger = logging.getLogger(__name__)
+
+
+async def chat_completions_post(
+    backend_url: str,
+    prompt: str,
+):
+    from kiota_abstractions.authentication.anonymous_authentication_provider import AnonymousAuthenticationProvider
+    from kiota_http.httpx_request_adapter import HttpxRequestAdapter
+
+    from client.api_client import ApiClient
+    from client.models.chat_completion_request import ChatCompletionRequest
+
+    auth_provider = AnonymousAuthenticationProvider()
+    request_adapter = HttpxRequestAdapter(
+        authentication_provider=auth_provider,
+        base_url=backend_url,
+    )
+    client = ApiClient(request_adapter)
+
+    response = await client.azure_openai.chat_completions.post(
+        ChatCompletionRequest(
+            content=prompt,
+            stream=False,
+        ),
+    )
+    return response.content
 
 
 def start(
@@ -42,12 +68,9 @@ def start(
         try:
             with st.spinner("Calling API..."):
                 response = asyncio.run(
-                    http_post(
-                        url=urljoin(base=backend_url, url="/azure_openai/chat_completions/"),
-                        data={
-                            "content": prompt,
-                            "stream": False,
-                        },
+                    chat_completions_post(
+                        backend_url=backend_url,
+                        prompt=prompt,
                     )
                 )
             st.write(response)

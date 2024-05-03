@@ -3,6 +3,7 @@
 ## Common
 
 - [Typer](https://typer.tiangolo.com/#installation)
+- [Kiota > Generate tailored Python and PHP API clients for any API with Kiota](https://devblogs.microsoft.com/microsoft365dev/generate-tailored-python-and-php-api-clients-for-any-api-with-kiota/)
 
 ## Backend
 

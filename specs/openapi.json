@@ -1,13 +1,24 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
-    "title": "FastAPI",
-    "version": "0.1.0"
+    "title": "Azure AI Services Solutions",
+    "description": "This contains a collection of solutions that leverage Azure AI services.",
+    "version": "0.0.1",
+    "x-logo": {
+      "url": "https://news.microsoft.com/wp-content/uploads/prod/2022/05/Microsoft-logo_rgb_c-gray-1024x459.png"
+    }
   },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
   "paths": {
     "/azure_openai/chat_completions/": {
       "post": {
-        "tags": ["azure_openai"],
+        "tags": [
+          "azure_openai"
+        ],
         "summary": "Create Chat Completions",
         "operationId": "create_chat_completions_azure_openai_chat_completions__post",
         "requestBody": {
@@ -49,7 +60,9 @@
     },
     "/document_intelligence/analyze_document/": {
       "post": {
-        "tags": ["document_intelligence"],
+        "tags": [
+          "document_intelligence"
+        ],
         "summary": "Analyze Document",
         "operationId": "analyze_document_document_intelligence_analyze_document__post",
         "requestBody": {
@@ -100,7 +113,9 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "AnalyzeDocumentResponse"
       },
       "Body_analyze_document_document_intelligence_analyze_document__post": {
@@ -112,7 +127,9 @@
           }
         },
         "type": "object",
-        "required": ["file"],
+        "required": [
+          "file"
+        ],
         "title": "Body_analyze_document_document_intelligence_analyze_document__post"
       },
       "ChatCompletionRequest": {
@@ -128,7 +145,9 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "ChatCompletionRequest"
       },
       "ChatCompletionResponse": {
@@ -139,7 +158,9 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "ChatCompletionResponse"
       },
       "HTTPValidationError": {
@@ -181,7 +202,11 @@
           }
         },
         "type": "object",
-        "required": ["loc", "msg", "type"],
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
         "title": "ValidationError"
       }
     }
