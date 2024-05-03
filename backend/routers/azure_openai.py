@@ -1,9 +1,9 @@
 from logging import getLogger
 
 from fastapi import APIRouter
-from fastapi.responses import JSONResponse
 
 from backend.internals import azure_openai
+from backend.schemas import azure_openai as azure_openai_schemas
 
 logger = getLogger(__name__)
 
@@ -14,26 +14,10 @@ router = APIRouter(
 )
 
 
-@router.post("/chat_completion/")
-async def create_chat_completion(
-    content: str,
-    stream: bool = False,
-):
-    try:
-        chat_completion = azure_openai.create_chat_completion(
-            content=content,
-            stream=stream,
-        )
-    except Exception as e:
-        logger.exception(e)
-        return JSONResponse(
-            status_code=500,
-            content={"message": str(e)},
-        )
-    return JSONResponse(
-        status_code=200,
-        content={
-            "message": "success",
-            "chat_completion": chat_completion,
-        },
-    )
+@router.post(
+    "/chat_completions/",
+    response_model=azure_openai_schemas.ChatCompletionResponse,
+    status_code=200,
+)
+async def create_chat_completions(body: azure_openai_schemas.ChatCompletionRequest):
+    return azure_openai.create_chat_completions(body=body)
