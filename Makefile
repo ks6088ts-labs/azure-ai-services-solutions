@@ -30,6 +30,10 @@ format: ## format code
 	poetry run isort .
 	poetry run black . --verbose
 
+.PHONY: fix
+fix: format ## apply auto-fixes
+	poetry run ruff check --fix
+
 .PHONY: lint
 lint: ## lint
 	poetry run ruff check .
@@ -81,7 +85,7 @@ ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test f
 # ---
 # Application
 # ---
-SOLUTION_NAME ?= "DEFAULT"
+SOLUTION_NAME ?= "SANDBOX"
 
 .PHONY: backend
 backend: ## run backend
@@ -114,3 +118,21 @@ azure-functions-functionapp-deploy: ## deploy Azure Functions App
 		--with backend,azure-functions \
 		--without-hashes
 	func azure functionapp publish $(shell jq -r '.FUNCTION_APP_NAME' < azure-functions.json)
+
+# ---
+# OpenAPI Client
+# ---
+.PHONY: generate-openapi-spec
+generate-openapi-spec: ## generate OpenAPI spec
+	poetry run python main.py generate-openapi-spec
+
+.PHONY: generate-openapi-client
+generate-openapi-client: ## generate OpenAPI client
+	@kiota generate \
+		--language Python \
+		--class-name ApiClient \
+		--namespace-name client \
+		--openapi ./specs/openapi.json \
+		--output ./client
+	@echo "Get the list of dependencies"
+	@kiota info -d ./specs/openapi.json --language Python
