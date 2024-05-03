@@ -36,9 +36,7 @@ fix: format ## apply auto-fixes
 
 .PHONY: lint
 lint: ## lint
-	poetry run ruff check . \
-		--exclude client \
-		--respect-gitignore
+	poetry run ruff check .
 	shellcheck scripts/*.sh
 
 .PHONY: test

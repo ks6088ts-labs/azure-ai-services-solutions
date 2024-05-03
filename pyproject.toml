@@ -54,6 +54,8 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 line-length = 120
 target-version = "py310"
+exclude = ["client"]
+respect-gitignore = true
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
@@ -62,6 +64,7 @@ ignore = ["D203"]
 [tool.black]
 line-length = 120
 target-version = ["py310"]
+extend-exclude = ["client"]
 
 [tool.pytest.ini_options]
 addopts = "-ra --cov"
