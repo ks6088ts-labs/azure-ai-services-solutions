@@ -1,6 +1,6 @@
 import logging
 
-from frontend.solutions import azure_storage, document_intelligence, sandbox, transcription
+from frontend.solutions import azure_ai_vision, azure_storage, document_intelligence, sandbox, transcription
 from frontend.solutions.types import SolutionType
 
 logger = logging.getLogger(__name__)
@@ -28,6 +28,11 @@ def start(
         )
     if solution_type == SolutionType.AZURE_STORAGE:
         return azure_storage.start(
+            backend_url=backend_url,
+            log_level=log_level,
+        )
+    if solution_type == SolutionType.AZURE_AI_VISION:
+        return azure_ai_vision.start(
             backend_url=backend_url,
             log_level=log_level,
         )
