@@ -14,6 +14,7 @@ from kiota_serialization_text.text_serialization_writer_factory import TextSeria
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
     from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
     from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
     from .document_intelligence.document_intelligence_request_builder import Document_intelligenceRequestBuilder
@@ -41,6 +42,15 @@ class ApiClient(BaseRequestBuilder):
         if not self.request_adapter.base_url:
             self.request_adapter.base_url = "http://localhost:8000"
         self.path_parameters["base_url"] = self.request_adapter.base_url
+    
+    @property
+    def azure_ai_vision(self) -> Azure_ai_visionRequestBuilder:
+        """
+        The azure_ai_vision property
+        """
+        from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
+
+        return Azure_ai_visionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def azure_openai(self) -> Azure_openaiRequestBuilder:

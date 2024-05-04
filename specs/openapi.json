@@ -221,6 +221,92 @@
           }
         }
       }
+    },
+    "/azure_ai_vision/image/analyze/": {
+      "post": {
+        "tags": [
+          "azure_ai_vision"
+        ],
+        "summary": "Analyze Image",
+        "operationId": "analyze_image_azure_ai_vision_image_analyze__post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_analyze_image_azure_ai_vision_image_analyze__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageAnalysisResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_ai_vision/image/vectorize/": {
+      "post": {
+        "tags": [
+          "azure_ai_vision"
+        ],
+        "summary": "Vectorize Image",
+        "operationId": "vectorize_image_azure_ai_vision_image_vectorize__post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_vectorize_image_azure_ai_vision_image_vectorize__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -265,6 +351,20 @@
         ],
         "title": "Body_analyze_document_document_intelligence_analyze_document__post"
       },
+      "Body_analyze_image_azure_ai_vision_image_analyze__post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_analyze_image_azure_ai_vision_image_analyze__post"
+      },
       "Body_upload_blob_azure_storage_blobs_upload__post": {
         "properties": {
           "file": {
@@ -278,6 +378,20 @@
           "file"
         ],
         "title": "Body_upload_blob_azure_storage_blobs_upload__post"
+      },
+      "Body_vectorize_image_azure_ai_vision_image_vectorize__post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_vectorize_image_azure_ai_vision_image_vectorize__post"
       },
       "ChatCompletionRequest": {
         "properties": {
@@ -322,6 +436,19 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "ImageAnalysisResponse": {
+        "properties": {
+          "result": {
+            "type": "object",
+            "title": "Result"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "title": "ImageAnalysisResponse"
       },
       "ValidationError": {
         "properties": {
