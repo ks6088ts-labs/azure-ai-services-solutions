@@ -45,6 +45,9 @@
 ### Azure AI Vision
 
 - [Quickstart: Image Analysis 4.0](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/image-analysis-client-library-40?tabs=visual-studio%2Cwindows&pivots=programming-language-python)
+- [Do image retrieval using multimodal embeddings (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/how-to/image-retrieval?tabs=python)
+- [Multimodal embeddings (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-image-retrieval)
+- [Image Retrieval - Vectorize Image From Image Stream](https://learn.microsoft.com/en-us/rest/api/computervision/image-retrieval/vectorize-image-from-image-stream?view=rest-computervision-2023-02-01-preview&tabs=HTTP)
 
 ### Azure AI Document Intelligence
 

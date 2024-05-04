@@ -7,3 +7,7 @@ logger = getLogger(__name__)
 
 class ImageAnalysisResponse(BaseModel):
     result: dict
+
+
+class VectorizeImageResponse(BaseModel):
+    result: dict

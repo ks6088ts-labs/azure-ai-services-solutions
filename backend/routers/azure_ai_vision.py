@@ -35,3 +35,21 @@ async def analyze_image(file: UploadFile):
     return azure_ai_vision_schemas.ImageAnalysisResponse(
         result=result,
     )
+
+
+@router.post(
+    "/image/vectorize/",
+    status_code=200,
+)
+async def vectorize_image(file: UploadFile):
+    try:
+        content = await file.read()
+        result = client.vectorize_image(
+            image=content,
+        )
+    except Exception as e:
+        logger.error(f"Failed to vectorize image: {e}")
+        raise
+    return azure_ai_vision_schemas.VectorizeImageResponse(
+        result=result,
+    )

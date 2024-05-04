@@ -33,3 +33,34 @@ class AzureAiVisionClient:
         )
         logger.info("Analyzed image")
         return result.as_dict()
+
+    def vectorize_image(
+        self,
+        image: bytes,
+    ) -> dict:
+        # FIXME: replace with Azure SDK when available
+        from urllib.parse import urljoin
+
+        import requests
+
+        url = urljoin(
+            self.settings.azure_ai_vision_endpoint,
+            "/computervision/retrieval:vectorizeImage",
+        )
+        params = {
+            "overload": "stream",
+            "api-version": "2023-02-01-preview",
+            "modelVersion": "latest",
+        }
+        headers = {
+            "Content-Type": "application/octet-stream",
+            "Ocp-Apim-Subscription-Key": self.settings.azure_ai_vision_api_key,
+        }
+        response = requests.post(
+            url=url,
+            params=params,
+            headers=headers,
+            data=image,
+        )
+        response.raise_for_status()
+        return response.json()
