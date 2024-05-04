@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
+    from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
     from .document_intelligence.document_intelligence_request_builder import Document_intelligenceRequestBuilder
 
 class ApiClient(BaseRequestBuilder):
@@ -49,6 +50,15 @@ class ApiClient(BaseRequestBuilder):
         from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
 
         return Azure_openaiRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def azure_storage(self) -> Azure_storageRequestBuilder:
+        """
+        The azure_storage property
+        """
+        from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
+
+        return Azure_storageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def document_intelligence(self) -> Document_intelligenceRequestBuilder:

@@ -101,6 +101,126 @@
           }
         }
       }
+    },
+    "/azure_storage/blobs/upload/": {
+      "post": {
+        "tags": [
+          "azure_storage"
+        ],
+        "summary": "Upload Blob",
+        "operationId": "upload_blob_azure_storage_blobs_upload__post",
+        "parameters": [
+          {
+            "name": "blob_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Blob Name"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_blob_azure_storage_blobs_upload__post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobUploadResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage/blobs/delete/": {
+      "delete": {
+        "tags": [
+          "azure_storage"
+        ],
+        "summary": "Delete Blob",
+        "operationId": "delete_blob_azure_storage_blobs_delete__delete",
+        "parameters": [
+          {
+            "name": "blob_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Blob Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage/blobs/": {
+      "get": {
+        "tags": [
+          "azure_storage"
+        ],
+        "summary": "List Blobs",
+        "operationId": "list_blobs_azure_storage_blobs__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -118,6 +238,19 @@
         ],
         "title": "AnalyzeDocumentResponse"
       },
+      "BlobUploadResponse": {
+        "properties": {
+          "blob_name": {
+            "type": "string",
+            "title": "Blob Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "blob_name"
+        ],
+        "title": "BlobUploadResponse"
+      },
       "Body_analyze_document_document_intelligence_analyze_document__post": {
         "properties": {
           "file": {
@@ -131,6 +264,20 @@
           "file"
         ],
         "title": "Body_analyze_document_document_intelligence_analyze_document__post"
+      },
+      "Body_upload_blob_azure_storage_blobs_upload__post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_blob_azure_storage_blobs_upload__post"
       },
       "ChatCompletionRequest": {
         "properties": {
