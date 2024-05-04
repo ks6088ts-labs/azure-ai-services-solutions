@@ -24,14 +24,14 @@
 
 ## Azure
 
-### Azure OpenAI Service
-
-- [Azure-Samples/openai](https://github.com/Azure-Samples/openai)
-
 ### Azure Functions
 
 - [Quickstart: Create a Python function in Azure from the command line](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=linux%2Cbash%2Cazure-cli%2Cbrowser)
 - [Using FastAPI Framework with Azure Functions](https://learn.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/fastapi-on-azure-functions/)
+
+### Azure OpenAI Service
+
+- [Azure-Samples/openai](https://github.com/Azure-Samples/openai)
 
 ### Azure AI Speech Service
 
@@ -41,6 +41,13 @@
 - [Quickstart: Install the Speech SDK](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/quickstarts/setup-platform?tabs=linux%2Cubuntu%2Cdotnetcli%2Cdotnet%2Cjre%2Cmaven%2Cnodejs%2Cmac%2Cpypi&pivots=programming-language-python)
 - [How to recognize speech > Use continuous recognition](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-recognize-speech?pivots=programming-language-python#use-continuous-recognition)
 - [Task 02 - Perform speech requests with Streamlit (40 minutes)](https://microsoft.github.io/TechExcel-Implementing-automation-practices-using-Azure-OpenAI/docs/04_implement_audio_transcription/0402.html)
+
+### Azure AI Vision
+
+- [Quickstart: Image Analysis 4.0](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/image-analysis-client-library-40?tabs=visual-studio%2Cwindows&pivots=programming-language-python)
+- [Do image retrieval using multimodal embeddings (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/how-to/image-retrieval?tabs=python)
+- [Multimodal embeddings (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-image-retrieval)
+- [Image Retrieval - Vectorize Image From Image Stream](https://learn.microsoft.com/en-us/rest/api/computervision/image-retrieval/vectorize-image-from-image-stream?view=rest-computervision-2023-02-01-preview&tabs=HTTP)
 
 ### Azure AI Document Intelligence
 

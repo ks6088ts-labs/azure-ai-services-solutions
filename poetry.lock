@@ -232,6 +232,21 @@ isodate = ">=0.6.1"
 typing-extensions = ">=4.6.0"
 
 [[package]]
+name = "azure-ai-vision-imageanalysis"
+version = "1.0.0b2"
+description = "Microsoft Azure Ai Vision Imageanalysis Client Library for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "azure-ai-vision-imageanalysis-1.0.0b2.tar.gz", hash = "sha256:704cb99e3d40513a01d0623c2537a467f9b7fc3b076a2597ba714992b1f1e6ab"},
+    {file = "azure_ai_vision_imageanalysis-1.0.0b2-py3-none-any.whl", hash = "sha256:b9b7e9e189b8b7df0e95e704972866efcb287bc557b2395fd11b7f730b86e22e"},
+]
+
+[package.dependencies]
+azure-core = ">=1.30.0,<2.0.0"
+isodate = ">=0.6.1,<1.0.0"
+
+[[package]]
 name = "azure-cognitiveservices-speech"
 version = "1.37.0"
 description = "Microsoft Cognitive Services Speech SDK for Python"
@@ -3605,4 +3620,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6b48941c221458c0483b23953eee08ec3c9a3917c09ed6ff0ff923ef97c0ebf9"
+content-hash = "edf2a7dac9df95dae648243d24cf68a4d665d90d7b137f4e83a073a7f718aba3"

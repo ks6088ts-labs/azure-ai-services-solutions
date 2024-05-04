@@ -30,6 +30,7 @@ pydantic-settings = "^2.2.1"
 azure-ai-documentintelligence = "^1.0.0b3"
 python-multipart = "^0.0.9"
 azure-storage-blob = "^12.19.1"
+azure-ai-vision-imageanalysis = "^1.0.0b2"
 
 
 [tool.poetry.group.frontend.dependencies]
