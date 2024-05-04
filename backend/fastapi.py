@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
 from backend.routers import azure_openai as azure_openai_router
+from backend.routers import azure_storage as azure_storage_router
 from backend.routers import document_intelligence as document_intelligence_router
 
 app = FastAPI(
@@ -10,6 +11,7 @@ app = FastAPI(
 
 app.include_router(azure_openai_router.router)
 app.include_router(document_intelligence_router.router)
+app.include_router(azure_storage_router.router)
 
 
 def custom_openapi():
