@@ -4,6 +4,7 @@
 
 - [Typer](https://typer.tiangolo.com/#installation)
 - [Kiota > Generate tailored Python and PHP API clients for any API with Kiota](https://devblogs.microsoft.com/microsoft365dev/generate-tailored-python-and-php-api-clients-for-any-api-with-kiota/)
+- [How to exclude multiple directories in pre-commit](https://stackoverflow.com/a/75560858)
 
 ## Backend
 
