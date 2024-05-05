@@ -281,6 +281,21 @@ typing-extensions = ">=4.6.0"
 aio = ["aiohttp (>=3.0)"]
 
 [[package]]
+name = "azure-eventgrid"
+version = "4.19.0"
+description = "Microsoft Azure Event Grid Client Library for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "azure-eventgrid-4.19.0.tar.gz", hash = "sha256:6bd7d54016cca3a670769e964d82a240196a25c411b3e9f1a8aa8155c3db05ec"},
+    {file = "azure_eventgrid-4.19.0-py3-none-any.whl", hash = "sha256:f457af501f28089d116b19c950d27651a22d55c752a1b4e1025e638c374bf58d"},
+]
+
+[package.dependencies]
+azure-core = ">=1.24.0"
+isodate = ">=0.6.1"
+
+[[package]]
 name = "azure-functions"
 version = "1.19.0"
 description = "Azure Functions for Python"
@@ -3620,4 +3635,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "edf2a7dac9df95dae648243d24cf68a4d665d90d7b137f4e83a073a7f718aba3"
+content-hash = "46f5886b089864a995ca6c0ff4c5baa40b1da5b22130be57a3592e2b9791b056"
