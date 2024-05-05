@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
+    from .azure_event_grid.azure_event_grid_request_builder import Azure_event_gridRequestBuilder
     from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
     from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
     from .document_intelligence.document_intelligence_request_builder import Document_intelligenceRequestBuilder
@@ -51,6 +52,15 @@ class ApiClient(BaseRequestBuilder):
         from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
 
         return Azure_ai_visionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def azure_event_grid(self) -> Azure_event_gridRequestBuilder:
+        """
+        The azure_event_grid property
+        """
+        from .azure_event_grid.azure_event_grid_request_builder import Azure_event_gridRequestBuilder
+
+        return Azure_event_gridRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def azure_openai(self) -> Azure_openaiRequestBuilder:

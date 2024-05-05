@@ -307,6 +307,78 @@
           }
         }
       }
+    },
+    "/azure_event_grid/event_grid_event/": {
+      "post": {
+        "tags": [
+          "azure_event_grid"
+        ],
+        "summary": "Send Event Grid Event",
+        "operationId": "send_event_grid_event_azure_event_grid_event_grid_event__post",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": {
+                "team": "azure-sdk"
+              },
+              "title": "Data"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": "Door1",
+              "title": "Subject"
+            }
+          },
+          {
+            "name": "event_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": "Azure.Sdk.Demo",
+              "title": "Event Type"
+            }
+          },
+          {
+            "name": "data_version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": "2.0",
+              "title": "Data Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
