@@ -14,6 +14,7 @@
 - [FastAPI > UploadFile class](https://fastapi.tiangolo.com/reference/uploadfile/)
 - [FastAPI > Extending OpenAPI](https://fastapi.tiangolo.com/how-to/extending-openapi/)
 - [Get started with Azure Blob Storage and Python](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-python-get-started?tabs=sas-token)
+- [Quickstart: Azure Queue Storage client library for Python](https://learn.microsoft.com/en-us/azure/storage/queues/storage-quickstart-queues-python?tabs=passwordless%2Croles-azure-portal%2Cenvironment-variable-windows%2Csign-in-azure-cli)
 - [Azure Event Grid client library for Python - version 4.19.0](https://learn.microsoft.com/en-us/python/api/overview/azure/eventgrid-readme?view=azure-python)
 - [Azure Event Grid Client Library Python Samples](https://learn.microsoft.com/en-us/samples/azure/azure-sdk-for-python/eventgrid-samples/)
 
