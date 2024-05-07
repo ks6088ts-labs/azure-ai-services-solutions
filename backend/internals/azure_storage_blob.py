@@ -2,13 +2,13 @@ from logging import getLogger
 
 from azure.storage.blob import BlobServiceClient
 
-from backend.settings import azure_storage_blob as azure_storage_settings
+from backend.settings.azure_storage_blob import Settings
 
 logger = getLogger(__name__)
 
 
 class Client:
-    def __init__(self, settings: azure_storage_settings.Settings):
+    def __init__(self, settings: Settings):
         self.settings = settings
 
     def get_blob_service_client(self) -> BlobServiceClient:

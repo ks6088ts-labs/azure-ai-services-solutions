@@ -4,15 +4,13 @@ from logging import getLogger
 from openai import AzureOpenAI
 from openai.types.chat import ChatCompletion
 
-from backend.settings import azure_openai as azure_openai_settings
+from backend.settings.azure_openai import Settings
 
 logger = getLogger(__name__)
 
-settings = azure_openai_settings.Settings()
-
 
 class Client:
-    def __init__(self, settings: azure_openai_settings.Settings) -> None:
+    def __init__(self, settings: Settings) -> None:
         self.settings = settings
 
     def get_client(self) -> AzureOpenAI:

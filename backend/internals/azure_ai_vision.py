@@ -9,7 +9,7 @@ from backend.settings.azure_ai_vision import Settings
 logger = getLogger(__name__)
 
 
-class AzureAiVisionClient:
+class Client:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
 

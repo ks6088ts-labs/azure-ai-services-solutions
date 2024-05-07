@@ -9,7 +9,7 @@ from backend.settings.azure_ai_document_intelligence import Settings
 logger = getLogger(__name__)
 
 
-class AzureAiDocumentIntelligenceClient:
+class Client:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
 

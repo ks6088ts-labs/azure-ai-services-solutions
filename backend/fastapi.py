@@ -12,12 +12,15 @@ app = FastAPI(
     docs_url="/",
 )
 
-app.include_router(azure_ai_document_intelligence_router.router)
-app.include_router(azure_ai_vision_router.router)
-app.include_router(azure_event_grid_router.router)
-app.include_router(azure_openai_router.router)
-app.include_router(azure_storage_blob_router.router)
-app.include_router(azure_storage_queue_router.router)
+for router in [
+    azure_ai_document_intelligence_router.router,
+    azure_ai_vision_router.router,
+    azure_event_grid_router.router,
+    azure_openai_router.router,
+    azure_storage_blob_router.router,
+    azure_storage_queue_router.router,
+]:
+    app.include_router(router)
 
 
 def custom_openapi():

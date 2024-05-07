@@ -10,5 +10,4 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file="azure_ai_document_intelligence.env",
         env_file_encoding="utf-8",
-        extra="ignore",
     )
