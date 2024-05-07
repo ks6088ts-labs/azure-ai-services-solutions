@@ -5,14 +5,18 @@ from typing import Annotated
 import typer
 from dotenv import load_dotenv
 
-debug = os.environ.get("DEBUG", "false").lower() not in ["false", "no", "0"]
-log_level = logging.DEBUG if debug else logging.INFO
 
-logging.basicConfig(
-    format="[%(asctime)s] %(levelname)7s from %(name)s in %(pathname)s:%(lineno)d: " "%(message)s",
-    level=log_level,
-    force=True,
-)
+def get_log_level(debug: bool) -> int:
+    return logging.DEBUG if debug else logging.INFO
+
+
+def setup_logging(debug: bool = False):
+    logging.basicConfig(
+        format="[%(asctime)s] %(levelname)7s from %(name)s in %(pathname)s:%(lineno)d: " "%(message)s",
+        level=get_log_level(debug),
+        force=True,
+    )
+
 
 app = typer.Typer()
 
@@ -22,13 +26,15 @@ def backend(
     host="0.0.0.0",
     port: Annotated[int, typer.Option(help="Port number")] = 8000,
     reload: Annotated[bool, typer.Option(help="Enable auto-reload")] = False,
+    debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     from backend.entrypoint import start
 
+    setup_logging(debug)
     start(
         host=host,
         port=port,
-        log_level=log_level,
+        log_level=get_log_level(debug),
         reload=reload,
     )
 
@@ -37,11 +43,13 @@ def backend(
 def frontend(
     solution_name: Annotated[str, typer.Option(help="Solution name")] = os.getenv("SOLUTION_NAME"),
     backend_url: Annotated[str, typer.Option(help="Backend URL")] = os.getenv("BACKEND_URL", "http://localhost:8000/"),
+    debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     from frontend.entrypoint import start
     from frontend.solutions.types import SolutionType
 
-    # convert solution_name to SolutionType
+    setup_logging(debug)
+
     try:
         solution_type = SolutionType(solution_name.upper())
     except ValueError:
@@ -51,17 +59,20 @@ def frontend(
     start(
         solution_type=solution_type,
         backend_url=backend_url,
-        log_level=log_level,
+        log_level=get_log_level(debug),
     )
 
 
 @app.command()
 def generate_openapi_spec(
     path: Annotated[str, typer.Option(help="Output file path")] = "./specs/openapi.json",
+    debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     import json
 
     from backend.fastapi import app
+
+    setup_logging(debug)
 
     # create directory if not exists
     os.makedirs(os.path.dirname(path), exist_ok=True)

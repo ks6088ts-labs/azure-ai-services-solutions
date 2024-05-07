@@ -28,11 +28,6 @@ def custom_openapi():
         version="0.0.1",
         description="This contains a collection of solutions that leverage Azure AI services.",
         routes=app.routes,
-        servers=[
-            {
-                "url": "http://localhost:8000",
-            }
-        ],
     )
     openapi_schema["info"]["x-logo"] = {
         "url": "https://news.microsoft.com/wp-content/uploads/prod/2022/05/Microsoft-logo_rgb_c-gray-1024x459.png"
