@@ -8,68 +8,19 @@
       "url": "https://news.microsoft.com/wp-content/uploads/prod/2022/05/Microsoft-logo_rgb_c-gray-1024x459.png"
     }
   },
-  "servers": [
-    {
-      "url": "http://localhost:8000"
-    }
-  ],
   "paths": {
-    "/azure_openai/chat_completions/": {
+    "/azure_ai_document_intelligence/analyze_document/": {
       "post": {
         "tags": [
-          "azure_openai"
-        ],
-        "summary": "Create Chat Completions",
-        "operationId": "create_chat_completions_azure_openai_chat_completions__post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ChatCompletionRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChatCompletionResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/document_intelligence/analyze_document/": {
-      "post": {
-        "tags": [
-          "document_intelligence"
+          "azure_ai_document_intelligence"
         ],
         "summary": "Analyze Document",
-        "operationId": "analyze_document_document_intelligence_analyze_document__post",
+        "operationId": "analyze_document_azure_ai_document_intelligence_analyze_document__post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_analyze_document_document_intelligence_analyze_document__post"
+                "$ref": "#/components/schemas/Body_analyze_document_azure_ai_document_intelligence_analyze_document__post"
               }
             }
           },
@@ -98,126 +49,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/azure_storage/blobs/upload/": {
-      "post": {
-        "tags": [
-          "azure_storage"
-        ],
-        "summary": "Upload Blob",
-        "operationId": "upload_blob_azure_storage_blobs_upload__post",
-        "parameters": [
-          {
-            "name": "blob_name",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Blob Name"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_upload_blob_azure_storage_blobs_upload__post"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlobUploadResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/azure_storage/blobs/delete/": {
-      "delete": {
-        "tags": [
-          "azure_storage"
-        ],
-        "summary": "Delete Blob",
-        "operationId": "delete_blob_azure_storage_blobs_delete__delete",
-        "parameters": [
-          {
-            "name": "blob_name",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Blob Name"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "404": {
-            "description": "Not found"
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/azure_storage/blobs/": {
-      "get": {
-        "tags": [
-          "azure_storage"
-        ],
-        "summary": "List Blobs",
-        "operationId": "list_blobs_azure_storage_blobs__get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "404": {
-            "description": "Not found"
           }
         }
       }
@@ -379,6 +210,459 @@
           }
         }
       }
+    },
+    "/azure_openai/chat_completions/": {
+      "post": {
+        "tags": [
+          "azure_openai"
+        ],
+        "summary": "Create Chat Completions",
+        "operationId": "create_chat_completions_azure_openai_chat_completions__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatCompletionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatCompletionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_openai/chat_completions_with_vision/": {
+      "post": {
+        "tags": [
+          "azure_openai"
+        ],
+        "summary": "Create Chat Completions With Vision",
+        "operationId": "create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post",
+        "parameters": [
+          {
+            "name": "system_prompt",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "You are a helpful assistant.",
+              "title": "System Prompt"
+            }
+          },
+          {
+            "name": "user_prompt",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "Please explain the attached image.",
+              "title": "User Prompt"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatCompletionWithVisionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage_blob/blobs/upload/": {
+      "post": {
+        "tags": [
+          "azure_storage_blob"
+        ],
+        "summary": "Upload Blob",
+        "operationId": "upload_blob_azure_storage_blob_blobs_upload__post",
+        "parameters": [
+          {
+            "name": "blob_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Blob Name"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_blob_azure_storage_blob_blobs_upload__post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobUploadResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage_blob/blobs/delete/": {
+      "delete": {
+        "tags": [
+          "azure_storage_blob"
+        ],
+        "summary": "Delete Blob",
+        "operationId": "delete_blob_azure_storage_blob_blobs_delete__delete",
+        "parameters": [
+          {
+            "name": "blob_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Blob Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage_blob/blobs/": {
+      "get": {
+        "tags": [
+          "azure_storage_blob"
+        ],
+        "summary": "List Blobs",
+        "operationId": "list_blobs_azure_storage_blob_blobs__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/azure_storage_queue/queues/": {
+      "post": {
+        "tags": [
+          "azure_storage_queue"
+        ],
+        "summary": "Create Queue",
+        "operationId": "create_queue_azure_storage_queue_queues__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQueueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateQueueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "azure_storage_queue"
+        ],
+        "summary": "Delete Queue",
+        "operationId": "delete_queue_azure_storage_queue_queues__delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteQueueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteQueueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_storage_queue/messages/": {
+      "post": {
+        "tags": [
+          "azure_storage_queue"
+        ],
+        "summary": "Send Message",
+        "operationId": "send_message_azure_storage_queue_messages__post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendMessageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "azure_storage_queue"
+        ],
+        "summary": "Receive Messages",
+        "operationId": "receive_messages_azure_storage_queue_messages__get",
+        "parameters": [
+          {
+            "name": "queue_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue Name"
+            }
+          },
+          {
+            "name": "max_messages",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Max Messages"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "azure_storage_queue"
+        ],
+        "summary": "Delete Message",
+        "operationId": "delete_message_azure_storage_queue_messages__delete",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteMessageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -409,7 +693,7 @@
         ],
         "title": "BlobUploadResponse"
       },
-      "Body_analyze_document_document_intelligence_analyze_document__post": {
+      "Body_analyze_document_azure_ai_document_intelligence_analyze_document__post": {
         "properties": {
           "file": {
             "type": "string",
@@ -421,7 +705,7 @@
         "required": [
           "file"
         ],
-        "title": "Body_analyze_document_document_intelligence_analyze_document__post"
+        "title": "Body_analyze_document_azure_ai_document_intelligence_analyze_document__post"
       },
       "Body_analyze_image_azure_ai_vision_image_analyze__post": {
         "properties": {
@@ -437,7 +721,7 @@
         ],
         "title": "Body_analyze_image_azure_ai_vision_image_analyze__post"
       },
-      "Body_upload_blob_azure_storage_blobs_upload__post": {
+      "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post": {
         "properties": {
           "file": {
             "type": "string",
@@ -449,7 +733,21 @@
         "required": [
           "file"
         ],
-        "title": "Body_upload_blob_azure_storage_blobs_upload__post"
+        "title": "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post"
+      },
+      "Body_upload_blob_azure_storage_blob_blobs_upload__post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_blob_azure_storage_blob_blobs_upload__post"
       },
       "Body_vectorize_image_azure_ai_vision_image_vectorize__post": {
         "properties": {
@@ -496,6 +794,99 @@
         ],
         "title": "ChatCompletionResponse"
       },
+      "ChatCompletionWithVisionResponse": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "ChatCompletionWithVisionResponse"
+      },
+      "CreateQueueRequest": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name"
+        ],
+        "title": "CreateQueueRequest"
+      },
+      "CreateQueueResponse": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name"
+        ],
+        "title": "CreateQueueResponse"
+      },
+      "DeleteMessageRequest": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          },
+          "message_id": {
+            "type": "string",
+            "title": "Message Id"
+          },
+          "pop_receipt": {
+            "type": "string",
+            "title": "Pop Receipt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name",
+          "message_id",
+          "pop_receipt"
+        ],
+        "title": "DeleteMessageRequest"
+      },
+      "DeleteMessageResponse": {
+        "properties": {},
+        "type": "object",
+        "title": "DeleteMessageResponse"
+      },
+      "DeleteQueueRequest": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name"
+        ],
+        "title": "DeleteQueueRequest"
+      },
+      "DeleteQueueResponse": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name"
+        ],
+        "title": "DeleteQueueResponse"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -521,6 +912,29 @@
           "result"
         ],
         "title": "ImageAnalysisResponse"
+      },
+      "SendMessageRequest": {
+        "properties": {
+          "queue_name": {
+            "type": "string",
+            "title": "Queue Name"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queue_name",
+          "message"
+        ],
+        "title": "SendMessageRequest"
+      },
+      "SendMessageResponse": {
+        "properties": {},
+        "type": "object",
+        "title": "SendMessageResponse"
       },
       "ValidationError": {
         "properties": {

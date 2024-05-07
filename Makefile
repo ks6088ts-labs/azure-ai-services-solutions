@@ -152,3 +152,6 @@ generate-openapi-client: ## generate OpenAPI client
 		--output ./client
 	@echo "Get the list of dependencies"
 	@kiota info -d ./specs/openapi.json --language Python
+
+.PHONY: generate-openapi
+generate-openapi: generate-openapi-spec generate-openapi-client ## generate OpenAPI artifacts
