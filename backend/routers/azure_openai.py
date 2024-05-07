@@ -4,8 +4,12 @@ from fastapi import APIRouter
 
 from backend.internals import azure_openai
 from backend.schemas import azure_openai as azure_openai_schemas
+from backend.settings.azure_openai import Settings
 
 logger = getLogger(__name__)
+client = azure_openai.Client(
+    settings=Settings(),
+)
 
 router = APIRouter(
     prefix="/azure_openai",
@@ -20,4 +24,10 @@ router = APIRouter(
     status_code=200,
 )
 async def create_chat_completions(body: azure_openai_schemas.ChatCompletionRequest):
-    return azure_openai.create_chat_completions(body=body)
+    response = client.create_chat_completions(
+        content=body.content,
+        stream=body.stream,
+    )
+    return azure_openai_schemas.ChatCompletionResponse(
+        content=response.choices[0].message.content,
+    )
