@@ -46,18 +46,10 @@ def frontend(
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     from frontend.entrypoint import start
-    from frontend.solutions.types import SolutionType
 
     setup_logging(debug)
-
-    try:
-        solution_type = SolutionType(solution_name.upper())
-    except ValueError:
-        typer.echo(f"Invalid solution name: {solution_name}", err=True)
-        raise typer.Exit(code=1)
-
     start(
-        solution_type=solution_type,
+        solution_name=solution_name,
         backend_url=backend_url,
         log_level=get_log_level(debug),
     )

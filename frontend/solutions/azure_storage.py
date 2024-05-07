@@ -40,7 +40,7 @@ def start(
                 bytes_data = file_uploader.getvalue()
                 response = asyncio.run(
                     http_post_file(
-                        url=urljoin(base=backend_url, url=f"/azure_storage/blobs/upload/?blob_name={blob_name}"),
+                        url=urljoin(base=backend_url, url=f"/azure_storage_blob/blobs/upload/?blob_name={blob_name}"),
                         data_bytes_io=BytesIO(bytes_data),
                     )
                 )
