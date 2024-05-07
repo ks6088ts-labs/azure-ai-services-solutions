@@ -51,9 +51,10 @@ ci-test: install-deps-dev format-check lint test ## run CI tests
 # ---
 DOCKER_REPO_NAME ?= ks6088ts
 DOCKER_IMAGE_NAME ?= azure-ai-services-solutions
-DOCKER_COMMAND ?= python main.py --help
-DOCKER_TAG ?= local
-DOCKERFILE ?= dockerfiles/backend.Dockerfile
+DOCKER_IMAGE_COMPONENT ?= backend
+DOCKER_COMMAND ?=
+DOCKER_TAG ?= $(DOCKER_IMAGE_COMPONENT)-$(GIT_TAG)
+DOCKER_FILE ?= ./dockerfiles/$(DOCKER_IMAGE_COMPONENT).Dockerfile
 
 # Tools
 TOOLS_DIR ?= $(HOME)/.local/bin
@@ -63,28 +64,18 @@ TRIVY_VERSION ?= 0.49.1
 docker-build: ## build Docker image
 	docker build \
 		--tag $(DOCKER_REPO_NAME)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG) \
-		--file $(DOCKERFILE) \
+		--file $(DOCKER_FILE) \
 		--build-arg GIT_REVISION=$(GIT_REVISION) \
 		--build-arg GIT_TAG=$(GIT_TAG) \
 		.
 
 .PHONY: docker-run
 docker-run: ## run Docker container
-	docker run --rm \
-		--publish 8888:8888 \
-		--volume $(PWD)/azure_ai_document_intelligence.env.sample:/app/azure_ai_document_intelligence.env \
-		--volume $(PWD)/azure_ai_speech.env.sample:/app/azure_ai_speech.env \
-		--volume $(PWD)/azure_ai_vision.env.sample:/app/azure_ai_vision.env \
-		--volume $(PWD)/azure_event_grid.env.sample:/app/azure_event_grid.env \
-		--volume $(PWD)/azure_openai.env.sample:/app/azure_openai.env \
-		--volume $(PWD)/azure_storage_blob.env.sample:/app/azure_storage_blob.env \
-		--volume $(PWD)/azure_storage_queue.env.sample:/app/azure_storage_queue.env \
-		$(DOCKER_REPO_NAME)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG) \
-		$(DOCKER_COMMAND)
+	docker run --rm $(DOCKER_REPO_NAME)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG) $(DOCKER_COMMAND)
 
 .PHONY: docker-lint
 docker-lint: ## lint Dockerfile
-	docker run --rm -i hadolint/hadolint < $(DOCKERFILE)
+	docker run --rm -i hadolint/hadolint < $(DOCKER_FILE)
 
 .PHONY: docker-scan
 docker-scan: ## scan Docker image
@@ -92,8 +83,13 @@ docker-scan: ## scan Docker image
 	@which trivy || curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $(TOOLS_DIR) v$(TRIVY_VERSION)
 	trivy image $(DOCKER_REPO_NAME)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG)
 
+.PHONY: _ci-test-docker
+_ci-test-docker: docker-lint docker-build docker-scan docker-run
+
 .PHONY: ci-test-docker
-ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test for Docker
+ci-test-docker: ## run CI test for Docker
+	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=backend
+	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=frontend
 
 # ---
 # Application
