@@ -99,6 +99,7 @@ ci-test-docker: docker-lint docker-build docker-scan docker-run ## run CI test f
 # Application
 # ---
 SOLUTION_NAME ?= "SANDBOX"
+BACKEND_URL ?= "http://localhost:8000"
 
 .PHONY: backend
 backend: ## run backend
@@ -106,7 +107,9 @@ backend: ## run backend
 
 .PHONY: frontend
 frontend: ## run frontend
-	poetry run streamlit run main.py -- frontend -- --solution-name=$(SOLUTION_NAME)
+	poetry run streamlit run main.py -- frontend -- \
+		--solution-name=$(SOLUTION_NAME) \
+		--backend-url=$(BACKEND_URL)
 
 # ---
 # Azure Functions
