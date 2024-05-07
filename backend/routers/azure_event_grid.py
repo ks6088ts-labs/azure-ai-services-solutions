@@ -2,11 +2,12 @@ from logging import getLogger
 
 from fastapi import APIRouter
 
-from backend.internals import azure_event_grid
+from backend.internals.azure_event_grid import Client
 from backend.settings.azure_event_grid import Settings
 
 logger = getLogger(__name__)
-client = azure_event_grid.Client(
+
+client = Client(
     settings=Settings(),
 )
 

@@ -3,13 +3,13 @@ from logging import getLogger
 from azure.core.paging import ItemPaged
 from azure.storage.queue import QueueMessage, QueueServiceClient
 
-from backend.settings.azure_storage_queue import AzureStorageQueueSettings
+from backend.settings.azure_storage_queue import Settings
 
 logger = getLogger(__name__)
 
 
-class AzureStorageQueueClient:
-    def __init__(self, settings: AzureStorageQueueSettings):
+class Client:
+    def __init__(self, settings: Settings):
         self.client = QueueServiceClient.from_connection_string(settings.azure_storage_queue_connection_string)
 
     def create_queue(

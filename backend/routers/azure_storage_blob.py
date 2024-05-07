@@ -3,18 +3,19 @@ from logging import getLogger
 from fastapi import APIRouter, UploadFile, status
 from fastapi.responses import JSONResponse
 
-from backend.internals import azure_storage
-from backend.schemas import azure_storage as azure_storage_schemas
-from backend.settings.azure_storage import Settings as AzureStorageSettings
+from backend.internals.azure_storage_blob import Client
+from backend.schemas import azure_storage_blob as azure_storage_schemas
+from backend.settings.azure_storage_blob import Settings
 
 logger = getLogger(__name__)
-blob_storage_client = azure_storage.BlobStorageClient(
-    settings=AzureStorageSettings(),
+
+client = Client(
+    settings=Settings(),
 )
 
 router = APIRouter(
-    prefix="/azure_storage",
-    tags=["azure_storage"],
+    prefix="/azure_storage_blob",
+    tags=["azure_storage_blob"],
     responses={404: {"description": "Not found"}},
 )
 
@@ -30,7 +31,7 @@ async def upload_blob(
 ):
     try:
         content = await file.read()
-        blob_storage_client.upload_blob_stream(
+        client.upload_blob_stream(
             blob_name=blob_name,
             stream=content,
         )
@@ -50,7 +51,7 @@ async def delete_blob(
     blob_name: str,
 ):
     try:
-        blob_storage_client.delete_blob(
+        client.delete_blob(
             blob_name=blob_name,
         )
     except Exception as e:
@@ -68,7 +69,7 @@ async def delete_blob(
 )
 async def list_blobs():
     try:
-        blobs = blob_storage_client.list_blobs()
+        blobs = client.list_blobs()
     except Exception as e:
         logger.error(f"Failed to upload blob: {e}")
         raise

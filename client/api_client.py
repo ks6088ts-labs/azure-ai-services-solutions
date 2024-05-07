@@ -14,11 +14,12 @@ from kiota_serialization_text.text_serialization_writer_factory import TextSeria
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .azure_ai_document_intelligence.azure_ai_document_intelligence_request_builder import Azure_ai_document_intelligenceRequestBuilder
     from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
     from .azure_event_grid.azure_event_grid_request_builder import Azure_event_gridRequestBuilder
     from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
-    from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
-    from .document_intelligence.document_intelligence_request_builder import Document_intelligenceRequestBuilder
+    from .azure_storage_blob.azure_storage_blob_request_builder import Azure_storage_blobRequestBuilder
+    from .azure_storage_queue.azure_storage_queue_request_builder import Azure_storage_queueRequestBuilder
 
 class ApiClient(BaseRequestBuilder):
     """
@@ -40,9 +41,15 @@ class ApiClient(BaseRequestBuilder):
         register_default_deserializer(JsonParseNodeFactory)
         register_default_deserializer(TextParseNodeFactory)
         register_default_deserializer(FormParseNodeFactory)
-        if not self.request_adapter.base_url:
-            self.request_adapter.base_url = "http://localhost:8000"
-        self.path_parameters["base_url"] = self.request_adapter.base_url
+    
+    @property
+    def azure_ai_document_intelligence(self) -> Azure_ai_document_intelligenceRequestBuilder:
+        """
+        The azure_ai_document_intelligence property
+        """
+        from .azure_ai_document_intelligence.azure_ai_document_intelligence_request_builder import Azure_ai_document_intelligenceRequestBuilder
+
+        return Azure_ai_document_intelligenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def azure_ai_vision(self) -> Azure_ai_visionRequestBuilder:
@@ -72,21 +79,21 @@ class ApiClient(BaseRequestBuilder):
         return Azure_openaiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def azure_storage(self) -> Azure_storageRequestBuilder:
+    def azure_storage_blob(self) -> Azure_storage_blobRequestBuilder:
         """
-        The azure_storage property
+        The azure_storage_blob property
         """
-        from .azure_storage.azure_storage_request_builder import Azure_storageRequestBuilder
+        from .azure_storage_blob.azure_storage_blob_request_builder import Azure_storage_blobRequestBuilder
 
-        return Azure_storageRequestBuilder(self.request_adapter, self.path_parameters)
+        return Azure_storage_blobRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def document_intelligence(self) -> Document_intelligenceRequestBuilder:
+    def azure_storage_queue(self) -> Azure_storage_queueRequestBuilder:
         """
-        The document_intelligence property
+        The azure_storage_queue property
         """
-        from .document_intelligence.document_intelligence_request_builder import Document_intelligenceRequestBuilder
+        from .azure_storage_queue.azure_storage_queue_request_builder import Azure_storage_queueRequestBuilder
 
-        return Document_intelligenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return Azure_storage_queueRequestBuilder(self.request_adapter, self.path_parameters)
     
 

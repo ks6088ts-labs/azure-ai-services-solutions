@@ -2,12 +2,13 @@ from logging import getLogger
 
 from fastapi import APIRouter, UploadFile
 
-from backend.internals import azure_openai
+from backend.internals.azure_openai import Client
 from backend.schemas import azure_openai as azure_openai_schemas
 from backend.settings.azure_openai import Settings
 
 logger = getLogger(__name__)
-client = azure_openai.Client(
+
+client = Client(
     settings=Settings(),
 )
 

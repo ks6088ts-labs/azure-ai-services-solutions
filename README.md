@@ -45,9 +45,20 @@ make docker-run
 make ci-test-docker
 ```
 
-To publish the docker image to Docker Hub, you need to set the following secrets in the repository settings.
+## Deployment instructions
+
+### Docker Hub
+
+To publish the docker image to Docker Hub via GitHub Actions, you need to set the following secrets in the repository.
 
 ```shell
 gh secret set DOCKERHUB_USERNAME --body $DOCKERHUB_USERNAME
 gh secret set DOCKERHUB_TOKEN --body $DOCKERHUB_TOKEN
 ```
+
+### Azure Functions
+
+To deploy the Azure Functions, you can refer to the following scripts.
+
+- [scripts/deploy-azure-functions.sh](./scripts/deploy-azure-functions.sh): Deploy the Azure Functions using Azure CLI.
+- [scripts/destroy-azure-functions.sh](./scripts/destroy-azure-functions.sh): Destroy the Azure Functions using Azure CLI.

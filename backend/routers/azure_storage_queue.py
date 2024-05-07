@@ -3,13 +3,14 @@ from logging import getLogger
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from backend.internals.azure_storage_queue import AzureStorageQueueClient
+from backend.internals.azure_storage_queue import Client
 from backend.schemas import azure_storage_queue as azure_storage_queue_schemas
-from backend.settings.azure_storage_queue import AzureStorageQueueSettings
+from backend.settings.azure_storage_queue import Settings
 
 logger = getLogger(__name__)
-client = AzureStorageQueueClient(
-    settings=AzureStorageQueueSettings(),
+
+client = Client(
+    settings=Settings(),
 )
 
 router = APIRouter(

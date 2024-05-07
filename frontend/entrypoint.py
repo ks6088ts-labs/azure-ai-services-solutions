@@ -7,32 +7,22 @@ logger = logging.getLogger(__name__)
 
 
 def start(
-    solution_type: SolutionType,
+    solution_name: str,
     backend_url: str,
     log_level: int,
 ) -> None:
-    if solution_type == SolutionType.SANDBOX:
-        return sandbox.start(
+    try:
+        solutions = {
+            SolutionType.SANDBOX.value: sandbox.start,
+            SolutionType.TRANSCRIPTION.value: transcription.start,
+            SolutionType.DOCUMENT_INTELLIGENCE.value: document_intelligence.start,
+            SolutionType.AZURE_STORAGE.value: azure_storage.start,
+            SolutionType.AZURE_AI_VISION.value: azure_ai_vision.start,
+        }
+        return solutions[solution_name.upper()](
             backend_url=backend_url,
             log_level=log_level,
         )
-    if solution_type == SolutionType.TRANSCRIPTION:
-        return transcription.start(
-            backend_url=backend_url,
-            log_level=log_level,
-        )
-    if solution_type == SolutionType.DOCUMENT_INTELLIGENCE:
-        return document_intelligence.start(
-            backend_url=backend_url,
-            log_level=log_level,
-        )
-    if solution_type == SolutionType.AZURE_STORAGE:
-        return azure_storage.start(
-            backend_url=backend_url,
-            log_level=log_level,
-        )
-    if solution_type == SolutionType.AZURE_AI_VISION:
-        return azure_ai_vision.start(
-            backend_url=backend_url,
-            log_level=log_level,
-        )
+    except KeyError:
+        logger.error(f"Invalid solution name: {solution_name}, please choose one of {list(SolutionType)}")
+        return

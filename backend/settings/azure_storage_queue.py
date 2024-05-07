@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class AzureStorageQueueSettings(BaseSettings):
+class Settings(BaseSettings):
     azure_storage_queue_connection_string: str = "<connection-string>"
 
     model_config = SettingsConfigDict(

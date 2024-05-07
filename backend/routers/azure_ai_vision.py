@@ -2,12 +2,13 @@ from logging import getLogger
 
 from fastapi import APIRouter, UploadFile
 
-from backend.internals import azure_ai_vision
+from backend.internals.azure_ai_vision import Client
 from backend.schemas import azure_ai_vision as azure_ai_vision_schemas
 from backend.settings.azure_ai_vision import Settings
 
 logger = getLogger(__name__)
-client = azure_ai_vision.AzureAiVisionClient(
+
+client = Client(
     settings=Settings(),
 )
 

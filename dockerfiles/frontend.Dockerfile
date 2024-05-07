@@ -6,7 +6,7 @@ RUN pip install --no-cache-dir poetry==1.8.2
 
 COPY ./pyproject.toml ./poetry.lock* /tmp/
 
-RUN poetry export --with=backend -f requirements.txt --output requirements.txt --without-hashes
+RUN poetry export --with=frontend -f requirements.txt --output requirements.txt --without-hashes
 
 FROM python:3.11.8-slim-bookworm
 
@@ -21,4 +21,4 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-CMD ["python", "main.py", "backend", "--help"]
+CMD ["python", "main.py", "frontend", "--help"]
