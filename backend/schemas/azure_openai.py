@@ -12,3 +12,7 @@ class ChatCompletionRequest(BaseModel):
 
 class ChatCompletionResponse(BaseModel):
     content: str
+
+
+class ChatCompletionWithVisionResponse(BaseModel):
+    content: str
