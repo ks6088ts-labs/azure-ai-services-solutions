@@ -5,18 +5,18 @@ from backend.routers import azure_ai_document_intelligence as azure_ai_document_
 from backend.routers import azure_ai_vision as azure_ai_vision_router
 from backend.routers import azure_event_grid as azure_event_grid_router
 from backend.routers import azure_openai as azure_openai_router
-from backend.routers import azure_storage as azure_storage_router
+from backend.routers import azure_storage_blob as azure_storage_blob_router
 from backend.routers import azure_storage_queue as azure_storage_queue_router
 
 app = FastAPI(
     docs_url="/",
 )
 
-app.include_router(azure_openai_router.router)
 app.include_router(azure_ai_document_intelligence_router.router)
-app.include_router(azure_storage_router.router)
 app.include_router(azure_ai_vision_router.router)
 app.include_router(azure_event_grid_router.router)
+app.include_router(azure_openai_router.router)
+app.include_router(azure_storage_blob_router.router)
 app.include_router(azure_storage_queue_router.router)
 
 

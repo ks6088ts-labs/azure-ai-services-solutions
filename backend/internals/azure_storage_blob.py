@@ -2,19 +2,19 @@ from logging import getLogger
 
 from azure.storage.blob import BlobServiceClient
 
-from backend.settings import azure_storage as azure_storage_settings
+from backend.settings import azure_storage_blob as azure_storage_settings
 
 logger = getLogger(__name__)
 
 
-class BlobStorageClient:
+class Client:
     def __init__(self, settings: azure_storage_settings.Settings):
         self.settings = settings
 
     def get_blob_service_client(self) -> BlobServiceClient:
         return BlobServiceClient(
-            account_url=f"https://{self.settings.azure_storage_account_name}.blob.core.windows.net",
-            credential=self.settings.azure_storage_sas_token,
+            account_url=f"https://{self.settings.azure_storage_blob_account_name}.blob.core.windows.net",
+            credential=self.settings.azure_storage_blob_sas_token,
         )
 
     def upload_blob_stream(

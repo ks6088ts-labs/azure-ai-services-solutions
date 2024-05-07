@@ -72,13 +72,13 @@ docker-build: ## build Docker image
 docker-run: ## run Docker container
 	docker run --rm \
 		--publish 8888:8888 \
+		--volume $(PWD)/azure_ai_document_intelligence.env.sample:/app/azure_ai_document_intelligence.env \
 		--volume $(PWD)/azure_ai_speech.env.sample:/app/azure_ai_speech.env \
 		--volume $(PWD)/azure_ai_vision.env.sample:/app/azure_ai_vision.env \
 		--volume $(PWD)/azure_event_grid.env.sample:/app/azure_event_grid.env \
 		--volume $(PWD)/azure_openai.env.sample:/app/azure_openai.env \
-		--volume $(PWD)/azure_storage.env.sample:/app/azure_storage.env \
+		--volume $(PWD)/azure_storage_blob.env.sample:/app/azure_storage_blob.env \
 		--volume $(PWD)/azure_storage_queue.env.sample:/app/azure_storage_queue.env \
-		--volume $(PWD)/azure_ai_document_intelligence.env.sample:/app/azure_ai_document_intelligence.env \
 		$(DOCKER_REPO_NAME)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG) \
 		$(DOCKER_COMMAND)
 
