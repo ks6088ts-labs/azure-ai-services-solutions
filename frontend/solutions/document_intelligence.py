@@ -36,7 +36,7 @@ def start(
                 bytes_data = file_uploader.getvalue()
                 response = asyncio.run(
                     http_post_file(
-                        url=urljoin(base=backend_url, url="/azure_ai_document_intelligence/analyze_document/"),
+                        url=urljoin(base=backend_url, url="/azure_ai_document_intelligence/analyze_document"),
                         data_bytes_io=BytesIO(bytes_data),
                     )
                 )

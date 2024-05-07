@@ -21,7 +21,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/blobs/upload/",
+    "/blobs/upload",
     response_model=azure_storage_schemas.BlobUploadResponse,
     status_code=200,
 )
@@ -44,7 +44,7 @@ async def upload_blob(
 
 
 @router.delete(
-    "/blobs/delete/",
+    "/blobs/delete",
     status_code=200,
 )
 async def delete_blob(
@@ -64,7 +64,7 @@ async def delete_blob(
 
 
 @router.get(
-    "/blobs/",
+    "/blobs",
     status_code=200,
 )
 async def list_blobs():

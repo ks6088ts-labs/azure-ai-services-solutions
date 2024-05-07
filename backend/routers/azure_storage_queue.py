@@ -21,7 +21,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/queues/",
+    "/queues",
     response_model=azure_storage_queue_schemas.CreateQueueResponse,
     status_code=200,
 )
@@ -41,7 +41,7 @@ async def create_queue(
 
 
 @router.delete(
-    "/queues/",
+    "/queues",
     response_model=azure_storage_queue_schemas.DeleteQueueResponse,
     status_code=200,
 )
@@ -61,7 +61,7 @@ async def delete_queue(
 
 
 @router.post(
-    "/messages/",
+    "/messages",
     response_model=azure_storage_queue_schemas.SendMessageResponse,
     status_code=200,
 )
@@ -81,7 +81,7 @@ async def send_message(
 
 
 @router.get(
-    "/messages/",
+    "/messages",
     status_code=200,
 )
 async def receive_messages(
@@ -112,7 +112,7 @@ async def receive_messages(
 
 
 @router.delete(
-    "/messages/",
+    "/messages",
     response_model=azure_storage_queue_schemas.DeleteMessageResponse,
     status_code=200,
 )

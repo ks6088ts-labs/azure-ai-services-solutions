@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     azure_ai_document_intelligence_endpoint: str = (
-        "https://<your-document-intelligence-name>.cognitiveservices.azure.com/"
+        "https://<your-document-intelligence-name>.cognitiveservices.azure.com"
     )
     azure_ai_document_intelligence_api_key: str = "<your-document-intelligence-api-key>"
 

@@ -3,11 +3,44 @@
 ## Docker
 
 ```shell
-# Build the Docker image
-make docker-build
+# Build the Docker image (optional)
+make docker-build DOCKER_IMAGE_COMPONENT=backend GIT_TAG=latest
+make docker-build DOCKER_IMAGE_COMPONENT=frontend GIT_TAG=latest
 
-# Dry run the Docker container with default settings
-make --dry-run docker-run DOCKER_COMMAND="python main.py backend --port 8888 --debug"
+# Create environment files for each service
+cp {NAME}.env.sample {NAME}.env
+
+# Run the Docker container for the backend
+docker run --rm \
+	--publish 8888:8888 \
+	--volume ${PWD}/azure_ai_document_intelligence.env:/app/azure_ai_document_intelligence.env \
+	--volume ${PWD}/azure_ai_vision.env:/app/azure_ai_vision.env \
+	--volume ${PWD}/azure_event_grid.env:/app/azure_event_grid.env \
+	--volume ${PWD}/azure_openai.env:/app/azure_openai.env \
+	--volume ${PWD}/azure_storage_blob.env:/app/azure_storage_blob.env \
+	--volume ${PWD}/azure_storage_queue.env:/app/azure_storage_queue.env \
+	ks6088ts/azure-ai-services-solutions:backend-latest \
+	python main.py backend \
+		--port 8888 \
+		--debug
+
+# Access the backend: http://localhost:8888
+
+# Run ngrok to expose the backend (for testing purposes only)
+ngrok http 8888
+NGROK_URL="<forwarding-url>"
+
+# Run the Docker container for the frontend
+docker run --rm \
+	--publish 8501:8501 \
+	--volume ${PWD}/azure_ai_speech.env:/app/azure_ai_speech.env \
+	ks6088ts/azure-ai-services-solutions:frontend-latest \
+	streamlit run main.py --server.port=8501 --server.address=0.0.0.0 -- frontend \
+		--solution-name sandbox \
+		--backend-url ${NGROK_URL} \
+		--debug
+
+# Access the frontend: http://localhost:8501
 ```
 
 # References

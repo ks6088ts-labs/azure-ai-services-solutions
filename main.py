@@ -42,7 +42,7 @@ def backend(
 @app.command()
 def frontend(
     solution_name: Annotated[str, typer.Option(help="Solution name")] = "SANDBOX",
-    backend_url: Annotated[str, typer.Option(help="Backend URL")] = "http://localhost:8000/",
+    backend_url: Annotated[str, typer.Option(help="Backend URL")] = "http://localhost:8000",
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     from frontend.entrypoint import start
