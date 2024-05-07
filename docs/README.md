@@ -1,3 +1,15 @@
+# How to run
+
+## Docker
+
+```shell
+# Build the Docker image
+make docker-build
+
+# Dry run the Docker container with default settings
+make --dry-run docker-run DOCKER_COMMAND="python main.py backend --port 8888 --debug"
+```
+
 # References
 
 ## Common
