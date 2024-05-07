@@ -20,7 +20,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/chat_completions/",
+    "/chat_completions",
     response_model=azure_openai_schemas.ChatCompletionResponse,
     status_code=200,
 )
@@ -35,7 +35,7 @@ async def create_chat_completions(body: azure_openai_schemas.ChatCompletionReque
 
 
 @router.post(
-    "/chat_completions_with_vision/",
+    "/chat_completions_with_vision",
     response_model=azure_openai_schemas.ChatCompletionWithVisionResponse,
     status_code=200,
 )

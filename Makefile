@@ -67,6 +67,7 @@ docker-build: ## build Docker image
 		--file $(DOCKER_FILE) \
 		--build-arg GIT_REVISION=$(GIT_REVISION) \
 		--build-arg GIT_TAG=$(GIT_TAG) \
+		--no-cache \
 		.
 
 .PHONY: docker-run

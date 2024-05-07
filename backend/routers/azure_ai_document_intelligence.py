@@ -20,7 +20,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/analyze_document/",
+    "/analyze_document",
     response_model=azure_ai_document_intelligence_schemas.AnalyzeDocumentResponse,
     status_code=200,
 )

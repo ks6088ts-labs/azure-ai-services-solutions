@@ -19,7 +19,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/event_grid_event/",
+    "/event_grid_event",
     status_code=200,
 )
 async def send_event_grid_event(

@@ -20,7 +20,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/image/analyze/",
+    "/image/analyze",
     response_model=azure_ai_vision_schemas.ImageAnalysisResponse,
     status_code=200,
 )
@@ -39,7 +39,7 @@ async def analyze_image(file: UploadFile):
 
 
 @router.post(
-    "/image/vectorize/",
+    "/image/vectorize",
     status_code=200,
 )
 async def vectorize_image(file: UploadFile):
