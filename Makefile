@@ -55,6 +55,7 @@ DOCKER_IMAGE_COMPONENT ?= backend
 DOCKER_COMMAND ?=
 DOCKER_TAG ?= $(DOCKER_IMAGE_COMPONENT)-$(GIT_TAG)
 DOCKER_FILE ?= ./dockerfiles/$(DOCKER_IMAGE_COMPONENT).Dockerfile
+DOCKER_COMPOSE_FILE ?= ./compose.yaml
 
 # Tools
 TOOLS_DIR ?= $(HOME)/.local/bin
@@ -78,6 +79,10 @@ docker-run: ## run Docker container
 docker-lint: ## lint Dockerfile
 	docker run --rm -i hadolint/hadolint < $(DOCKER_FILE)
 
+.PHONY: docker-compose-lint
+docker-compose-lint: ## lint docker compose file
+	docker compose --file $(DOCKER_COMPOSE_FILE) config --quiet
+
 .PHONY: docker-scan
 docker-scan: ## scan Docker image
 	@# https://aquasecurity.github.io/trivy/v0.18.3/installation/#install-script
@@ -88,7 +93,7 @@ docker-scan: ## scan Docker image
 _ci-test-docker: docker-lint docker-build docker-scan docker-run
 
 .PHONY: ci-test-docker
-ci-test-docker: ## run CI test for Docker
+ci-test-docker: docker-compose-lint ## run CI test for Docker
 	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=backend
 	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=frontend
 

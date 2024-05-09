@@ -47,7 +47,21 @@ make ci-test-docker
 
 ## Deployment instructions
 
-### Docker Hub
+### Docker compose
+
+Docker compose is used to run the services locally.
+Refer to the following steps to run the services.
+See the actual implementation in the [compose.yaml](./compose.yaml) file.
+
+```shell
+# Create environment files for each service
+cp {NAME}.env.sample {NAME}.env
+
+# Build and run the services
+docker compose up
+```
+
+### Push docker image to Docker Hub
 
 To publish the docker image to Docker Hub via GitHub Actions, you need to set the following secrets in the repository.
 
@@ -56,9 +70,17 @@ gh secret set DOCKERHUB_USERNAME --body $DOCKERHUB_USERNAME
 gh secret set DOCKERHUB_TOKEN --body $DOCKERHUB_TOKEN
 ```
 
-### Azure Functions
+### Deploy Azure Functions
 
-To deploy the Azure Functions, you can refer to the following scripts.
+To deploy the Azure Functions, run the following script.
+
+```shell
+# Deploy the Azure Functions
+sh ./scripts/deploy-azure-functions.sh
+
+# Destroy the Azure Functions
+sh ./scripts/destroy-azure-functions.sh
+```
 
 - [scripts/deploy-azure-functions.sh](./scripts/deploy-azure-functions.sh): Deploy the Azure Functions using Azure CLI.
 - [scripts/destroy-azure-functions.sh](./scripts/destroy-azure-functions.sh): Destroy the Azure Functions using Azure CLI.
