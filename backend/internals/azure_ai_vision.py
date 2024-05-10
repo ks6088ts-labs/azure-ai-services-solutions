@@ -27,7 +27,6 @@ class Client:
         result = image_analysis_client.analyze(
             image_data=image,
             visual_features=[
-                VisualFeatures.CAPTION,
                 VisualFeatures.READ,
             ],
         )

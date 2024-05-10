@@ -45,7 +45,7 @@ module cognitiveServices './modules/cognitiveServices.bicep' = {
     sku: {
       name: 'S0'
     }
-    customSubDomainName: toLower(openAiName)
+    customSubDomainName: toLower(cognitiveServicesName)
     location: location
     tags: tags
   }
@@ -72,3 +72,12 @@ module eventGrid './modules/eventGrid.bicep' = {
     tags: tags
   }
 }
+
+// Output
+output cognitiveServicesName string = cognitiveServices.outputs.name
+output cognitiveServicesEndpoint string = cognitiveServices.outputs.endpoint
+output eventGridTopicName string = eventGrid.outputs.eventGridTopicName
+output eventGridTopicEndpoint string = eventGrid.outputs.eventGridTopicEndpoint
+output openAiName string = openAi.outputs.name
+output openAiEndpoint string = openAi.outputs.endpoint
+output storageAccountName string = storageAccount.outputs.name

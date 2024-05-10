@@ -24,3 +24,8 @@ resource eventGridTopic 'Microsoft.EventGrid/topics@2024-06-01-preview' = {
     minimumTlsVersionAllowed: '1.0'
   }
 }
+
+// Outputs
+output eventGridTopicId string = eventGridTopic.id
+output eventGridTopicName string = eventGridTopic.name
+output eventGridTopicEndpoint string = eventGridTopic.properties.endpoint
