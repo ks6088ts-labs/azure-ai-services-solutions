@@ -18,6 +18,9 @@ param openAiDeployments array = []
 @description('Specifies the name of the Azure Cognitive Services resource.')
 param cognitiveServicesName string = '${prefix}cognitiveServices'
 
+@description('Specifies the name of the Azure Storage Account resource.')
+param storageAccountName string = '${prefix}sa'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -40,6 +43,19 @@ module cognitiveServices './modules/cognitiveServices.bicep' = {
       name: 'S0'
     }
     customSubDomainName: toLower(openAiName)
+    location: location
+    tags: tags
+  }
+}
+
+module storageAccount './modules/storageAccount.bicep' = {
+  name: 'storageAccount'
+  params: {
+    name: storageAccountName
+    containerNames: [
+      'dev'
+      'prod'
+    ]
     location: location
     tags: tags
   }
