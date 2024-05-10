@@ -45,6 +45,18 @@ make docker-run
 make ci-test-docker
 ```
 
+### Run local test
+
+Currently almost all tests won't run on CI because it consumes Azure resources.
+To run the tests locally, follow the steps below.
+
+```shell
+# Run test if RUN_TEST is defined
+export RUN_TEST=1
+
+make test
+```
+
 ## Deployment instructions
 
 ### Docker compose

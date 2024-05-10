@@ -13,10 +13,6 @@ class CreateQueueResponse(BaseModel):
     queue_name: str
 
 
-class DeleteQueueRequest(BaseModel):
-    queue_name: str
-
-
 class DeleteQueueResponse(BaseModel):
     queue_name: str
 
