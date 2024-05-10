@@ -1,6 +1,7 @@
 # Git
 GIT_REVISION ?= $(shell git rev-parse --short HEAD)
 GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
+LOG_LEVEL ?= "INFO"
 
 .PHONY: help
 help:
@@ -41,7 +42,7 @@ lint: ## lint
 
 .PHONY: test
 test: ## run tests
-	poetry run pytest
+	poetry run pytest --log-cli-level=$(LOG_LEVEL)
 
 .PHONY: ci-test
 ci-test: install-deps-dev format-check lint test ## run CI tests

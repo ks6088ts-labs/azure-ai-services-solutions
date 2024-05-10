@@ -41,22 +41,22 @@ async def create_queue(
 
 
 @router.delete(
-    "/queues",
+    "/queues/{queue_name}",
     response_model=azure_storage_queue_schemas.DeleteQueueResponse,
     status_code=200,
 )
 async def delete_queue(
-    body: azure_storage_queue_schemas.DeleteQueueRequest,
+    queue_name: str,
 ):
     try:
         client.delete_queue(
-            queue_name=body.queue_name,
+            queue_name=queue_name,
         )
     except Exception as e:
         logger.error(f"Failed to delete queue: {e}")
         raise
     return azure_storage_queue_schemas.DeleteQueueResponse(
-        queue_name=body.queue_name,
+        queue_name=queue_name,
     )
 
 
