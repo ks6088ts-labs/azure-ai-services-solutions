@@ -1,0 +1,85 @@
+# Parameters
+SOURCE_FILES ?= $(shell find . -type f -name '*.bicep' -print)
+OUT_DIR ?= ./artifacts
+BICEP_MAIN ?= ./main.bicep
+BICEP_PARAMETERS ?= ./main.parameters.bicepparam
+
+# Git
+GIT_REVISION ?= $(shell git rev-parse --short HEAD)
+GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
+
+# Azure
+SUBSCRIPTION_ID ?= $(shell az account show --query id --output tsv)
+SUBSCRIPTION_NAME ?= $(shell az account show --query name --output tsv)
+TENANT_ID ?= $(shell az account show --query tenantId --output tsv)
+RESOURCE_GROUP_NAME ?= rg-azure-ai-services-solutions
+LOCATION ?= japaneast
+
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+.DEFAULT_GOAL := help
+
+.PHONY: info
+info: ## show information
+	@echo "GIT_REVISION: $(GIT_REVISION)"
+	@echo "GIT_TAG: $(GIT_TAG)"
+	@echo "SUBSCRIPTION_ID: $(SUBSCRIPTION_ID)"
+	@echo "SUBSCRIPTION_NAME: $(SUBSCRIPTION_NAME)"
+	@echo "TENANT_ID: $(TENANT_ID)"
+
+.PHONY: install-deps-dev
+install-deps-dev: ## install dependencies for development
+	@which az || echo "Please install Azure CLI: https://github.com/Azure/azure-cli#installation"
+	@az bicep upgrade
+
+.PHONY: format
+format: ## format codes
+	@$(foreach file,$(SOURCE_FILES),az bicep format --file $(file) --insert-final-newline;)
+
+.PHONY: lint
+lint: ## lint codes
+	@echo "lint: Skip since not implemented yet"
+
+.PHONY: build
+build: ## build a bicep file
+	@mkdir -p $(OUT_DIR)
+	@az bicep build \
+		--file $(BICEP_MAIN) \
+		--outfile $(OUT_DIR)/$(GIT_REVISION).json
+
+.PHONY: test
+test: deployment-what-if ## test codes
+
+.PHONY: ci-test
+ci-test: install-deps-dev lint build test ## ci test
+
+.PHONY: create-resource-group
+create-resource-group: ## create resource group
+	az group create \
+		--name $(RESOURCE_GROUP_NAME) \
+		--location $(LOCATION)
+
+.PHONY: delete-resource-group
+delete-resource-group: ## delete resource group
+	az group delete --name $(RESOURCE_GROUP_NAME) --yes --no-wait
+
+.PHONY: deployment-what-if
+deployment-what-if: ## execute a deployment What-If operation at resource group scope
+	az deployment group what-if \
+		--resource-group $(RESOURCE_GROUP_NAME) \
+		--template-file $(BICEP_MAIN) \
+		--parameters $(BICEP_PARAMETERS)
+
+.PHONY: deployment-create
+deployment-create: ## start a deployment at resource group
+	az deployment group create \
+		--resource-group $(RESOURCE_GROUP_NAME) \
+		--template-file $(BICEP_MAIN) \
+		--parameters $(BICEP_PARAMETERS)
+
+.PHONY: deploy
+deploy: create-resource-group deployment-what-if deployment-create ## deploy resources
+
+.PHONY: destroy
+destroy: delete-resource-group ## destroy resources
