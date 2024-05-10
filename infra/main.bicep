@@ -15,6 +15,9 @@ param openAiName string = '${prefix}openai'
 @description('Specifies the OpenAI deployments to create.')
 param openAiDeployments array = []
 
+@description('Specifies the name of the Azure Cognitive Services resource.')
+param cognitiveServicesName string = '${prefix}cognitiveServices'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -24,6 +27,19 @@ module openAi './modules/openAi.bicep' = {
     }
     customSubDomainName: toLower(openAiName)
     deployments: openAiDeployments
+    location: location
+    tags: tags
+  }
+}
+
+module cognitiveServices './modules/cognitiveServices.bicep' = {
+  name: 'cognitiveServices'
+  params: {
+    name: cognitiveServicesName
+    sku: {
+      name: 'S0'
+    }
+    customSubDomainName: toLower(openAiName)
     location: location
     tags: tags
   }
