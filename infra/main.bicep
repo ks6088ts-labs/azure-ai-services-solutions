@@ -21,6 +21,9 @@ param cognitiveServicesName string = '${prefix}cognitiveServices'
 @description('Specifies the name of the Azure Storage Account resource.')
 param storageAccountName string = '${prefix}sa'
 
+@description('Specifies the name of the Azure Event Grid resource.')
+param eventGridName string = '${prefix}eg'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -56,6 +59,15 @@ module storageAccount './modules/storageAccount.bicep' = {
       'dev'
       'prod'
     ]
+    location: location
+    tags: tags
+  }
+}
+
+module eventGrid './modules/eventGrid.bicep' = {
+  name: 'eventGrid'
+  params: {
+    name: eventGridName
     location: location
     tags: tags
   }
