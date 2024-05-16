@@ -60,3 +60,7 @@
 ### Azure AI Document Intelligence
 
 - [Azure AI Document Intelligence client library for Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/README.md)
+
+### Azure Cosmos DB
+
+- [Manage Azure Cosmos DB for NoSQL resources with Bicep > Azure Cosmos DB account with autoscale throughput](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/manage-with-bicep#azure-cosmos-db-account-with-autoscale-throughput)
