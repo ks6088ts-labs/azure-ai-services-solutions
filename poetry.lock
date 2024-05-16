@@ -281,6 +281,21 @@ typing-extensions = ">=4.6.0"
 aio = ["aiohttp (>=3.0)"]
 
 [[package]]
+name = "azure-cosmos"
+version = "4.6.1"
+description = "Microsoft Azure Cosmos Client Library for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "azure-cosmos-4.6.1.tar.gz", hash = "sha256:67ec3c1aec6cfc254c10a5a9c60d3f3532b5141e3f6d1e1af49b7facfd50341c"},
+    {file = "azure_cosmos-4.6.1-py3-none-any.whl", hash = "sha256:38345f66bca36dc43ddf5bc3922827488f240bc6270d76689400aa9f423e97b6"},
+]
+
+[package.dependencies]
+azure-core = ">=1.25.1"
+typing-extensions = ">=4.6.0"
+
+[[package]]
 name = "azure-eventgrid"
 version = "4.19.0"
 description = "Microsoft Azure Event Grid Client Library for Python"
@@ -3655,4 +3670,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "04cb12a740c589bc0d16dc44e865d12fafc5e8341b8893b5a5f36369e9924861"
+content-hash = "a7783b849bae1701e64b2f82633e0b1f053005ed48cdf14b2a431e7d30425a4c"

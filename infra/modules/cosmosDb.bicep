@@ -11,12 +11,6 @@ param tags object = {}
 @description('Specifies the name of the Azure Cosmos DB account name, max length 44 characters, lowercase.')
 param accountName string = toLower('${name}account')
 
-@description('Specifies the name of the Azure Cosmos DB database name')
-param databaseName string = toLower('${name}database')
-
-@description('Specifies the name of the Azure Cosmos DB container name')
-param containerName string = toLower('${name}container')
-
 @description('The primary region for the Cosmos DB account.')
 param primaryRegion string
 
@@ -45,11 +39,6 @@ param maxIntervalInSeconds int = 300
 
 @description('Enable system managed failover for regions')
 param systemManagedFailover bool = true
-
-@description('Maximum autoscale throughput for the container')
-@minValue(1000)
-@maxValue(1000000)
-param autoscaleMaxThroughput int = 1000
 
 var consistencyPolicy = {
   Eventual: {
@@ -96,91 +85,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2024-02-15-preview' = {
   }
 }
 
-resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2024-02-15-preview' = {
-  parent: account
-  name: databaseName
-  location: location
-  tags: tags
-  properties: {
-    resource: {
-      id: databaseName
-    }
-  }
-}
-
-resource container 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers@2024-02-15-preview' = {
-  parent: database
-  name: containerName
-  location: location
-  tags: tags
-  properties: {
-    resource: {
-      id: containerName
-      partitionKey: {
-        paths: [
-          '/myPartitionKey'
-        ]
-        kind: 'Hash'
-      }
-      indexingPolicy: {
-        indexingMode: 'consistent'
-        includedPaths: [
-          {
-            path: '/*'
-          }
-        ]
-        excludedPaths: [
-          {
-            path: '/myPathToNotIndex/*'
-          }
-          {
-            path: '/_etag/?'
-          }
-        ]
-        compositeIndexes: [
-          [
-            {
-              path: '/name'
-              order: 'ascending'
-            }
-            {
-              path: '/age'
-              order: 'descending'
-            }
-          ]
-        ]
-        spatialIndexes: [
-          {
-            path: '/path/to/geojson/property/?'
-            types: [
-              'Point'
-              'Polygon'
-              'MultiPolygon'
-              'LineString'
-            ]
-          }
-        ]
-      }
-      defaultTtl: 86400
-      uniqueKeyPolicy: {
-        uniqueKeys: [
-          {
-            paths: [
-              '/phoneNumber'
-            ]
-          }
-        ]
-      }
-    }
-    options: {
-      autoscaleSettings: {
-        maxThroughput: autoscaleMaxThroughput
-      }
-    }
-  }
-}
-
 // Outputs
 output accountId string = account.id
-output databaseId string = database.id
-output containerId string = container.id
+output accountName string = account.name
+output accountEndpoint string = account.properties.documentEndpoint

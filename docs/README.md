@@ -64,3 +64,7 @@
 ### Azure Cosmos DB
 
 - [Manage Azure Cosmos DB for NoSQL resources with Bicep > Azure Cosmos DB account with autoscale throughput](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/manage-with-bicep#azure-cosmos-db-account-with-autoscale-throughput)
+- [Get started with Azure Cosmos DB for NoSQL using Python](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-get-started?tabs=env-virtual%2Cazure-cli%2Clinux)
+- [Create a database in Azure Cosmos DB for NoSQL using Python](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-create-database)
+- [Create a container in Azure Cosmos DB for NoSQL using Python](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-create-container)
+- [Sample - demonstrates the basic CRUD operations on a Item resource for Azure Cosmos](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/document_management.py)
