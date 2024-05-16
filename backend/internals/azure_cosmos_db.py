@@ -22,23 +22,31 @@ class Client:
     def get_database(self, database_id: str) -> DatabaseProxy:
         return self.get_client().get_database_client(database_id)
 
-    def get_container(self, database_id: str, container_id: str) -> ContainerProxy:
+    def get_container(
+        self,
+        database_id: str,
+        container_id: str,
+    ) -> ContainerProxy:
         return self.get_database(database_id=database_id).get_container_client(container=container_id)
 
-    def create_database(self, database_id: str) -> None:
+    def create_database(
+        self,
+        database_id: str,
+    ) -> str:
         try:
             self.get_client().create_database_if_not_exists(
                 id=database_id,
             )
         except AzureError as e:
             logger.error(e)
+        return database_id
 
     def create_container(
         self,
         database_id: str,
         container_id: str,
         partition_key_path="/id",
-    ) -> None:
+    ) -> str:
         try:
             self.get_database(database_id=database_id).create_container_if_not_exists(
                 id=container_id,
@@ -48,6 +56,7 @@ class Client:
             )
         except AzureError as e:
             logger.error(e)
+        return container_id
 
     def create_item(
         self,
