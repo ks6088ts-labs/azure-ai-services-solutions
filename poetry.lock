@@ -247,21 +247,6 @@ azure-core = ">=1.30.0,<2.0.0"
 isodate = ">=0.6.1,<1.0.0"
 
 [[package]]
-name = "azure-cognitiveservices-speech"
-version = "1.37.0"
-description = "Microsoft Cognitive Services Speech SDK for Python"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:906d6bf65176e93464e2d763dd074ca00c48cfe1a896371fcdcb155a500910f7"},
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:54ec8dd55d4dbd9058c61909e08485d3761d6d30954da189e1b17d84daf5e2e0"},
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:685424689725d2d4115485998c0888c8b5b502259037ff533e5a834575f80b66"},
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:384f66786c2335165035270897b34d0b91736a1fdf38f7696e9a227075cb2489"},
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-win32.whl", hash = "sha256:343d5f449ccd6c9b53cd37dd46a70ece0905243517df7a0c047779e55072254c"},
-    {file = "azure_cognitiveservices_speech-1.37.0-py3-none-win_amd64.whl", hash = "sha256:a18fb45490cdcd681407ccaad9560fb14dda1c8276de297e219ea1a880467e28"},
-]
-
-[[package]]
 name = "azure-core"
 version = "1.30.1"
 description = "Microsoft Azure Core Library for Python"
@@ -2507,6 +2492,17 @@ carto = ["pydeck-carto"]
 jupyter = ["ipykernel (>=5.1.2)", "ipython (>=5.8.0)", "ipywidgets (>=7,<8)", "traitlets (>=4.3.2)"]
 
 [[package]]
+name = "pydub"
+version = "0.25.1"
+description = "Manipulate audio with an simple and easy high level interface"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pydub-0.25.1-py2.py3-none-any.whl", hash = "sha256:65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6"},
+    {file = "pydub-0.25.1.tar.gz", hash = "sha256:980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f"},
+]
+
+[[package]]
 name = "pygments"
 version = "2.17.2"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -3027,6 +3023,21 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 
 [package.extras]
 snowflake = ["snowflake-connector-python (>=2.8.0)", "snowflake-snowpark-python (>=0.9.0)"]
+
+[[package]]
+name = "streamlit-audiorecorder"
+version = "0.0.5"
+description = "Audio recorder component for streamlit"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "streamlit_audiorecorder-0.0.5-py3-none-any.whl", hash = "sha256:05ec596f584a9d5b0e451d98596b74ddec25c3add2a1a90a3c4a6f9335cb94ff"},
+    {file = "streamlit_audiorecorder-0.0.5.tar.gz", hash = "sha256:55eb322ccd159235235d0a45c5373f2a169d961867b3b34daed121e82cd51a8b"},
+]
+
+[package.dependencies]
+pydub = ">=0.24"
+streamlit = ">=0.63"
 
 [[package]]
 name = "tenacity"
@@ -3670,4 +3681,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a7783b849bae1701e64b2f82633e0b1f053005ed48cdf14b2a431e7d30425a4c"
+content-hash = "04ce9dec9db3a145e7a03e65f9a801fded97135a533440ce6b90da51d8ac617e"

@@ -1,86 +1,65 @@
 import logging
-import time
-from os import getenv
+from os import getenv, makedirs
 
-import azure.cognitiveservices.speech as speechsdk
 import streamlit as st
-from azure.cognitiveservices.speech.speech import SpeechRecognitionEventArgs
+from audiorecorder import audiorecorder
 from dotenv import load_dotenv
+from openai import AzureOpenAI
+from openai.types.audio import Transcription
 
-load_dotenv("azure_ai_speech.env")
+load_dotenv("frontend_transcription.env")
 logger = logging.getLogger(__name__)
-done = False
 
 
-def transcript(
-    subscription: str,
-    region: str,
-    speech_recognition_language: str,
-):
-    speech_recognizer = speechsdk.SpeechRecognizer(
-        speech_config=speechsdk.SpeechConfig(
-            subscription=subscription,
-            region=region,
-            speech_recognition_language=speech_recognition_language,
-        ),
-        audio_config=speechsdk.audio.AudioConfig(
-            use_default_microphone=True,
-        ),
+# TODO: call backend API instead of using Azure OpenAI
+def get_transcription(file_path: str) -> Transcription:
+    client = AzureOpenAI(
+        api_key=getenv("AZURE_OPENAI_API_KEY"),
+        api_version=getenv("AZURE_OPENAI_API_VERSION"),
+        azure_endpoint=getenv("AZURE_OPENAI_ENDPOINT"),
     )
 
-    def stop_cb(evt: SpeechRecognitionEventArgs):
-        logger.debug(f"CLOSING on {evt}")
-        speech_recognizer.stop_continuous_recognition()
-
-    def recognized_cb(evt: SpeechRecognitionEventArgs):
-        logger.debug(f"RECOGNIZED: {evt}")
-        new_text = evt.result.text.strip()
-        logger.info(new_text)
-        # FIXME: App does not show the transcription
-
-    speech_recognizer.recognizing.connect(lambda evt: logger.debug(f"RECOGNIZING: {evt}"))
-    speech_recognizer.recognized.connect(recognized_cb)
-    speech_recognizer.session_started.connect(lambda evt: logger.debug(f"SESSION STARTED: {evt}"))
-    speech_recognizer.session_stopped.connect(lambda evt: logger.debug(f"SESSION STOPPED {evt}"))
-    speech_recognizer.canceled.connect(lambda evt: logger.debug(f"CANCELED {evt}"))
-    speech_recognizer.session_stopped.connect(stop_cb)
-    speech_recognizer.canceled.connect(stop_cb)
-
-    speech_recognizer.start_continuous_recognition()
-
-    global done
-
-    if st.button("Stop transcription", key="stop_transcription"):
-        # FIXME: App does not stop transcription
-        logger.info("Stop transcription")
-        speech_recognizer.stop_continuous_recognition()
-        done = True
-
-    while done is False:
-        time.sleep(0.5)
+    return client.audio.transcriptions.create(
+        file=open(file=file_path, mode="rb"),
+        model=getenv("AZURE_OPENAI_WHISPER_MODEL"),
+    )
 
 
 def start(
     backend_url: str,
     log_level: int,
 ):
-    global done
-
+    # Logger
     logger.setLevel(log_level)
     logger.debug(f"set log level to {log_level}")
 
     st.write("Transcription")
 
-    if st.button("Start transcription", key="start_transcription"):
-        logger.info("Start transcription...")
-        done = False
-        try:
-            with st.spinner("Transcribing..."):
-                transcript(
-                    subscription=getenv("AZURE_AI_SPEECH_SUBSCRIPTION_KEY"),
-                    region=getenv("AZURE_AI_SPEECH_REGION"),
-                    speech_recognition_language=getenv("AZURE_AI_SPEECH_RECOGNITION_LANGUAGE"),
-                )
-        except Exception as e:
-            st.write(f"Error: {e}")
-            logger.error(f"Error: {e}")
+    # create directory if not exists
+    # TODO: remove hard coded path
+    makedirs("artifacts", exist_ok=True)
+
+    # Audio settings
+    audio_file_path = "artifacts/audio.wav"
+
+    audio = audiorecorder(
+        start_prompt="",
+        stop_prompt="",
+        pause_prompt="",
+        show_visualizer=True,
+        key=None,
+    )
+
+    if len(audio) > 0:
+        # To play audio in frontend:
+        st.audio(audio.export().read())
+        # To save audio to a file, use pydub export method:
+        audio.export(audio_file_path, format="wav")
+        # To get audio properties, use pydub AudioSegment properties:
+        st.write(
+            f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds"  # noqa
+        )
+        with st.spinner("Transcribing..."):
+            # Get transcription
+            transcription = get_transcription(audio_file_path)
+            st.write(f"Transcription: {transcription.text}")

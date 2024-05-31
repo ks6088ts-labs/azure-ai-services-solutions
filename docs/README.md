@@ -26,6 +26,8 @@
 - [Streamlit](https://docs.streamlit.io/get-started/installation/command-line)
 - [Streamlit API cheat sheet](https://docs.streamlit.io/develop/quick-reference/cheat-sheet)
 - [Streamlit > Display progress and status](https://docs.streamlit.io/develop/api-reference/status)
+- [streamlit-audiorecorder](https://github.com/theevann/streamlit-audiorecorder)
+- [Build a basic LLM chat app](https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps)
 - [aiohttp > Installing all speedups in one command](https://docs.aiohttp.org/en/stable/#installing-all-speedups-in-one-command)
 - [Python & aiohttp: How to upload files to a remote server](https://www.slingacademy.com/article/python-aiohttp-how-to-upload-files-to-a-remote-server/)
 

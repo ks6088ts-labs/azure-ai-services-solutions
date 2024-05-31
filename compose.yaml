@@ -25,6 +25,6 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - ./azure_ai_speech.env:/app/azure_ai_speech.env
+      - ./frontend_transcription.env:/app/frontend_transcription.env
     environment:
       - PYTHONUNBUFFERED=1
