@@ -3,6 +3,7 @@ from fastapi.openapi.utils import get_openapi
 
 from backend.routers import azure_ai_document_intelligence as azure_ai_document_intelligence_router
 from backend.routers import azure_ai_vision as azure_ai_vision_router
+from backend.routers import azure_cosmos_db as azure_cosmos_db_router
 from backend.routers import azure_event_grid as azure_event_grid_router
 from backend.routers import azure_openai as azure_openai_router
 from backend.routers import azure_storage_blob as azure_storage_blob_router
@@ -19,6 +20,7 @@ for router in [
     azure_openai_router.router,
     azure_storage_blob_router.router,
     azure_storage_queue_router.router,
+    azure_cosmos_db_router.router,
 ]:
     app.include_router(router)
 

@@ -8,7 +8,6 @@ param location string = resourceGroup().location
 @description('Specifies the resource tags.')
 param tags object = {}
 
-// OpenAI
 @description('Specifies the name of the Azure OpenAI resource.')
 param openAiName string = '${prefix}openai'
 
@@ -23,6 +22,9 @@ param storageAccountName string = '${prefix}sa'
 
 @description('Specifies the name of the Azure Event Grid resource.')
 param eventGridName string = '${prefix}eg'
+
+@description('Specifies the name of the Azure Cosmos DB resource.')
+param cosmosDbName string = '${prefix}cosmosdb'
 
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
@@ -70,6 +72,17 @@ module eventGrid './modules/eventGrid.bicep' = {
     name: eventGridName
     location: location
     tags: tags
+  }
+}
+
+module cosmosDb './modules/cosmosDb.bicep' = {
+  name: 'cosmosDb'
+  params: {
+    name: cosmosDbName
+    location: location
+    tags: tags
+    primaryRegion: location
+    secondaryRegion: 'japanwest'
   }
 }
 

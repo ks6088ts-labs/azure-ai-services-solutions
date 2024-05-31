@@ -33,6 +33,7 @@ azure-storage-blob = "^12.19.1"
 azure-ai-vision-imageanalysis = "^1.0.0b2"
 azure-eventgrid = "^4.19.0"
 azure-storage-queue = "^12.9.0"
+azure-cosmos = "^4.6.1"
 
 
 [tool.poetry.group.frontend.dependencies]
