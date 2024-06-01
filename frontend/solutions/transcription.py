@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 from openai.types.audio import Transcription
 
-load_dotenv("frontend_transcription.env")
+load_dotenv("frontend.env")
 logger = logging.getLogger(__name__)
 
 
