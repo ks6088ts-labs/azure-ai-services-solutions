@@ -7,6 +7,9 @@
 - [How to exclude multiple directories in pre-commit](https://stackoverflow.com/a/75560858)
 - [Docker Compose Quickstart](https://docs.docker.com/compose/gettingstarted/)
 - [Validating docker-compose yml file](https://stackoverflow.com/a/40158753)
+- [LangChain > Azure OpenAI](https://python.langchain.com/v0.1/docs/integrations/llms/azure_openai/)
+- [Get started with LangSmith](https://docs.smith.langchain.com/)
+- [Add message history (memory) > In-memory](https://python.langchain.com/v0.1/docs/expression_language/how_to/message_history/#in-memory)
 
 ## Backend
 
