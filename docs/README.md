@@ -12,6 +12,8 @@
 - [Add message history (memory) > In-memory](https://python.langchain.com/v0.1/docs/expression_language/how_to/message_history/#in-memory)
 - [Tool calling agent](https://python.langchain.com/v0.1/docs/modules/agents/agent_types/tool_calling/)
 - [LangChain > Tools > Bing Search](https://python.langchain.com/v0.1/docs/integrations/tools/bing_search/)
+- [Tool Calling with LangChain](https://blog.langchain.dev/tool-calling-with-langchain/)
+- [langchain/cookbook/tool_call_messages.ipynb](https://github.com/langchain-ai/langchain/blob/master/cookbook/tool_call_messages.ipynb?ref=blog.langchain.dev)
 
 ## Backend
 

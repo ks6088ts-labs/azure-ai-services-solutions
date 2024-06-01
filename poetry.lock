@@ -1597,6 +1597,20 @@ langchain-core = ">=0.2.0,<0.3.0"
 extended-testing = ["beautifulsoup4 (>=4.12.3,<5.0.0)", "lxml (>=4.9.3,<6.0)"]
 
 [[package]]
+name = "langgraph"
+version = "0.0.60"
+description = "langgraph"
+optional = false
+python-versions = "<4.0,>=3.9.0"
+files = [
+    {file = "langgraph-0.0.60-py3-none-any.whl", hash = "sha256:c893e5209b9b81172c074f2d5b286edfaaa928a989bdd17c2ba6ec47eb97a48a"},
+    {file = "langgraph-0.0.60.tar.gz", hash = "sha256:3e46b8263182dcf93515afc673db12e52510ef88a32a345cba7b8fa34196734a"},
+]
+
+[package.dependencies]
+langchain-core = ">=0.2,<0.3"
+
+[[package]]
 name = "langsmith"
 version = "0.1.67"
 description = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
@@ -4244,4 +4258,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "350bbb95e990c2bdeab2052aef359f6df2a73aa72af7456ecfbcf2b24829f29d"
+content-hash = "3007c430eebed242c2d1b29d663c7c0fc138bef22683f5a15831ccc71978ee6f"
