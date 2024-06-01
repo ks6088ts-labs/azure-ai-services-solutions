@@ -20,6 +20,26 @@ def add(x: float, y: float) -> float:
 
 
 @tool
-def get_current_weather(city: str) -> str:
-    """Get the current weather in 'city'."""
-    return f"The weather in {city} is sunny."
+def get_datetime_today() -> str:
+    """Get today's date in the format 'YYYY/MM/DD'."""
+    import datetime
+
+    return datetime.datetime.now().strftime("%Y/%m/%d")
+
+
+@tool
+def get_date_from_offset(offset: int) -> str:
+    """Get the date 'offset' days from today in the format 'YYYY/MM/DD'."""
+    import datetime
+
+    return (datetime.datetime.now() + datetime.timedelta(days=offset)).strftime("%Y/%m/%d")
+
+
+@tool
+def get_date_diffs(yyyymmdd1: str, yyyymmdd2: str) -> str:
+    """Get the difference between two dates in days."""
+    import datetime
+
+    date1 = datetime.datetime.strptime(yyyymmdd1, "%Y/%m/%d")
+    date2 = datetime.datetime.strptime(yyyymmdd2, "%Y/%m/%d")
+    return abs((date1 - date2).days)
