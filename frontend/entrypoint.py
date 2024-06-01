@@ -1,6 +1,7 @@
 import logging
 
 from frontend.solutions import (
+    agent_langgraph,
     azure_ai_vision,
     azure_storage,
     chat,
@@ -28,6 +29,7 @@ def start(
             SolutionType.DOCUMENT_INTELLIGENCE.value: document_intelligence.start,
             SolutionType.AZURE_STORAGE.value: azure_storage.start,
             SolutionType.AZURE_AI_VISION.value: azure_ai_vision.start,
+            SolutionType.AGENT_LANGGRAPH.value: agent_langgraph.start,
         }
         return solutions[solution_name.upper()](
             backend_url=backend_url,

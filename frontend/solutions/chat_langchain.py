@@ -22,15 +22,6 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
     return store[session_id]
 
 
-def run_bing_search(
-    query: str,
-    k=1,
-) -> str:
-    from langchain_community.utilities import BingSearchAPIWrapper
-
-    return BingSearchAPIWrapper(k=k).run(query=query)
-
-
 def start(
     backend_url: str,
     log_level: int,
