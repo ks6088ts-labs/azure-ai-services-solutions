@@ -48,7 +48,7 @@ class Client:
         client = self.get_client()
         encoded_image = b64encode(image).decode("ascii")
         response = client.chat.completions.create(
-            model=self.settings.azure_openai_gpt4_model,
+            model=self.settings.azure_openai_gpt_model,
             messages=[
                 {
                     "role": "system",
