@@ -1,0 +1,32 @@
+name: infra
+
+on:
+  push:
+    paths:
+      - infra/**
+  schedule:
+    - cron: "00 00 * * 3"
+  workflow_dispatch:
+
+jobs:
+  infra:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Log into Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Azure CLI script file
+        uses: azure/cli@v2
+        with:
+          azcliversion: 2.51.0
+          inlineScript: |
+            cd infra
+            make ci-test RESOURCE_GROUP_NAME=${{ secrets.AZURE_RG }}
