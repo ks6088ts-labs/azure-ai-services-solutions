@@ -47,6 +47,11 @@ microsoft-kiota-serialization-json = "^1.2.0"
 microsoft-kiota-serialization-multipart = "^0.1.0"
 microsoft-kiota-serialization-text = "^1.0.0"
 streamlit-audiorecorder = "^0.0.5"
+openai = "^1.30.5"
+langchain = "^0.2.1"
+langchain-openai = "^0.1.8"
+langchain-community = "^0.2.1"
+langsmith = "^0.1.67"
 
 
 [tool.poetry.group.azure-functions.dependencies]

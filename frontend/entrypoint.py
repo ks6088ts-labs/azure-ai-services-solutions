@@ -1,6 +1,14 @@
 import logging
 
-from frontend.solutions import azure_ai_vision, azure_storage, document_intelligence, sandbox, transcription
+from frontend.solutions import (
+    azure_ai_vision,
+    azure_storage,
+    chat,
+    chat_langchain,
+    document_intelligence,
+    sandbox,
+    transcription,
+)
 from frontend.solutions.types import SolutionType
 
 logger = logging.getLogger(__name__)
@@ -14,6 +22,8 @@ def start(
     try:
         solutions = {
             SolutionType.SANDBOX.value: sandbox.start,
+            SolutionType.CHAT.value: chat.start,
+            SolutionType.CHAT_LANGCHAIN.value: chat_langchain.start,
             SolutionType.TRANSCRIPTION.value: transcription.start,
             SolutionType.DOCUMENT_INTELLIGENCE.value: document_intelligence.start,
             SolutionType.AZURE_STORAGE.value: azure_storage.start,

@@ -25,6 +25,6 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - ./frontend_transcription.env:/app/frontend_transcription.env
+      - ./frontend.env:/app/frontend.env
     environment:
       - PYTHONUNBUFFERED=1
