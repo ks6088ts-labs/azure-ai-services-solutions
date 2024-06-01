@@ -10,6 +10,8 @@
 - [LangChain > Azure OpenAI](https://python.langchain.com/v0.1/docs/integrations/llms/azure_openai/)
 - [Get started with LangSmith](https://docs.smith.langchain.com/)
 - [Add message history (memory) > In-memory](https://python.langchain.com/v0.1/docs/expression_language/how_to/message_history/#in-memory)
+- [Tool calling agent](https://python.langchain.com/v0.1/docs/modules/agents/agent_types/tool_calling/)
+- [LangChain > Tools > Bing Search](https://python.langchain.com/v0.1/docs/integrations/tools/bing_search/)
 
 ## Backend
 
