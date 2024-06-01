@@ -11,7 +11,15 @@ from langchain_core.runnables import ConfigurableField, RunnableLambda
 from langchain_openai import AzureChatOpenAI
 from langgraph.graph import END, StateGraph
 
-from frontend.solutions.internals.tools.examples import add, exponentiate, get_current_weather, multiply
+from frontend.solutions.internals.tools.bing_search import bing_search_tool
+from frontend.solutions.internals.tools.examples import (
+    add,
+    exponentiate,
+    get_date_diffs,
+    get_date_from_offset,
+    get_datetime_today,
+    multiply,
+)
 
 logger = logging.getLogger(__name__)
 load_dotenv("frontend.env")
@@ -20,7 +28,10 @@ tools = [
     multiply,
     exponentiate,
     add,
-    get_current_weather,
+    get_date_diffs,
+    get_datetime_today,
+    get_date_from_offset,
+    bing_search_tool,
 ]
 llm = AzureChatOpenAI(
     api_key=getenv("AZURE_OPENAI_API_KEY"),
