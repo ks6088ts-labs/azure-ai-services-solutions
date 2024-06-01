@@ -53,6 +53,7 @@
 
 - [Azure-Samples/openai](https://github.com/Azure-Samples/openai)
 - [Use GPT-4 Turbo with Vision > Call the Chat Completion APIs](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/gpt-with-vision?tabs=python%2Csystem-assigned%2Cresource#call-the-chat-completion-apis)
+- [Azure OpenAI Service models > Standard deployment model availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#standard-deployment-model-availability)
 
 ### Azure AI Speech Service
 

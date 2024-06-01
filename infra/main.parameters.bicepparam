@@ -2,21 +2,23 @@ using 'main.bicep'
 
 param openAiDeployments = [
   {
-    name: 'gpt-35-turbo'
-    version: '0613'
+    name: 'gpt-4o'
+    version: '2024-05-13'
     capacity: 30
   }
   {
-    name: 'gpt-4'
-    version: 'vision-preview'
+    name: 'text-embedding-3-large'
+    version: '1'
     capacity: 30
   }
   {
-    name: 'text-embedding-ada-002'
-    version: '2'
-    capacity: 30
+    name: 'whisper'
+    version: '001'
+    capacity: 3
   }
 ]
+
+param openAiLocation = 'eastus2'
 
 param tags = {
   environment: 'dev'

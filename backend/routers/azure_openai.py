@@ -38,6 +38,7 @@ async def create_chat_completions(body: azure_openai_schemas.ChatCompletionReque
     "/chat_completions_with_vision",
     response_model=azure_openai_schemas.ChatCompletionWithVisionResponse,
     status_code=200,
+    deprecated=True,
 )
 async def create_chat_completions_with_vision(
     file: UploadFile,
