@@ -1,6 +1,10 @@
 from base64 import b64encode
+from collections.abc import AsyncIterable
 from logging import getLogger
 
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
+from langchain_core.messages import BaseMessage, HumanMessage
+from langchain_openai import AzureChatOpenAI
 from openai import AzureOpenAI
 from openai.types.chat import ChatCompletion
 
@@ -20,24 +24,40 @@ class Client:
             azure_endpoint=self.settings.azure_openai_endpoint,
         )
 
+    def get_client_langchain(self) -> AzureChatOpenAI:
+        return AzureChatOpenAI(
+            api_key=self.settings.azure_openai_api_key,
+            api_version=self.settings.azure_openai_api_version,
+            azure_endpoint=self.settings.azure_openai_endpoint,
+            azure_deployment=self.settings.azure_openai_gpt_model,
+        )
+
     def create_chat_completions(
         self,
         content: str,
-        stream: bool = False,
-    ) -> ChatCompletion:
-        client = self.get_client()
-        response = client.chat.completions.create(
-            model=self.settings.azure_openai_gpt_model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": content,
-                },
-            ],
-            stream=stream,
+    ) -> BaseMessage:
+        response = self.get_client_langchain().invoke(
+            [
+                HumanMessage(
+                    content=content,
+                ),
+            ]
         )
         logger.info(response)
         return response
+
+    async def create_chat_completions_stream(
+        self,
+        content: str,
+    ) -> AsyncIterable[str]:
+        llm = self.get_client_langchain()
+        messages = [HumanMessagePromptTemplate.from_template(template="{message}")]
+        prompt = ChatPromptTemplate.from_messages(messages)
+        chain = prompt | llm
+        res = chain.astream({"message": content})
+        async for msg in res:
+            logger.info(msg)
+            yield msg.content
 
     def create_chat_completions_with_vision(
         self,
