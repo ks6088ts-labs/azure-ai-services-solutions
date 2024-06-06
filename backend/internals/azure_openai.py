@@ -3,10 +3,8 @@ from collections.abc import AsyncIterable
 from logging import getLogger
 
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
-from langchain_core.messages import BaseMessage, HumanMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import AzureChatOpenAI
-from openai import AzureOpenAI
-from openai.types.chat import ChatCompletion
 
 from backend.settings.azure_openai import Settings
 
@@ -17,14 +15,7 @@ class Client:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
 
-    def get_client(self) -> AzureOpenAI:
-        return AzureOpenAI(
-            api_key=self.settings.azure_openai_api_key,
-            api_version=self.settings.azure_openai_api_version,
-            azure_endpoint=self.settings.azure_openai_endpoint,
-        )
-
-    def get_client_langchain(self) -> AzureChatOpenAI:
+    def get_client(self) -> AzureChatOpenAI:
         return AzureChatOpenAI(
             api_key=self.settings.azure_openai_api_key,
             api_version=self.settings.azure_openai_api_version,
@@ -35,8 +26,8 @@ class Client:
     def create_chat_completions(
         self,
         content: str,
-    ) -> BaseMessage:
-        response = self.get_client_langchain().invoke(
+    ) -> str:
+        response = self.get_client().invoke(
             [
                 HumanMessage(
                     content=content,
@@ -44,13 +35,13 @@ class Client:
             ]
         )
         logger.info(response)
-        return response
+        return response.content
 
     async def create_chat_completions_stream(
         self,
         content: str,
     ) -> AsyncIterable[str]:
-        llm = self.get_client_langchain()
+        llm = self.get_client()
         messages = [HumanMessagePromptTemplate.from_template(template="{message}")]
         prompt = ChatPromptTemplate.from_messages(messages)
         chain = prompt | llm
@@ -64,19 +55,16 @@ class Client:
         system_prompt: str,
         user_prompt: str,
         image: bytes,
-    ) -> ChatCompletion:
-        client = self.get_client()
+    ) -> str:
         encoded_image = b64encode(image).decode("ascii")
-        response = client.chat.completions.create(
-            model=self.settings.azure_openai_gpt_model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": system_prompt,
-                },
-                {
-                    "role": "user",
-                    "content": [
+
+        response = self.get_client().invoke(
+            [
+                SystemMessage(
+                    content=system_prompt,
+                ),
+                HumanMessage(
+                    content=[
                         {
                             "type": "text",
                             "text": user_prompt,
@@ -86,9 +74,8 @@ class Client:
                             "image_url": {"url": f"data:image/jpeg;base64,{encoded_image}"},
                         },
                     ],
-                },
-            ],
-            max_tokens=2000,
+                ),
+            ]
         )
         logger.info(response)
-        return response
+        return response.content

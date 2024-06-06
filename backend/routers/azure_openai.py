@@ -30,7 +30,7 @@ async def create_chat_completions(body: azure_openai_schemas.ChatCompletionReque
         content=body.content,
     )
     return azure_openai_schemas.ChatCompletionResponse(
-        content=response.content,
+        content=response,
     )
 
 
@@ -69,5 +69,5 @@ async def create_chat_completions_with_vision(
         logger.error(f"Failed to create chat completions with vision: {e}")
         raise
     return azure_openai_schemas.ChatCompletionWithVisionResponse(
-        content=response.choices[0].message.content,
+        content=response,
     )
