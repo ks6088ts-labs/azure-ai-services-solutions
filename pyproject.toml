@@ -34,6 +34,8 @@ azure-ai-vision-imageanalysis = "^1.0.0b2"
 azure-eventgrid = "^4.19.0"
 azure-storage-queue = "^12.9.0"
 azure-cosmos = "^4.6.1"
+langchain = "^0.2.2"
+langchain-openai = "^0.1.8"
 
 
 [tool.poetry.group.frontend.dependencies]

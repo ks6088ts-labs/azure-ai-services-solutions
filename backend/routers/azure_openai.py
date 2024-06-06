@@ -1,6 +1,7 @@
 from logging import getLogger
 
 from fastapi import APIRouter, UploadFile
+from fastapi.responses import StreamingResponse
 
 from backend.internals.azure_openai import Client
 from backend.schemas import azure_openai as azure_openai_schemas
@@ -27,10 +28,23 @@ router = APIRouter(
 async def create_chat_completions(body: azure_openai_schemas.ChatCompletionRequest):
     response = client.create_chat_completions(
         content=body.content,
-        stream=body.stream,
     )
     return azure_openai_schemas.ChatCompletionResponse(
-        content=response.choices[0].message.content,
+        content=response,
+    )
+
+
+@router.post(
+    "/chat_completions_stream",
+    response_model=azure_openai_schemas.ChatCompletionResponse,
+    status_code=200,
+)
+async def create_chat_completions_stream(body: azure_openai_schemas.ChatCompletionStreamRequest) -> StreamingResponse:
+    return StreamingResponse(
+        client.create_chat_completions_stream(
+            content=body.content,
+        ),
+        media_type="text/event-stream",
     )
 
 
@@ -55,5 +69,5 @@ async def create_chat_completions_with_vision(
         logger.error(f"Failed to create chat completions with vision: {e}")
         raise
     return azure_openai_schemas.ChatCompletionWithVisionResponse(
-        content=response.choices[0].message.content,
+        content=response,
     )
