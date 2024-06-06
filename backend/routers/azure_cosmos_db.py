@@ -67,3 +67,26 @@ async def create_item(body: azure_cosmos_db_schemas.CreateItemRequest):
         database_id=body.database_id,
         item=created_item,
     )
+
+
+@router.get(
+    "/{database_id}/{container_id}/{item_id}",
+    response_model=azure_cosmos_db_schemas.ReadItemResponse,
+    status_code=200,
+)
+async def read_item(
+    database_id: str,
+    container_id: str,
+    item_id: str,
+):
+    container = client.get_container(
+        database_id=database_id,
+        container_id=container_id,
+    )
+    read_item = client.read_item(
+        container=container,
+        item_id=item_id,
+    )
+    return azure_cosmos_db_schemas.ReadItemResponse(
+        item=read_item,
+    )
