@@ -32,3 +32,7 @@ class CreateItemResponse(BaseModel):
     container_id: str
     database_id: str
     item: dict
+
+
+class ReadItemResponse(BaseModel):
+    item: dict
