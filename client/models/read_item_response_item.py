@@ -4,23 +4,21 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 @dataclass
-class ChatCompletionRequest(AdditionalDataHolder, Parsable):
+class ReadItemResponse_item(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The content property
-    content: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatCompletionRequest:
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReadItemResponse_item:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object
-        Returns: ChatCompletionRequest
+        Returns: ReadItemResponse_item
         """
         if not parse_node:
             raise TypeError("parse_node cannot be null.")
-        return ChatCompletionRequest()
+        return ReadItemResponse_item()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -28,7 +26,6 @@ class ChatCompletionRequest(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "content": lambda n : setattr(self, 'content', n.get_str_value()),
         }
         return fields
     
@@ -40,7 +37,6 @@ class ChatCompletionRequest(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("content", self.content)
         writer.write_additional_data_value(self.additional_data)
     
 

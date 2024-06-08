@@ -9,18 +9,18 @@
     }
   },
   "paths": {
-    "/azure_ai_document_intelligence/analyze_document/": {
+    "/azure_ai_document_intelligence/analyze_document": {
       "post": {
         "tags": [
           "azure_ai_document_intelligence"
         ],
         "summary": "Analyze Document",
-        "operationId": "analyze_document_azure_ai_document_intelligence_analyze_document__post",
+        "operationId": "analyze_document_azure_ai_document_intelligence_analyze_document_post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_analyze_document_azure_ai_document_intelligence_analyze_document__post"
+                "$ref": "#/components/schemas/Body_analyze_document_azure_ai_document_intelligence_analyze_document_post"
               }
             }
           },
@@ -53,18 +53,18 @@
         }
       }
     },
-    "/azure_ai_vision/image/analyze/": {
+    "/azure_ai_vision/image/analyze": {
       "post": {
         "tags": [
           "azure_ai_vision"
         ],
         "summary": "Analyze Image",
-        "operationId": "analyze_image_azure_ai_vision_image_analyze__post",
+        "operationId": "analyze_image_azure_ai_vision_image_analyze_post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_analyze_image_azure_ai_vision_image_analyze__post"
+                "$ref": "#/components/schemas/Body_analyze_image_azure_ai_vision_image_analyze_post"
               }
             }
           },
@@ -97,18 +97,18 @@
         }
       }
     },
-    "/azure_ai_vision/image/vectorize/": {
+    "/azure_ai_vision/image/vectorize": {
       "post": {
         "tags": [
           "azure_ai_vision"
         ],
         "summary": "Vectorize Image",
-        "operationId": "vectorize_image_azure_ai_vision_image_vectorize__post",
+        "operationId": "vectorize_image_azure_ai_vision_image_vectorize_post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_vectorize_image_azure_ai_vision_image_vectorize__post"
+                "$ref": "#/components/schemas/Body_vectorize_image_azure_ai_vision_image_vectorize_post"
               }
             }
           },
@@ -139,13 +139,13 @@
         }
       }
     },
-    "/azure_event_grid/event_grid_event/": {
+    "/azure_event_grid/event_grid_event": {
       "post": {
         "tags": [
           "azure_event_grid"
         ],
         "summary": "Send Event Grid Event",
-        "operationId": "send_event_grid_event_azure_event_grid_event_grid_event__post",
+        "operationId": "send_event_grid_event_azure_event_grid_event_grid_event_post",
         "parameters": [
           {
             "name": "data",
@@ -211,13 +211,13 @@
         }
       }
     },
-    "/azure_openai/chat_completions/": {
+    "/azure_openai/chat_completions": {
       "post": {
         "tags": [
           "azure_openai"
         ],
         "summary": "Create Chat Completions",
-        "operationId": "create_chat_completions_azure_openai_chat_completions__post",
+        "operationId": "create_chat_completions_azure_openai_chat_completions_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -255,13 +255,57 @@
         }
       }
     },
-    "/azure_openai/chat_completions_with_vision/": {
+    "/azure_openai/chat_completions_stream": {
+      "post": {
+        "tags": [
+          "azure_openai"
+        ],
+        "summary": "Create Chat Completions Stream",
+        "operationId": "create_chat_completions_stream_azure_openai_chat_completions_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatCompletionStreamRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatCompletionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_openai/chat_completions_with_vision": {
       "post": {
         "tags": [
           "azure_openai"
         ],
         "summary": "Create Chat Completions With Vision",
-        "operationId": "create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post",
+        "operationId": "create_chat_completions_with_vision_azure_openai_chat_completions_with_vision_post",
         "parameters": [
           {
             "name": "system_prompt",
@@ -289,7 +333,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post"
+                "$ref": "#/components/schemas/Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision_post"
               }
             }
           }
@@ -321,13 +365,13 @@
         }
       }
     },
-    "/azure_storage_blob/blobs/upload/": {
+    "/azure_storage_blob/blobs/upload": {
       "post": {
         "tags": [
           "azure_storage_blob"
         ],
         "summary": "Upload Blob",
-        "operationId": "upload_blob_azure_storage_blob_blobs_upload__post",
+        "operationId": "upload_blob_azure_storage_blob_blobs_upload_post",
         "parameters": [
           {
             "name": "blob_name",
@@ -344,7 +388,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_upload_blob_azure_storage_blob_blobs_upload__post"
+                "$ref": "#/components/schemas/Body_upload_blob_azure_storage_blob_blobs_upload_post"
               }
             }
           }
@@ -376,13 +420,13 @@
         }
       }
     },
-    "/azure_storage_blob/blobs/delete/": {
+    "/azure_storage_blob/blobs/delete": {
       "delete": {
         "tags": [
           "azure_storage_blob"
         ],
         "summary": "Delete Blob",
-        "operationId": "delete_blob_azure_storage_blob_blobs_delete__delete",
+        "operationId": "delete_blob_azure_storage_blob_blobs_delete_delete",
         "parameters": [
           {
             "name": "blob_name",
@@ -419,13 +463,13 @@
         }
       }
     },
-    "/azure_storage_blob/blobs/": {
+    "/azure_storage_blob/blobs": {
       "get": {
         "tags": [
           "azure_storage_blob"
         ],
         "summary": "List Blobs",
-        "operationId": "list_blobs_azure_storage_blob_blobs__get",
+        "operationId": "list_blobs_azure_storage_blob_blobs_get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -441,13 +485,13 @@
         }
       }
     },
-    "/azure_storage_queue/queues/": {
+    "/azure_storage_queue/queues": {
       "post": {
         "tags": [
           "azure_storage_queue"
         ],
         "summary": "Create Queue",
-        "operationId": "create_queue_azure_storage_queue_queues__post",
+        "operationId": "create_queue_azure_storage_queue_queues_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -483,23 +527,26 @@
             }
           }
         }
-      },
+      }
+    },
+    "/azure_storage_queue/queues/{queue_name}": {
       "delete": {
         "tags": [
           "azure_storage_queue"
         ],
         "summary": "Delete Queue",
-        "operationId": "delete_queue_azure_storage_queue_queues__delete",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeleteQueueRequest"
-              }
+        "operationId": "delete_queue_azure_storage_queue_queues__queue_name__delete",
+        "parameters": [
+          {
+            "name": "queue_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue Name"
             }
-          },
-          "required": true
-        },
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -527,13 +574,13 @@
         }
       }
     },
-    "/azure_storage_queue/messages/": {
+    "/azure_storage_queue/messages": {
       "post": {
         "tags": [
           "azure_storage_queue"
         ],
         "summary": "Send Message",
-        "operationId": "send_message_azure_storage_queue_messages__post",
+        "operationId": "send_message_azure_storage_queue_messages_post",
         "requestBody": {
           "required": true,
           "content": {
@@ -575,7 +622,7 @@
           "azure_storage_queue"
         ],
         "summary": "Receive Messages",
-        "operationId": "receive_messages_azure_storage_queue_messages__get",
+        "operationId": "receive_messages_azure_storage_queue_messages_get",
         "parameters": [
           {
             "name": "queue_name",
@@ -626,7 +673,7 @@
           "azure_storage_queue"
         ],
         "summary": "Delete Message",
-        "operationId": "delete_message_azure_storage_queue_messages__delete",
+        "operationId": "delete_message_azure_storage_queue_messages_delete",
         "requestBody": {
           "required": true,
           "content": {
@@ -644,6 +691,201 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DeleteMessageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_cosmos_db/database": {
+      "post": {
+        "tags": [
+          "azure_cosmos_db"
+        ],
+        "summary": "Create Database",
+        "operationId": "create_database_azure_cosmos_db_database_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDatabaseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDatabaseResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_cosmos_db/container": {
+      "post": {
+        "tags": [
+          "azure_cosmos_db"
+        ],
+        "summary": "Create Container",
+        "operationId": "create_container_azure_cosmos_db_container_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateContainerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateContainerResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_cosmos_db/item": {
+      "post": {
+        "tags": [
+          "azure_cosmos_db"
+        ],
+        "summary": "Create Item",
+        "operationId": "create_item_azure_cosmos_db_item_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateItemRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateItemResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/azure_cosmos_db/{database_id}/{container_id}/{item_id}": {
+      "get": {
+        "tags": [
+          "azure_cosmos_db"
+        ],
+        "summary": "Read Item",
+        "operationId": "read_item_azure_cosmos_db__database_id___container_id___item_id__get",
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Database Id"
+            }
+          },
+          {
+            "name": "container_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Container Id"
+            }
+          },
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Item Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadItemResponse"
                 }
               }
             }
@@ -693,7 +935,7 @@
         ],
         "title": "BlobUploadResponse"
       },
-      "Body_analyze_document_azure_ai_document_intelligence_analyze_document__post": {
+      "Body_analyze_document_azure_ai_document_intelligence_analyze_document_post": {
         "properties": {
           "file": {
             "type": "string",
@@ -705,9 +947,9 @@
         "required": [
           "file"
         ],
-        "title": "Body_analyze_document_azure_ai_document_intelligence_analyze_document__post"
+        "title": "Body_analyze_document_azure_ai_document_intelligence_analyze_document_post"
       },
-      "Body_analyze_image_azure_ai_vision_image_analyze__post": {
+      "Body_analyze_image_azure_ai_vision_image_analyze_post": {
         "properties": {
           "file": {
             "type": "string",
@@ -719,9 +961,9 @@
         "required": [
           "file"
         ],
-        "title": "Body_analyze_image_azure_ai_vision_image_analyze__post"
+        "title": "Body_analyze_image_azure_ai_vision_image_analyze_post"
       },
-      "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post": {
+      "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision_post": {
         "properties": {
           "file": {
             "type": "string",
@@ -733,9 +975,9 @@
         "required": [
           "file"
         ],
-        "title": "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision__post"
+        "title": "Body_create_chat_completions_with_vision_azure_openai_chat_completions_with_vision_post"
       },
-      "Body_upload_blob_azure_storage_blob_blobs_upload__post": {
+      "Body_upload_blob_azure_storage_blob_blobs_upload_post": {
         "properties": {
           "file": {
             "type": "string",
@@ -747,9 +989,9 @@
         "required": [
           "file"
         ],
-        "title": "Body_upload_blob_azure_storage_blob_blobs_upload__post"
+        "title": "Body_upload_blob_azure_storage_blob_blobs_upload_post"
       },
-      "Body_vectorize_image_azure_ai_vision_image_vectorize__post": {
+      "Body_vectorize_image_azure_ai_vision_image_vectorize_post": {
         "properties": {
           "file": {
             "type": "string",
@@ -761,18 +1003,13 @@
         "required": [
           "file"
         ],
-        "title": "Body_vectorize_image_azure_ai_vision_image_vectorize__post"
+        "title": "Body_vectorize_image_azure_ai_vision_image_vectorize_post"
       },
       "ChatCompletionRequest": {
         "properties": {
           "content": {
             "type": "string",
             "title": "Content"
-          },
-          "stream": {
-            "type": "boolean",
-            "title": "Stream",
-            "default": false
           }
         },
         "type": "object",
@@ -794,6 +1031,19 @@
         ],
         "title": "ChatCompletionResponse"
       },
+      "ChatCompletionStreamRequest": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "Content"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content"
+        ],
+        "title": "ChatCompletionStreamRequest"
+      },
       "ChatCompletionWithVisionResponse": {
         "properties": {
           "content": {
@@ -806,6 +1056,109 @@
           "content"
         ],
         "title": "ChatCompletionWithVisionResponse"
+      },
+      "CreateContainerRequest": {
+        "properties": {
+          "container_id": {
+            "type": "string",
+            "title": "Container Id"
+          },
+          "database_id": {
+            "type": "string",
+            "title": "Database Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "container_id",
+          "database_id"
+        ],
+        "title": "CreateContainerRequest"
+      },
+      "CreateContainerResponse": {
+        "properties": {
+          "container_id": {
+            "type": "string",
+            "title": "Container Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "container_id"
+        ],
+        "title": "CreateContainerResponse"
+      },
+      "CreateDatabaseRequest": {
+        "properties": {
+          "database_id": {
+            "type": "string",
+            "title": "Database Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "database_id"
+        ],
+        "title": "CreateDatabaseRequest"
+      },
+      "CreateDatabaseResponse": {
+        "properties": {
+          "database_id": {
+            "type": "string",
+            "title": "Database Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "database_id"
+        ],
+        "title": "CreateDatabaseResponse"
+      },
+      "CreateItemRequest": {
+        "properties": {
+          "container_id": {
+            "type": "string",
+            "title": "Container Id"
+          },
+          "database_id": {
+            "type": "string",
+            "title": "Database Id"
+          },
+          "item": {
+            "type": "object",
+            "title": "Item"
+          }
+        },
+        "type": "object",
+        "required": [
+          "container_id",
+          "database_id",
+          "item"
+        ],
+        "title": "CreateItemRequest"
+      },
+      "CreateItemResponse": {
+        "properties": {
+          "container_id": {
+            "type": "string",
+            "title": "Container Id"
+          },
+          "database_id": {
+            "type": "string",
+            "title": "Database Id"
+          },
+          "item": {
+            "type": "object",
+            "title": "Item"
+          }
+        },
+        "type": "object",
+        "required": [
+          "container_id",
+          "database_id",
+          "item"
+        ],
+        "title": "CreateItemResponse"
       },
       "CreateQueueRequest": {
         "properties": {
@@ -861,19 +1214,6 @@
         "type": "object",
         "title": "DeleteMessageResponse"
       },
-      "DeleteQueueRequest": {
-        "properties": {
-          "queue_name": {
-            "type": "string",
-            "title": "Queue Name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "queue_name"
-        ],
-        "title": "DeleteQueueRequest"
-      },
       "DeleteQueueResponse": {
         "properties": {
           "queue_name": {
@@ -912,6 +1252,19 @@
           "result"
         ],
         "title": "ImageAnalysisResponse"
+      },
+      "ReadItemResponse": {
+        "properties": {
+          "item": {
+            "type": "object",
+            "title": "Item"
+          }
+        },
+        "type": "object",
+        "required": [
+          "item"
+        ],
+        "title": "ReadItemResponse"
       },
       "SendMessageRequest": {
         "properties": {

@@ -16,6 +16,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .azure_ai_document_intelligence.azure_ai_document_intelligence_request_builder import Azure_ai_document_intelligenceRequestBuilder
     from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
+    from .azure_cosmos_db.azure_cosmos_db_request_builder import Azure_cosmos_dbRequestBuilder
     from .azure_event_grid.azure_event_grid_request_builder import Azure_event_gridRequestBuilder
     from .azure_openai.azure_openai_request_builder import Azure_openaiRequestBuilder
     from .azure_storage_blob.azure_storage_blob_request_builder import Azure_storage_blobRequestBuilder
@@ -59,6 +60,15 @@ class ApiClient(BaseRequestBuilder):
         from .azure_ai_vision.azure_ai_vision_request_builder import Azure_ai_visionRequestBuilder
 
         return Azure_ai_visionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def azure_cosmos_db(self) -> Azure_cosmos_dbRequestBuilder:
+        """
+        The azure_cosmos_db property
+        """
+        from .azure_cosmos_db.azure_cosmos_db_request_builder import Azure_cosmos_dbRequestBuilder
+
+        return Azure_cosmos_dbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def azure_event_grid(self) -> Azure_event_gridRequestBuilder:
