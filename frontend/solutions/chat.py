@@ -36,11 +36,19 @@ def start(
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        with st.chat_message("assistant"):
-            stream = client.chat.completions.create(
-                model=getenv("AZURE_OPENAI_GPT_MODEL"),
-                messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
-                stream=True,
-            )
-            response = st.write_stream(stream)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        response = client.chat.completions.create(
+            model=getenv("AZURE_OPENAI_GPT_MODEL"),
+            messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
+            stream=True,
+        )
+        with st.chat_message("assistant", avatar="assistant"):
+            placeholder = st.empty()
+            assistant_text = ""
+            for chunk in response:
+                if len(chunk.choices) <= 0:
+                    continue
+                content = chunk.choices[0].delta.content
+                if content:
+                    assistant_text += content
+                    placeholder.write(assistant_text)
+            st.session_state.messages.append({"role": "assistant", "content": assistant_text})

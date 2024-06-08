@@ -29,7 +29,6 @@ async def chat_completions_post(
     response = await client.azure_openai.chat_completions.post(
         ChatCompletionRequest(
             content=prompt,
-            stream=False,
         ),
     )
     return response.content
@@ -42,14 +41,12 @@ def start(
     logger.setLevel(log_level)
     logger.debug(f"set log level to {log_level}")
 
-    st.write("Misc solution")
-
-    # GET
+    st.write("Get OpenAPI spec")
     if st.button("GET"):
         logger.info("Fetching data from backend...")
         try:
             with st.spinner("Calling API..."):
-                response = asyncio.run(http_get(url=urljoin(base=backend_url, url="")))
+                response = asyncio.run(http_get(url=urljoin(base=urljoin(backend_url, "openapi.json"), url="")))
             st.write(response)
             logger.info("Data fetched successfully.")
         except Exception as e:
@@ -58,7 +55,7 @@ def start(
 
     st.write("---")
 
-    # POST
+    st.write("Call Azure OpenAI API")
     prompt = st.text_input(
         label="Prompt",
         value="Hello",
