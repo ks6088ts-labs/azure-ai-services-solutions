@@ -20,6 +20,9 @@ param openAiLocation string = 'eastus2'
 @description('Specifies the name of the Azure Cognitive Services resource.')
 param cognitiveServicesName string = '${prefix}cognitiveServices'
 
+@description('Specifies the location of the Azure Cognitive Services resource.')
+param cognitiveServicesLocation string = 'eastus'
+
 @description('Specifies the name of the Azure Storage Account resource.')
 param storageAccountName string = '${prefix}sa'
 
@@ -51,7 +54,7 @@ module cognitiveServices './modules/cognitiveServices.bicep' = {
       name: 'S0'
     }
     customSubDomainName: toLower(cognitiveServicesName)
-    location: location
+    location: cognitiveServicesLocation
     tags: tags
   }
 }
