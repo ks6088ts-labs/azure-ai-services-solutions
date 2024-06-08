@@ -18,8 +18,6 @@ param openAiDeployments = [
   }
 ]
 
-param openAiLocation = 'eastus2'
-
 param tags = {
   environment: 'dev'
 }
