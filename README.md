@@ -68,7 +68,7 @@ See the actual implementation in the [compose.yaml](./compose.yaml) file.
 
 ```shell
 # Create environment files for each service
-cp {NAME}.env.sample {NAME}.env
+cp ./settings/{NAME}.env.sample ./settings/{NAME}.env
 
 # Build and run the services
 docker compose up

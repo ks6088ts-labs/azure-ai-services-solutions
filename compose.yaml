@@ -8,12 +8,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./azure_ai_document_intelligence.env:/app/azure_ai_document_intelligence.env
-      - ./azure_ai_vision.env:/app/azure_ai_vision.env
-      - ./azure_event_grid.env:/app/azure_event_grid.env
-      - ./azure_openai.env:/app/azure_openai.env
-      - ./azure_storage_blob.env:/app/azure_storage_blob.env
-      - ./azure_storage_queue.env:/app/azure_storage_queue.env
+      - ./settings:/app/settings
     environment:
       - PYTHONUNBUFFERED=1
   frontend:
@@ -25,6 +20,6 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - ./frontend.env:/app/frontend.env
+      - ./settings:/app/settings
     environment:
       - PYTHONUNBUFFERED=1
