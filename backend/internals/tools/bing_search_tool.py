@@ -3,7 +3,7 @@ from os import getenv
 from dotenv import load_dotenv
 from langchain_core.tools import tool
 
-assert load_dotenv("./settings/bing_search_tool.env") is True, "Failed to load .env file."
+_ = load_dotenv("./settings/bing_search_tool.env")
 
 
 @tool

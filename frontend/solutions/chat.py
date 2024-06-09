@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 
 logger = logging.getLogger(__name__)
-load_dotenv("frontend.env")
+load_dotenv("./settings/frontend.env")
 
 
 def start(
