@@ -46,3 +46,16 @@ async def get_transcription(transcription_id: str):
             transcription_id=transcription_id,
         ),
     )
+
+
+@router.get(
+    "/transcriptions/{transcription_id}/files",
+    status_code=200,
+)
+async def get_transcription_files(transcription_id: str):
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content=client.get_transcription_files(
+            transcription_id=transcription_id,
+        ),
+    )

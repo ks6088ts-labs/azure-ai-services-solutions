@@ -20,7 +20,7 @@ class Client:
         response = requests.post(
             url=urljoin(
                 self.settings.azure_ai_speech_endpoint,
-                urljoin("speechtotext/v3.2-preview.2/", "transcriptions"),
+                "speechtotext/v3.2-preview.2/transcriptions",
             ),
             headers={
                 "Ocp-Apim-Subscription-Key": self.settings.azure_ai_speech_api_key,
@@ -52,7 +52,9 @@ class Client:
                 },
             },
         )
-        return response.json()["self"].split("/")[-1]
+        result = response.json()
+        print(result)
+        return result["self"].split("/")[-1]
 
     def get_transcription(
         self,
@@ -62,6 +64,20 @@ class Client:
             url=urljoin(
                 self.settings.azure_ai_speech_endpoint,
                 urljoin("speechtotext/v3.2-preview.2/", f"transcriptions/{transcription_id}"),
+            ),
+            headers={
+                "Ocp-Apim-Subscription-Key": self.settings.azure_ai_speech_api_key,
+            },
+        ).json()
+
+    def get_transcription_files(
+        self,
+        transcription_id: str,
+    ):
+        return requests.get(
+            url=urljoin(
+                self.settings.azure_ai_speech_endpoint,
+                urljoin("speechtotext/v3.2-preview.2/", f"transcriptions/{transcription_id}/files"),
             ),
             headers={
                 "Ocp-Apim-Subscription-Key": self.settings.azure_ai_speech_api_key,
