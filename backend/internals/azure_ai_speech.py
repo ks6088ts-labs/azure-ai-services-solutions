@@ -52,9 +52,7 @@ class Client:
                 },
             },
         )
-        result = response.json()
-        print(result)
-        return result["self"].split("/")[-1]
+        return response.json()["self"].split("/")[-1]
 
     def get_transcription(
         self,
