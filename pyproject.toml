@@ -36,6 +36,9 @@ azure-storage-queue = "^12.9.0"
 azure-cosmos = "^4.6.1"
 langchain = "^0.2.2"
 langchain-openai = "^0.1.8"
+langchain-community = "^0.2.4"
+langsmith = "^0.1.75"
+langgraph = "^0.0.65"
 
 
 [tool.poetry.group.frontend.dependencies]
@@ -50,11 +53,6 @@ microsoft-kiota-serialization-multipart = "^0.1.0"
 microsoft-kiota-serialization-text = "^1.0.0"
 streamlit-audiorecorder = "^0.0.5"
 openai = "^1.30.5"
-langchain = "^0.2.1"
-langchain-openai = "^0.1.8"
-langchain-community = "^0.2.1"
-langsmith = "^0.1.67"
-langgraph = "^0.0.60"
 
 
 [tool.poetry.group.azure-functions.dependencies]

@@ -1,6 +1,9 @@
 from os import getenv
 
+from dotenv import load_dotenv
 from langchain_core.tools import tool
+
+_ = load_dotenv("./settings/bing_search_tool.env")
 
 
 @tool
