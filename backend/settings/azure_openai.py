@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     azure_openai_gpt_model: str = "gpt-4o"
 
     model_config = SettingsConfigDict(
-        env_file="azure_openai.env",
+        env_file="settings/azure_openai.env",
         env_file_encoding="utf-8",
         extra="ignore",
     )
