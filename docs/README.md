@@ -77,6 +77,17 @@
 
 - [Azure AI Document Intelligence client library for Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/README.md)
 
+### Azure AI Speech Service
+
+- [Whisper model via Azure AI Speech or via Azure OpenAI Service?](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/whisper-overview#whisper-model-via-azure-ai-speech-or-via-azure-openai-service)
+- [What is batch transcription?](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription)
+- [Locate audio files for batch transcription > Assign resource access role](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription-audio-data?tabs=portal#assign-resource-access-role)
+- [Use a Whisper model](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription-create?pivots=rest-api#use-a-whisper-model)
+- [Get batch transcription results](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-transcription-get?pivots=rest-api)
+- [How to use the Speech Services Batch Transcription API from Python](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/batch/python/README.md)
+- [SpeechToText API specification](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/cognitiveservices/data-plane/Speech/SpeechToText/preview/v3.2-preview.2/speechtotext.json)
+- [Azure-Samples/cognitive-services-speech-sdk/samples/batch/python/python-client/main.py](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/82b4212f0905349d6607bd6f210d0e52305d5d6c/samples/batch/python/python-client/main.py)
+
 ### Azure Cosmos DB
 
 - [Manage Azure Cosmos DB for NoSQL resources with Bicep > Azure Cosmos DB account with autoscale throughput](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/manage-with-bicep#azure-cosmos-db-account-with-autoscale-throughput)
