@@ -39,6 +39,7 @@ langchain-openai = "^0.1.8"
 langchain-community = "^0.2.4"
 langsmith = "^0.1.75"
 langgraph = "^0.0.65"
+yfinance = "^0.2.40"
 
 
 [tool.poetry.group.frontend.dependencies]
