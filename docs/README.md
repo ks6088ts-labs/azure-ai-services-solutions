@@ -18,6 +18,8 @@
 - [Tool Calling with LangChain](https://blog.langchain.dev/tool-calling-with-langchain/)
 - [langchain/cookbook/tool_call_messages.ipynb](https://github.com/langchain-ai/langchain/blob/master/cookbook/tool_call_messages.ipynb?ref=blog.langchain.dev)
 - [Azure OpenAI Service の ChatGPT に Bing Search や PDF 検索機能を LangGraph で接続しました。](https://techblog.cccmkhd.co.jp/entry/2024/04/09/173831)
+- [Bing Search](https://python.langchain.com/v0.2/docs/integrations/tools/bing_search/)
+- [Yahoo Finance News](https://python.langchain.com/v0.2/docs/integrations/tools/yahoo_finance_news/)
 
 ## Backend
 
