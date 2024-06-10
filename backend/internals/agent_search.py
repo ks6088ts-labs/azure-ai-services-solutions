@@ -14,6 +14,7 @@ from backend.internals.tools.utility_tool import (
     get_datetime_today,
     multiply,
 )
+from backend.internals.tools.yahoo_finance_tool import yahoo_finance_tool
 from backend.settings.agents import Settings
 
 logger = getLogger(__name__)
@@ -28,6 +29,7 @@ def create_tools():
         get_datetime_today,
         get_date_from_offset,
         multiply,
+        yahoo_finance_tool,
     ]
 
 
