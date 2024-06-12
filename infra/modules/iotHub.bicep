@@ -12,7 +12,7 @@ param tags object = {}
 param name string = '${prefix}-iothub'
 
 @description('The SKU to use for the IoT Hub.')
-param skuName string = 'B1'
+param skuName string = 'S1'
 
 @description('The number of IoT Hub units.')
 param skuUnits int = 1
