@@ -32,6 +32,9 @@ param eventGridName string = '${prefix}eg'
 @description('Specifies the name of the Azure Cosmos DB resource.')
 param cosmosDbName string = '${prefix}cosmosdb'
 
+@description('Specifies the name of the Azure IoT Hub resource.')
+param iotHubName string = '${prefix}iothub'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -92,6 +95,15 @@ module cosmosDb './modules/cosmosDb.bicep' = {
   }
 }
 
+module iotHub './modules/iotHub.bicep' = {
+  name: 'iotHub'
+  params: {
+    name: iotHubName
+    location: location
+    tags: tags
+  }
+}
+
 // Output
 output cognitiveServicesName string = cognitiveServices.outputs.name
 output cognitiveServicesEndpoint string = cognitiveServices.outputs.endpoint
@@ -100,3 +112,4 @@ output eventGridTopicEndpoint string = eventGrid.outputs.eventGridTopicEndpoint
 output openAiName string = openAi.outputs.name
 output openAiEndpoint string = openAi.outputs.endpoint
 output storageAccountName string = storageAccount.outputs.name
+output iotHubName string = iotHub.outputs.iotHubName

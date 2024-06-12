@@ -97,3 +97,16 @@
 - [Create a database in Azure Cosmos DB for NoSQL using Python](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-create-database)
 - [Create a container in Azure Cosmos DB for NoSQL using Python](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-create-container)
 - [Sample - demonstrates the basic CRUD operations on a Item resource for Azure Cosmos](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/document_management.py)
+
+### Azure IoT Hub
+
+- [Create and monitor a device](https://learn.microsoft.com/en-us/azure/iot-hub/quickstart-send-telemetry-cli#create-and-monitor-a-device)
+- [Connect Raspberry Pi to Azure IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/raspberry-pi-get-started)
+
+```shell
+IOT_HUB_NAME=""
+DEVICE_NAME="simDevice"
+az iot hub device-identity create \
+    --device-id $DEVICE_NAME \
+    --hub-name $IOT_HUB_NAME
+```
