@@ -327,6 +327,43 @@ msal = ">=1.24.0"
 msal-extensions = ">=0.3.0"
 
 [[package]]
+name = "azure-iot-device"
+version = "2.13.1"
+description = "Microsoft Azure IoT Device Library"
+optional = false
+python-versions = "<4,>=3.7"
+files = [
+    {file = "azure-iot-device-2.13.1.tar.gz", hash = "sha256:28c6116a39ee3dac009274b47b5b2190c7869be24f5f145f2a09dd0f519e43cb"},
+    {file = "azure_iot_device-2.13.1-py3-none-any.whl", hash = "sha256:1e470a53daba1715375ad0506e28f8731a45d47954b5b1ae3b47990c011b4981"},
+]
+
+[package.dependencies]
+deprecation = ">=2.1.0,<3.0.0"
+janus = "*"
+paho-mqtt = ">=1.6.1,<2.0.0"
+PySocks = "*"
+requests = ">=2.20.0,<2.32.0"
+requests-unixsocket = ">=0.1.5,<1.0.0"
+typing-extensions = "*"
+urllib3 = ">=1.26.5,<1.27"
+
+[[package]]
+name = "azure-iot-hub"
+version = "2.6.1"
+description = "Microsoft Azure IoTHub Service Library"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+files = [
+    {file = "azure-iot-hub-2.6.1.tar.gz", hash = "sha256:e952a7517448d826e3a95d37e9ba258d932e7aa45fde07ea4ded391c45fdf47c"},
+    {file = "azure_iot_hub-2.6.1-py2.py3-none-any.whl", hash = "sha256:560b1aa1c51bc011d0c4de99d34ef4d60d70869c8f6a4187630fab2c21ed9fde"},
+]
+
+[package.dependencies]
+azure-core = ">=1.10.0,<2.0.0"
+msrest = ">=0.6.21,<1.0.0"
+uamqp = ">=1.2.14,<2.0.0"
+
+[[package]]
 name = "azure-storage-blob"
 version = "12.19.1"
 description = "Microsoft Azure Blob Storage Client Library for Python"
@@ -950,6 +987,20 @@ wrapt = ">=1.10,<2"
 dev = ["PyTest", "PyTest-Cov", "bump2version (<1)", "sphinx (<2)", "tox"]
 
 [[package]]
+name = "deprecation"
+version = "2.1.0"
+description = "A library to handle automated deprecations"
+optional = false
+python-versions = "*"
+files = [
+    {file = "deprecation-2.1.0-py2.py3-none-any.whl", hash = "sha256:a10811591210e1fb0e768a8c25517cabeabcba6f0bf96564f8ff45189f90b14a"},
+    {file = "deprecation-2.1.0.tar.gz", hash = "sha256:72b3bde64e5d778694b0cf68178aed03d15e15477116add3fb773e581f9518ff"},
+]
+
+[package.dependencies]
+packaging = "*"
+
+[[package]]
 name = "distlib"
 version = "0.3.8"
 description = "Distribution utilities"
@@ -1482,6 +1533,20 @@ files = [
 
 [package.dependencies]
 six = "*"
+
+[[package]]
+name = "janus"
+version = "1.0.0"
+description = "Mixed sync-async queue to interoperate between asyncio tasks and classic threads"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "janus-1.0.0-py3-none-any.whl", hash = "sha256:2596ea5482711c1ee3ef2df6c290aaf370a13c55a007826e8f7c32d696d1d00a"},
+    {file = "janus-1.0.0.tar.gz", hash = "sha256:df976f2cdcfb034b147a2d51edfc34ff6bfb12d4e2643d3ad0e10de058cb1612"},
+]
+
+[package.dependencies]
+typing-extensions = ">=3.7.4.3"
 
 [[package]]
 name = "jinja2"
@@ -2122,6 +2187,27 @@ portalocker = [
 ]
 
 [[package]]
+name = "msrest"
+version = "0.7.1"
+description = "AutoRest swagger generator Python client runtime."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "msrest-0.7.1-py3-none-any.whl", hash = "sha256:21120a810e1233e5e6cc7fe40b474eeb4ec6f757a15d7cf86702c369f9567c32"},
+    {file = "msrest-0.7.1.zip", hash = "sha256:6e7661f46f3afd88b75667b7187a92829924446c7ea1d169be8c4bb7eeb788b9"},
+]
+
+[package.dependencies]
+azure-core = ">=1.24.0"
+certifi = ">=2017.4.17"
+isodate = ">=0.6.0"
+requests = ">=2.16,<3.0"
+requests-oauthlib = ">=0.5.0"
+
+[package.extras]
+async = ["aiodns", "aiohttp (>=3.0)"]
+
+[[package]]
 name = "multidict"
 version = "6.0.5"
 description = "multidict implementation"
@@ -2302,6 +2388,22 @@ files = [
 ]
 
 [[package]]
+name = "oauthlib"
+version = "3.2.2"
+description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "oauthlib-3.2.2-py3-none-any.whl", hash = "sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca"},
+    {file = "oauthlib-3.2.2.tar.gz", hash = "sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918"},
+]
+
+[package.extras]
+rsa = ["cryptography (>=3.0.0)"]
+signals = ["blinker (>=1.4.0)"]
+signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
+
+[[package]]
 name = "openai"
 version = "1.30.5"
 description = "The official Python library for the openai API"
@@ -2431,6 +2533,19 @@ files = [
     {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
     {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
 ]
+
+[[package]]
+name = "paho-mqtt"
+version = "1.6.1"
+description = "MQTT version 5.0/3.1.1 client class"
+optional = false
+python-versions = "*"
+files = [
+    {file = "paho-mqtt-1.6.1.tar.gz", hash = "sha256:2a8291c81623aec00372b5a85558a372c747cbca8e9934dfe218638b8eefc26f"},
+]
+
+[package.extras]
+proxy = ["PySocks"]
 
 [[package]]
 name = "pandas"
@@ -3118,6 +3233,18 @@ docs = ["sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface"]
 tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
 [[package]]
+name = "pysocks"
+version = "1.7.1"
+description = "A Python SOCKS client module. See https://github.com/Anorov/PySocks for more information."
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+files = [
+    {file = "PySocks-1.7.1-py27-none-any.whl", hash = "sha256:08e69f092cc6dbe92a0fdd16eeb9b9ffbc13cadfe5ca4c7bd92ffb078b293299"},
+    {file = "PySocks-1.7.1-py3-none-any.whl", hash = "sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5"},
+    {file = "PySocks-1.7.1.tar.gz", hash = "sha256:3f8804571ebe159c380ac6de37643bb4685970655d3bba243530d6558b799aa0"},
+]
+
+[[package]]
 name = "pytest"
 version = "8.2.2"
 description = "pytest: simple powerful testing with Python"
@@ -3416,6 +3543,38 @@ urllib3 = ">=1.21.1,<3"
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "requests-oauthlib"
+version = "2.0.0"
+description = "OAuthlib authentication support for Requests."
+optional = false
+python-versions = ">=3.4"
+files = [
+    {file = "requests-oauthlib-2.0.0.tar.gz", hash = "sha256:b3dffaebd884d8cd778494369603a9e7b58d29111bf6b41bdc2dcd87203af4e9"},
+    {file = "requests_oauthlib-2.0.0-py2.py3-none-any.whl", hash = "sha256:7dd8a5c40426b779b0868c404bdef9768deccf22749cde15852df527e6269b36"},
+]
+
+[package.dependencies]
+oauthlib = ">=3.0.0"
+requests = ">=2.0.0"
+
+[package.extras]
+rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
+
+[[package]]
+name = "requests-unixsocket"
+version = "0.3.0"
+description = "Use requests to talk HTTP via a UNIX domain socket"
+optional = false
+python-versions = "*"
+files = [
+    {file = "requests-unixsocket-0.3.0.tar.gz", hash = "sha256:28304283ea9357d45fff58ad5b11e47708cfbf5806817aa59b2a363228ee971e"},
+    {file = "requests_unixsocket-0.3.0-py2.py3-none-any.whl", hash = "sha256:c685c680f0809e1b2955339b1e5afc3c0022b3066f4f7eb343f43a6065fc0e5d"},
+]
+
+[package.dependencies]
+requests = ">=1.1"
 
 [[package]]
 name = "rich"
@@ -3999,21 +4158,53 @@ files = [
 ]
 
 [[package]]
+name = "uamqp"
+version = "1.6.9"
+description = "AMQP 1.0 Client Library for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "uamqp-1.6.9-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:cac08f18d5f5e47ccee73e571141c0780c4fc758d76d97aa060e64036fbda1fa"},
+    {file = "uamqp-1.6.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0afb8ba6708be710d24f69cf9b5d2803d04a0c31e36950c127da5ef2d2291b12"},
+    {file = "uamqp-1.6.9-cp310-cp310-win32.whl", hash = "sha256:e97f518647e0b26391ee975d221963efbc048e0b4300b57eda87efd8516e0392"},
+    {file = "uamqp-1.6.9-cp310-cp310-win_amd64.whl", hash = "sha256:6b5ec2cd3f43e3987d0527fcdaafc4f1ec77ec66bcc70fdd80b2c8b4bc5ca3e2"},
+    {file = "uamqp-1.6.9-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:67017b7e28ef97be5a137fc812b80372ac3435f655ed676b0a55949e0dcf5138"},
+    {file = "uamqp-1.6.9-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5a044f90b8db05837884a0570ecb455511a6e844c8ada35ae3ab4f6984a85e2a"},
+    {file = "uamqp-1.6.9-cp311-cp311-win32.whl", hash = "sha256:316f4ec6d842004f2304e005d45df3e8132f61f3b020a7f497e5a71cd30512df"},
+    {file = "uamqp-1.6.9-cp311-cp311-win_amd64.whl", hash = "sha256:e5311dada7aee42c7ce51e926a3d2bc09cd686fee01dc2391dce1c91e741daf8"},
+    {file = "uamqp-1.6.9-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:74d59cc92d8ea3731d8f1c714dfb267d61dec822057e5139728922943004baac"},
+    {file = "uamqp-1.6.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e7f69b3326299b8bbfa0f1b8b89c061b35ea2a05ec98353405b0ac78e9e56dd2"},
+    {file = "uamqp-1.6.9-cp312-cp312-win32.whl", hash = "sha256:4c8c3ff36c15674de8ed055d3ecfea6b4ec29e0d70b2cd13c0ba9149b8683455"},
+    {file = "uamqp-1.6.9-cp312-cp312-win_amd64.whl", hash = "sha256:3e6a7a51b94b030f2a8561d2d8677569833af43be91b602a0cc7513c9a08ea55"},
+    {file = "uamqp-1.6.9-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:ab37992f0889a70639c4d6f26720e2d55e482911dd02050d4258b4af59f35b20"},
+    {file = "uamqp-1.6.9-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bf1e87ad4784e1298d99c772d10351760ab37d38a0a195d658cdf3c6987fb66c"},
+    {file = "uamqp-1.6.9-cp38-cp38-win32.whl", hash = "sha256:2dd071bc02294f8a98962544a319ebd2b8b49db2af3d694984f660e204e73ade"},
+    {file = "uamqp-1.6.9-cp38-cp38-win_amd64.whl", hash = "sha256:88271f8cc3ab9b6f396089f11177ab3ead21ed57c14611823e7a3b49d162046c"},
+    {file = "uamqp-1.6.9-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:c97b04ed629079e43a6e8ccf6f087ce223cbcba2265ed26e97206f59a3440982"},
+    {file = "uamqp-1.6.9-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a7f7d220624b0859c1c6303232d91e67505dc5ee8fb683b191939ea35df618c5"},
+    {file = "uamqp-1.6.9-cp39-cp39-win32.whl", hash = "sha256:bfd60bd8f7b908c5f47bb05f2e778e8a951951d64698a0e9496949d0e535847d"},
+    {file = "uamqp-1.6.9-cp39-cp39-win_amd64.whl", hash = "sha256:79e4de64307952ab0bc7e2648cf25f803ab55414e9a929d96790f686be5a4d4c"},
+    {file = "uamqp-1.6.9.tar.gz", hash = "sha256:5622e73c4bd3855f852f6fa5842bba8a2ee49b7f715821b1202e2f616d3dcd29"},
+]
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+
+[[package]]
 name = "urllib3"
-version = "2.2.1"
+version = "1.26.18"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 files = [
-    {file = "urllib3-2.2.1-py3-none-any.whl", hash = "sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d"},
-    {file = "urllib3-2.2.1.tar.gz", hash = "sha256:d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"},
+    {file = "urllib3-1.26.18-py2.py3-none-any.whl", hash = "sha256:34b97092d7e0a3a8cf7cd10e386f401b3737364026c45e622aa02903dffe0f07"},
+    {file = "urllib3-1.26.18.tar.gz", hash = "sha256:f8ecc1bba5667413457c529ab955bf8c67b45db799d159066261719e328580a0"},
 ]
 
 [package.extras]
-brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
-h2 = ["h2 (>=4,<5)"]
-socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
-zstd = ["zstandard (>=0.18.0)"]
+brotli = ["brotli (==1.0.9)", "brotli (>=1.0.9)", "brotlicffi (>=0.8.0)", "brotlipy (>=0.6.0)"]
+secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "pyOpenSSL (>=0.14)", "urllib3-secure-extra"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "uvicorn"
@@ -4553,4 +4744,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "75ddb6fcfc4ba15fa2b47aeec797fad0ed766f08dfaafb7f61293d9ebed49ae2"
+content-hash = "0fe8790ce77f38b67042b258cefea22aff252549bad6e56809e4659fb0dab12d"
