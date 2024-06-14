@@ -102,6 +102,8 @@
 
 - [Create and monitor a device](https://learn.microsoft.com/en-us/azure/iot-hub/quickstart-send-telemetry-cli#create-and-monitor-a-device)
 - [Connect Raspberry Pi to Azure IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/raspberry-pi-get-started)
+- [Samples for the Azure IoT Hub Device SDK](https://github.com/Azure/azure-iot-sdk-python/blob/main/samples/README.md)
+- [Get started with device management (Python) > Create a service app to trigger a reboot](https://learn.microsoft.com/en-us/azure/iot-hub/device-management-python#create-a-service-app-to-trigger-a-reboot)
 
 ```shell
 IOT_HUB_NAME=""

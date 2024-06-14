@@ -40,6 +40,8 @@ langchain-community = "^0.2.4"
 langsmith = "^0.1.75"
 langgraph = "^0.0.65"
 yfinance = "^0.2.40"
+azure-iot-device = "^2.13.1"
+azure-iot-hub = "^2.6.1"
 
 
 [tool.poetry.group.frontend.dependencies]
