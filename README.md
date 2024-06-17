@@ -13,6 +13,10 @@ This repository contains a collection of solutions that leverage Azure AI servic
 - [Poetry](https://python-poetry.org/docs/#installation)
 - [GNU Make](https://www.gnu.org/software/make/)
 
+## Architecture
+
+[![architecture](./docs/architecture.png)](./docs/architecture.png)
+
 ## Development instructions
 
 ### Local development
