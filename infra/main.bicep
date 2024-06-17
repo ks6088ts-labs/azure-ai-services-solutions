@@ -35,6 +35,9 @@ param cosmosDbName string = '${prefix}cosmosdb'
 @description('Specifies the name of the Azure IoT Hub resource.')
 param iotHubName string = '${prefix}iothub'
 
+@description('Specifies the name of the Azure Log Analytics workspace.')
+param logAnalyticsWorkspaceName string = '${prefix}law'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -99,6 +102,16 @@ module iotHub './modules/iotHub.bicep' = {
   name: 'iotHub'
   params: {
     name: iotHubName
+    location: location
+    tags: tags
+    workspaceId: logAnalytics.outputs.id
+  }
+}
+
+module logAnalytics './modules/logAnalytics.bicep' = {
+  name: 'logAnalytics'
+  params: {
+    name: logAnalyticsWorkspaceName
     location: location
     tags: tags
   }
