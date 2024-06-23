@@ -3,7 +3,7 @@ from logging import getLogger
 from fastapi import APIRouter, UploadFile
 from fastapi.responses import StreamingResponse
 
-from backend.internals.azure_openai import Client
+from backend.internals.azure_openai_langchain import Client
 from backend.schemas import azure_openai as azure_openai_schemas
 from backend.settings.azure_openai import Settings
 
