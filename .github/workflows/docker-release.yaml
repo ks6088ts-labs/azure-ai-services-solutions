@@ -29,7 +29,7 @@ jobs:
             core.setOutput('no-v', no_v)
             core.setOutput('no-dash', no_dash)
       - name: Build and push tag ${{steps.set_version.outputs.no-dash}} for backend
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./dockerfiles/backend.Dockerfile
@@ -41,7 +41,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/azure-ai-services-solutions:backend-${{steps.set_version.outputs.no-dash}}
             ${{ secrets.DOCKERHUB_USERNAME }}/azure-ai-services-solutions:backend-latest
       - name: Build and push tag ${{steps.set_version.outputs.no-dash}} for frontend
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./dockerfiles/frontend.Dockerfile
