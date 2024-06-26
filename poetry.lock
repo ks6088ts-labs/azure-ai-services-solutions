@@ -267,13 +267,13 @@ aio = ["aiohttp (>=3.0)"]
 
 [[package]]
 name = "azure-cosmos"
-version = "4.6.1"
+version = "4.7.0"
 description = "Microsoft Azure Cosmos Client Library for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "azure-cosmos-4.6.1.tar.gz", hash = "sha256:67ec3c1aec6cfc254c10a5a9c60d3f3532b5141e3f6d1e1af49b7facfd50341c"},
-    {file = "azure_cosmos-4.6.1-py3-none-any.whl", hash = "sha256:38345f66bca36dc43ddf5bc3922827488f240bc6270d76689400aa9f423e97b6"},
+    {file = "azure-cosmos-4.7.0.tar.gz", hash = "sha256:72d714033134656302a2e8957c4b93590673bd288b0ca60cb123e348ae99a241"},
+    {file = "azure_cosmos-4.7.0-py3-none-any.whl", hash = "sha256:03d8c7740ddc2906fb16e07b136acc0fe6a6a02656db46c5dd6f1b127b58cc96"},
 ]
 
 [package.dependencies]
@@ -4747,4 +4747,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3e929d6d0801aed3d58e5adc1c521b8e20aee6e8b886afc4362537ed1f99f6dd"
+content-hash = "74cbbf46c1219c09129d8dbfe63033cc93ffca21233470241bbb263a91d52f2d"
