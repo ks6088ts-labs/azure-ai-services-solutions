@@ -116,7 +116,8 @@ frontend: ## run frontend
 # ---
 .PHONY: azure-functions-start
 azure-functions-start: ## start Azure Functions
-	poetry run func start
+	cd backend \
+		&& poetry run func start
 
 .PHONY: azure-functions-deploy
 azure-functions-deploy: ## deploy Azure Functions resources
@@ -126,14 +127,9 @@ azure-functions-deploy: ## deploy Azure Functions resources
 azure-functions-destroy: ## destroy Azure Functions resources
 	sh ./scripts/destroy-azure-functions.sh
 
-.PHONY: azure-functions-functionapp-deploy
-azure-functions-functionapp-deploy: ## deploy Azure Functions App
-	poetry export \
-		--format requirements.txt \
-		--output requirements.txt \
-		--with backend,azure-functions \
-		--without-hashes
-	func azure functionapp publish $(shell jq -r '.FUNCTION_APP_NAME' < azure-functions.json)
+.PHONY: azure-functions-publish
+azure-functions-publish: ## publish Azure Functions App
+	sh ./scripts/publish-azure-functions.sh
 
 # ---
 # OpenAPI Client
