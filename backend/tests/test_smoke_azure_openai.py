@@ -2,22 +2,20 @@ from logging import getLogger
 
 import pytest
 
-from tests.utilities import RUN_TEST, client, image
+from backend.tests.utilities import RUN_TEST, client, image
 
 logger = getLogger(__name__)
 
 
 @pytest.mark.skipif(RUN_TEST, reason="need to launch the backend server first")
-def test_azure_ai_vision_image_analyze():
-    path_format = "/azure_ai_vision/{0}"
+def test_azure_openai_chat_completions():
+    path_format = "/azure_openai/{0}"
+
     response = client.post(
-        url=path_format.format("image/analyze"),
-        files={
-            "file": (
-                "test.png",
-                image,
-                "application/octet-stream",
-            )
+        url=path_format.format("chat_completions"),
+        json={
+            "content": "Hello, how are you?",
+            "stream": False,
         },
     )
     assert response.status_code == 200
@@ -25,10 +23,14 @@ def test_azure_ai_vision_image_analyze():
 
 
 @pytest.mark.skipif(RUN_TEST, reason="need to launch the backend server first")
-def test_azure_ai_vision_image_vectorize():
-    path_format = "/azure_ai_vision/{0}"
+def test_azure_openai_chat_completions_with_vision():
+    path_format = "/azure_openai/{0}"
     response = client.post(
-        url=path_format.format("image/vectorize"),
+        url=path_format.format("chat_completions_with_vision"),
+        params={
+            "system_prompt": "You are a helpful assistant.",
+            "user_prompt": "Please explain the attached image.",
+        },
         files={
             "file": (
                 "test.png",

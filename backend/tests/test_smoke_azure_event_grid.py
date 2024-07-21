@@ -2,7 +2,7 @@ from logging import getLogger
 
 import pytest
 
-from tests.utilities import RUN_TEST, client
+from backend.tests.utilities import RUN_TEST, client
 
 logger = getLogger(__name__)
 

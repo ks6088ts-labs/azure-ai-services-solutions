@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pytest
 
-from tests.utilities import RUN_TEST, client
+from backend.tests.utilities import RUN_TEST, client
 
 logger = getLogger(__name__)
 
