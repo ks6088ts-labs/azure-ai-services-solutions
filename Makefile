@@ -52,10 +52,10 @@ ci-test: install-deps-dev format-check lint test ## run CI tests
 # ---
 DOCKER_REPO_NAME ?= ks6088ts
 DOCKER_IMAGE_NAME ?= azure-ai-services-solutions
-DOCKER_IMAGE_COMPONENT ?= backend
+DOCKER_SERVICE_NAME ?= backend
 DOCKER_COMMAND ?=
-DOCKER_TAG ?= $(DOCKER_IMAGE_COMPONENT)-$(GIT_TAG)
-DOCKER_FILE ?= ./dockerfiles/$(DOCKER_IMAGE_COMPONENT).Dockerfile
+DOCKER_TAG ?= $(DOCKER_SERVICE_NAME)-$(GIT_TAG)
+DOCKER_FILE ?= ./$(DOCKER_SERVICE_NAME)/Dockerfile
 DOCKER_COMPOSE_FILE ?= ./compose.yaml
 
 # Tools
@@ -95,8 +95,8 @@ _ci-test-docker: docker-lint docker-build docker-scan docker-run
 
 .PHONY: ci-test-docker
 ci-test-docker: docker-compose-lint ## run CI test for Docker
-	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=backend
-	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=frontend
+	$(MAKE) _ci-test-docker DOCKER_SERVICE_NAME=backend
+	$(MAKE) _ci-test-docker DOCKER_SERVICE_NAME=frontend
 
 # ---
 # Application

@@ -2,13 +2,13 @@ services:
   backend:
     build:
       context: .
-      dockerfile: dockerfiles/backend.Dockerfile
+      dockerfile: backend/Dockerfile
     image: ks6088ts/azure-ai-services-solutions:backend-latest
     command: python main.py backend --port 8888
     ports:
       - 8888:8888
     volumes:
-      - ./settings:/app/settings
+      - ./backend:/app/
     environment:
       - PYTHONUNBUFFERED=1
   frontend:
