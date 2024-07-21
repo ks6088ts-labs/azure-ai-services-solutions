@@ -18,7 +18,7 @@ param openAiDeployments array = []
 param openAiLocation string = 'eastus2'
 
 @description('Specifies the name of the Azure Cognitive Services resource.')
-param cognitiveServicesName string = '${prefix}cognitiveServices'
+param cognitiveServicesName string = '${prefix}aiServices'
 
 @description('Specifies the location of the Azure Cognitive Services resource.')
 param cognitiveServicesLocation string = 'eastus'

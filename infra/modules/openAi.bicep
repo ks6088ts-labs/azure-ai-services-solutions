@@ -46,24 +46,26 @@ resource openAi 'Microsoft.CognitiveServices/accounts@2023-10-01-preview' = {
 }
 
 @batchSize(1)
-resource model 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01-preview' = [for deployment in deployments: {
-  name: deployment.name
-  parent: openAi
-  properties: {
-    model: {
-      format: 'OpenAI'
-      name: deployment.name
-      version: deployment.version
+resource model 'Microsoft.CognitiveServices/accounts/deployments@2023-10-01-preview' = [
+  for deployment in deployments: {
+    name: deployment.name
+    parent: openAi
+    properties: {
+      model: {
+        format: 'OpenAI'
+        name: deployment.name
+        version: deployment.version
+      }
+      currentCapacity: deployment.capacity
+      raiPolicyName: deployment.?raiPolicyName ?? null
+      versionUpgradeOption: deployment.?versionUpgradeOption ?? 'OnceNewDefaultVersionAvailable'
     }
-    currentCapacity: deployment.capacity
-    raiPolicyName: contains(deployment, 'raiPolicyName') ? deployment.raiPolicyName : null
-    versionUpgradeOption: contains(deployment, 'versionUpgradeOption') ? deployment.versionUpgradeOption : 'OnceNewDefaultVersionAvailable'
+    sku: deployment.?sku ?? {
+      name: 'Standard'
+      capacity: deployment.capacity
+    }
   }
-  sku: contains(deployment, 'sku') ? deployment.sku : {
-    name: 'Standard'
-    capacity: deployment.capacity
-  }
-}]
+]
 
 // Outputs
 output id string = openAi.id
