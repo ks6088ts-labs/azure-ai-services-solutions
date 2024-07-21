@@ -1,4 +1,4 @@
-FROM python:3.11.8-slim-bookworm as requirements-stage
+FROM python:3.11.8-slim-bookworm AS requirements-stage
 
 WORKDIR /tmp
 
@@ -16,9 +16,9 @@ ARG GIT_TAG="x.x.x"
 WORKDIR /app
 
 COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
-COPY . .
+COPY ./frontend/ .
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-CMD ["streamlit", "run", "frontend/main.py", "--help"]
+CMD ["streamlit", "run", "main.py", "--help"]
