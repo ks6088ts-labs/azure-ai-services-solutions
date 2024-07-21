@@ -10,6 +10,6 @@ class Settings(BaseSettings):
     )
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_iot_hub.env",
+        env_file="azure_iot_hub.env",
         env_file_encoding="utf-8",
     )

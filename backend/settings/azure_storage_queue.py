@@ -7,6 +7,6 @@ class Settings(BaseSettings):
     )
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_storage_queue.env",
+        env_file="azure_storage_queue.env",
         env_file_encoding="utf-8",
     )

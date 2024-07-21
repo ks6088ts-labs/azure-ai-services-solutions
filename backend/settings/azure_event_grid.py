@@ -6,6 +6,6 @@ class Settings(BaseSettings):
     azure_event_grid_topic_endpoint: str = "<name>.<region>.eventgrid.azure.net"
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_event_grid.env",
+        env_file="azure_event_grid.env",
         env_file_encoding="utf-8",
     )

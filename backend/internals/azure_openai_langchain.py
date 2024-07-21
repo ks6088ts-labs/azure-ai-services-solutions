@@ -5,8 +5,7 @@ from logging import getLogger
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import AzureChatOpenAI
-
-from backend.settings.azure_openai import Settings
+from settings.azure_openai import Settings
 
 logger = getLogger(__name__)
 

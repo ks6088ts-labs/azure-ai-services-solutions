@@ -2,10 +2,9 @@ from logging import getLogger
 
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
-
-from backend.internals.azure_ai_speech import Client
-from backend.schemas import azure_ai_speech as azure_ai_speech_schemas
-from backend.settings.azure_ai_speech import Settings
+from internals.azure_ai_speech import Client
+from schemas import azure_ai_speech as azure_ai_speech_schemas
+from settings.azure_ai_speech import Settings
 
 logger = getLogger(__name__)
 

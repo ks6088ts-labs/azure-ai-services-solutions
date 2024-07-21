@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     azure_cosmos_db_connection_string: str = "<your-cosmos-db-connection-string>"
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_cosmos_db.env",
+        env_file="azure_cosmos_db.env",
         env_file_encoding="utf-8",
         extra="ignore",
     )

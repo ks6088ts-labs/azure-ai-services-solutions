@@ -3,8 +3,7 @@ from logging import getLogger
 from azure.ai.vision.imageanalysis import ImageAnalysisClient
 from azure.ai.vision.imageanalysis.models import VisualFeatures
 from azure.core.credentials import AzureKeyCredential
-
-from backend.settings.azure_ai_vision import Settings
+from settings.azure_ai_vision import Settings
 
 logger = getLogger(__name__)
 

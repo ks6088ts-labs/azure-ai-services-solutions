@@ -2,21 +2,22 @@ services:
   backend:
     build:
       context: .
-      dockerfile: dockerfiles/backend.Dockerfile
+      dockerfile: backend/Dockerfile
     image: ks6088ts/azure-ai-services-solutions:backend-latest
     command: python main.py backend --port 8888
     ports:
       - 8888:8888
     volumes:
-      - ./settings:/app/settings
+      - ./backend/azure_openai.env:/app/azure_openai.env
+      # add more volumes if needed
     environment:
       - PYTHONUNBUFFERED=1
   frontend:
     build:
       context: .
-      dockerfile: dockerfiles/frontend.Dockerfile
+      dockerfile: frontend/Dockerfile
     image: ks6088ts/azure-ai-services-solutions:frontend-latest
-    command: streamlit run frontend/main.py
+    command: streamlit run main.py
     ports:
       - 8501:8501
     volumes:

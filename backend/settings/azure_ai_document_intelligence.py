@@ -8,6 +8,6 @@ class Settings(BaseSettings):
     azure_ai_document_intelligence_api_key: str = "<your-document-intelligence-api-key>"
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_ai_document_intelligence.env",
+        env_file="azure_ai_document_intelligence.env",
         env_file_encoding="utf-8",
     )

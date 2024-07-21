@@ -52,10 +52,10 @@ ci-test: install-deps-dev format-check lint test ## run CI tests
 # ---
 DOCKER_REPO_NAME ?= ks6088ts
 DOCKER_IMAGE_NAME ?= azure-ai-services-solutions
-DOCKER_IMAGE_COMPONENT ?= backend
+DOCKER_SERVICE_NAME ?= backend
 DOCKER_COMMAND ?=
-DOCKER_TAG ?= $(DOCKER_IMAGE_COMPONENT)-$(GIT_TAG)
-DOCKER_FILE ?= ./dockerfiles/$(DOCKER_IMAGE_COMPONENT).Dockerfile
+DOCKER_TAG ?= $(DOCKER_SERVICE_NAME)-$(GIT_TAG)
+DOCKER_FILE ?= ./$(DOCKER_SERVICE_NAME)/Dockerfile
 DOCKER_COMPOSE_FILE ?= ./compose.yaml
 
 # Tools
@@ -95,15 +95,16 @@ _ci-test-docker: docker-lint docker-build docker-scan docker-run
 
 .PHONY: ci-test-docker
 ci-test-docker: docker-compose-lint ## run CI test for Docker
-	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=backend
-	$(MAKE) _ci-test-docker DOCKER_IMAGE_COMPONENT=frontend
+	$(MAKE) _ci-test-docker DOCKER_SERVICE_NAME=backend
+	$(MAKE) _ci-test-docker DOCKER_SERVICE_NAME=frontend
 
 # ---
 # Application
 # ---
 .PHONY: backend
 backend: ## run backend
-	poetry run python main.py backend --reload
+	cd backend \
+		&& poetry run python main.py backend --reload
 
 .PHONY: frontend
 frontend: ## run frontend
@@ -115,7 +116,8 @@ frontend: ## run frontend
 # ---
 .PHONY: azure-functions-start
 azure-functions-start: ## start Azure Functions
-	poetry run func start
+	cd backend \
+		&& poetry run func start
 
 .PHONY: azure-functions-deploy
 azure-functions-deploy: ## deploy Azure Functions resources
@@ -125,21 +127,17 @@ azure-functions-deploy: ## deploy Azure Functions resources
 azure-functions-destroy: ## destroy Azure Functions resources
 	sh ./scripts/destroy-azure-functions.sh
 
-.PHONY: azure-functions-functionapp-deploy
-azure-functions-functionapp-deploy: ## deploy Azure Functions App
-	poetry export \
-		--format requirements.txt \
-		--output requirements.txt \
-		--with backend,azure-functions \
-		--without-hashes
-	func azure functionapp publish $(shell jq -r '.FUNCTION_APP_NAME' < azure-functions.json)
+.PHONY: azure-functions-publish
+azure-functions-publish: ## publish Azure Functions App
+	sh ./scripts/publish-azure-functions.sh
 
 # ---
 # OpenAPI Client
 # ---
 .PHONY: generate-openapi-spec
 generate-openapi-spec: ## generate OpenAPI spec
-	poetry run python main.py generate-openapi-spec
+	cd backend \
+		&& poetry run python main.py generate-openapi-spec
 
 .PHONY: generate-openapi-client
 generate-openapi-client: ## generate OpenAPI client
