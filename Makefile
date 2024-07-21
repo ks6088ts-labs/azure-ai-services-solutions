@@ -140,7 +140,8 @@ azure-functions-functionapp-deploy: ## deploy Azure Functions App
 # ---
 .PHONY: generate-openapi-spec
 generate-openapi-spec: ## generate OpenAPI spec
-	poetry run python main.py generate-openapi-spec
+	cd backend \
+		&& poetry run python main.py generate-openapi-spec
 
 .PHONY: generate-openapi-client
 generate-openapi-client: ## generate OpenAPI client

@@ -42,7 +42,7 @@ def backend(
 
 @app.command()
 def generate_openapi_spec(
-    path: Annotated[str, typer.Option(help="Output file path")] = "./specs/openapi.json",
+    path: Annotated[str, typer.Option(help="Output file path")] = "../specs/openapi.json",
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
     import json
