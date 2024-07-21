@@ -29,6 +29,12 @@ param storageAccountName string = '${prefix}sa'
 @description('Specifies the name of the Azure Event Grid resource.')
 param eventGridName string = '${prefix}eg'
 
+@description('Specifies the name of the Azure Event Grid MQTT resource.')
+param eventGridMqttName string = '${prefix}egmqtt'
+
+@description('Specifies the name of the encoded certificate.')
+param eventGridMqttEncodedCertificate string
+
 @description('Specifies the name of the Azure Cosmos DB resource.')
 param cosmosDbName string = '${prefix}cosmosdb'
 
@@ -84,6 +90,16 @@ module eventGrid './modules/eventGrid.bicep' = {
     name: eventGridName
     location: location
     tags: tags
+  }
+}
+
+module eventGridMqtt './modules/eventGridMqtt.bicep' = {
+  name: 'eventGridMqtt'
+  params: {
+    name: eventGridMqttName
+    location: location
+    tags: tags
+    encodedCertificate: eventGridMqttEncodedCertificate
   }
 }
 

@@ -18,6 +18,11 @@ param openAiDeployments = [
   }
 ]
 
+// To create certificate, overwrite the default value of the parameter by the output from the following command:
+// $ cat ~/.step/certs/intermediate_ca.crt | tr -d "\n"
+// ref. https://github.com/ks6088ts-labs/azure-iot-scenarios/tree/main/scenarios/3_event-grid-mqtt-messaging
+param eventGridMqttEncodedCertificate = ''
+
 param tags = {
   environment: 'dev'
 }
