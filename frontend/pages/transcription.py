@@ -25,7 +25,7 @@ def get_transcription(file_path: str) -> Transcription:
     )
 
 
-def start(
+def main(
     backend_url: str,
     log_level: int,
 ):
@@ -63,3 +63,10 @@ def start(
             # Get transcription
             transcription = get_transcription(audio_file_path)
             st.write(f"Transcription: {transcription.text}")
+
+
+if __name__ == "__main__":
+    main(
+        backend_url="http://localhost:8000",
+        log_level=logging.DEBUG,
+    )

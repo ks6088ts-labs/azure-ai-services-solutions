@@ -3,8 +3,7 @@ import logging
 from urllib.parse import urljoin
 
 import streamlit as st
-
-from frontend.solutions.utilities import http_get
+from utilities import http_get
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +33,7 @@ async def chat_completions_post(
     return response.content
 
 
-def start(
+def main(
     backend_url: str,
     log_level: int,
 ):
@@ -75,3 +74,10 @@ def start(
         except Exception as e:
             st.write(f"Error: {e}")
             logger.error(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main(
+        backend_url="http://localhost:8000",
+        log_level=logging.DEBUG,
+    )

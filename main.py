@@ -40,22 +40,6 @@ def backend(
 
 
 @app.command()
-def frontend(
-    solution_name: Annotated[str, typer.Option(help="Solution name")] = "SANDBOX",
-    backend_url: Annotated[str, typer.Option(help="Backend URL")] = "http://localhost:8000",
-    debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
-):
-    from frontend.entrypoint import start
-
-    setup_logging(debug)
-    start(
-        solution_name=solution_name,
-        backend_url=backend_url,
-        log_level=get_log_level(debug),
-    )
-
-
-@app.command()
 def generate_openapi_spec(
     path: Annotated[str, typer.Option(help="Output file path")] = "./specs/openapi.json",
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
