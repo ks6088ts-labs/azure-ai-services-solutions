@@ -4,7 +4,6 @@ from fastapi import APIRouter, UploadFile
 from fastapi.responses import StreamingResponse
 from internals.azure_openai_langchain import Client
 from schemas import azure_openai as azure_openai_schemas
-
 from settings.azure_openai import Settings
 
 logger = getLogger(__name__)

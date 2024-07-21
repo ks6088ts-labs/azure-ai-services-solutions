@@ -5,7 +5,6 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from internals.agent_search import Client
 from schemas import agents as agents_schemas
-
 from settings.agents import Settings
 
 logger = getLogger(__name__)

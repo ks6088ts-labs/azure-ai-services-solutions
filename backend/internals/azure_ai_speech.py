@@ -2,7 +2,6 @@ from logging import getLogger
 from urllib.parse import urljoin
 
 import requests
-
 from settings.azure_ai_speech import Settings
 
 logger = getLogger(__name__)

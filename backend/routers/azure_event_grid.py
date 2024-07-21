@@ -2,7 +2,6 @@ from logging import getLogger
 
 from fastapi import APIRouter
 from internals.azure_event_grid import Client
-
 from settings.azure_event_grid import Settings
 
 logger = getLogger(__name__)

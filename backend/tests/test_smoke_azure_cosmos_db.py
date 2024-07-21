@@ -2,7 +2,8 @@ from logging import getLogger
 from uuid import uuid4
 
 import pytest
-from tests.utilities import RUN_TEST, client
+
+from .utilities import RUN_TEST, client
 
 logger = getLogger(__name__)
 

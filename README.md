@@ -24,30 +24,26 @@ This repository contains a collection of solutions that leverage Azure AI servic
 Use Makefile to run the project locally.
 
 ```shell
-# help
-make
+# Launch backend API server
+make backend
 
-# install dependencies for development
-make install-deps-dev
+# Launch frontend app server
+make frontend
 
-# run tests
-make test
-
-# run CI tests
-make ci-test
+# Azure Functions
+make azure-functions-start
 ```
 
 ### Docker development
 
+See the actual implementation in the [compose.yaml](./compose.yaml) file.
+
 ```shell
-# build docker image
-make docker-build
+# Launch backend API server
+docker compose up backend
 
-# run docker container
-make docker-run
-
-# run CI tests in docker container
-make ci-test-docker
+# Launch frontend app server
+docker compose up frontend
 ```
 
 ### Run local test
@@ -64,18 +60,19 @@ make test
 
 ## Deployment instructions
 
-### Docker compose
+```shell
+# Deploy Azure resources via Bicep
+cd infra
+make deploy
+```
 
-Docker compose is used to run the services locally.
-Refer to the following steps to run the services.
-See the actual implementation in the [compose.yaml](./compose.yaml) file.
+Azure Functions are deployed using the following commands.
 
 ```shell
-# Create environment files for each service
-cp ./settings/{NAME}.env.sample ./settings/{NAME}.env
-
-# Build and run the services
-docker compose up
+# Deploy Azure Functions
+make azure-functions-deploy
+# Publish Azure Functions
+make azure-functions-publish
 ```
 
 ### Push docker image to Docker Hub
@@ -86,18 +83,3 @@ To publish the docker image to Docker Hub via GitHub Actions, you need to set th
 gh secret set DOCKERHUB_USERNAME --body $DOCKERHUB_USERNAME
 gh secret set DOCKERHUB_TOKEN --body $DOCKERHUB_TOKEN
 ```
-
-### Deploy Azure Functions
-
-To deploy the Azure Functions, run the following script.
-
-```shell
-# Deploy the Azure Functions
-sh ./scripts/deploy-azure-functions.sh
-
-# Destroy the Azure Functions
-sh ./scripts/destroy-azure-functions.sh
-```
-
-- [scripts/deploy-azure-functions.sh](./scripts/deploy-azure-functions.sh): Deploy the Azure Functions using Azure CLI.
-- [scripts/destroy-azure-functions.sh](./scripts/destroy-azure-functions.sh): Destroy the Azure Functions using Azure CLI.

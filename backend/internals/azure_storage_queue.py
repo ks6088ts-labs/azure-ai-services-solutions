@@ -2,7 +2,6 @@ from logging import getLogger
 
 from azure.core.paging import ItemPaged
 from azure.storage.queue import QueueMessage, QueueServiceClient
-
 from settings.azure_storage_queue import Settings
 
 logger = getLogger(__name__)

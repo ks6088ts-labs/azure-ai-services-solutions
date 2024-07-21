@@ -14,7 +14,6 @@ from internals.tools.utility_tool import (
 from internals.tools.yahoo_finance_tool import yahoo_finance_tool
 from langchain_core.messages import HumanMessage
 from langchain_openai import AzureChatOpenAI
-
 from settings.agents import Settings
 
 logger = getLogger(__name__)

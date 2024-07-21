@@ -4,7 +4,6 @@ from azure.core.exceptions import AzureError
 from azure.cosmos import CosmosClient, PartitionKey
 from azure.cosmos.container import ContainerProxy
 from azure.cosmos.database import DatabaseProxy
-
 from settings.azure_cosmos_db import Settings
 
 logger = getLogger(__name__)

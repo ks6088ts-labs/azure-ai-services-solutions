@@ -10,4 +10,4 @@ poetry export \
 # Publish the Azure Functions
 cd backend || exit
 FUNCTION_APP_NAME=$(jq -r '.FUNCTION_APP_NAME' < ../azure-functions.json)
-func azure functionapp publish $FUNCTION_APP_NAME
+func azure functionapp publish "$FUNCTION_APP_NAME"

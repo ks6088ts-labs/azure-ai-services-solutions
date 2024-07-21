@@ -3,7 +3,6 @@ from logging import getLogger
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 from internals.azure_iot_hub import Client
-
 from settings.azure_iot_hub import Settings
 
 logger = getLogger(__name__)

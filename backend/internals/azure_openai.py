@@ -3,7 +3,6 @@ from collections.abc import AsyncIterable
 from logging import getLogger
 
 from openai import AzureOpenAI
-
 from settings.azure_openai import Settings
 
 logger = getLogger(__name__)

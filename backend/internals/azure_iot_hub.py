@@ -3,7 +3,6 @@ from logging import getLogger
 from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.hub import IoTHubRegistryManager
 from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult
-
 from settings.azure_iot_hub import Settings
 
 logger = getLogger(__name__)

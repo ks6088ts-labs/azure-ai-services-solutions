@@ -15,11 +15,10 @@ async def chat_completions_post(
     backend_url: str,
     prompt: str,
 ):
-    from kiota_abstractions.authentication.anonymous_authentication_provider import AnonymousAuthenticationProvider
-    from kiota_http.httpx_request_adapter import HttpxRequestAdapter
-
     from client.api_client import ApiClient
     from client.models.chat_completion_request import ChatCompletionRequest
+    from kiota_abstractions.authentication.anonymous_authentication_provider import AnonymousAuthenticationProvider
+    from kiota_http.httpx_request_adapter import HttpxRequestAdapter
 
     auth_provider = AnonymousAuthenticationProvider()
     request_adapter = HttpxRequestAdapter(

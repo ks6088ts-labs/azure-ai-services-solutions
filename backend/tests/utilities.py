@@ -1,6 +1,11 @@
+import os
+import sys
 from os import getenv
 
 import requests
+
+# FIXME: This is a workaround to import the FastAPI app
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from core import app
 from fastapi.testclient import TestClient
 from main import setup_logging

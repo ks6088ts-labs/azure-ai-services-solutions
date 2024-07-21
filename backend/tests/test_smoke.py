@@ -1,4 +1,4 @@
-from tests.utilities import client
+from .utilities import client
 
 
 def test_main():
