@@ -1,4 +1,4 @@
-from backend.tests.utilities import client
+from tests.utilities import client
 
 
 def test_main():

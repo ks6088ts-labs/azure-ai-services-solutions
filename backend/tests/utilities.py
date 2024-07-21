@@ -1,9 +1,8 @@
 from os import getenv
 
 import requests
+from core import app
 from fastapi.testclient import TestClient
-
-from backend.fastapi import app
 from main import setup_logging
 
 setup_logging(debug=True)

@@ -1,12 +1,9 @@
 from logging import getLogger
 from os import environ
 
-from langchain_core.messages import HumanMessage
-from langchain_openai import AzureChatOpenAI
-
-from backend.internals.agents.basic import Agent
-from backend.internals.tools.bing_search_tool import bing_search_tool
-from backend.internals.tools.utility_tool import (
+from internals.agents.basic import Agent
+from internals.tools.bing_search_tool import bing_search_tool
+from internals.tools.utility_tool import (
     add,
     exponentiate,
     get_date_diffs,
@@ -14,8 +11,11 @@ from backend.internals.tools.utility_tool import (
     get_datetime_today,
     multiply,
 )
-from backend.internals.tools.yahoo_finance_tool import yahoo_finance_tool
-from backend.settings.agents import Settings
+from internals.tools.yahoo_finance_tool import yahoo_finance_tool
+from langchain_core.messages import HumanMessage
+from langchain_openai import AzureChatOpenAI
+
+from settings.agents import Settings
 
 logger = getLogger(__name__)
 

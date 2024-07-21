@@ -11,6 +11,6 @@ class Settings(BaseSettings):
     agents_langchain_api_key: str = "<langchain-api-key>"
 
     model_config = SettingsConfigDict(
-        env_file="settings/agents.env",
+        env_file="agents.env",
         env_file_encoding="utf-8",
     )

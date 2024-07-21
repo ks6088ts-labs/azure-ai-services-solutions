@@ -103,7 +103,8 @@ ci-test-docker: docker-compose-lint ## run CI test for Docker
 # ---
 .PHONY: backend
 backend: ## run backend
-	poetry run python main.py backend --reload
+	cd backend \
+		&& poetry run python main.py backend --reload
 
 .PHONY: frontend
 frontend: ## run frontend

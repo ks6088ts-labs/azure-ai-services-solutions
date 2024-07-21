@@ -4,7 +4,7 @@ from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult, ContentFormat
 from azure.core.credentials import AzureKeyCredential
 
-from backend.settings.azure_ai_document_intelligence import Settings
+from settings.azure_ai_document_intelligence import Settings
 
 logger = getLogger(__name__)
 

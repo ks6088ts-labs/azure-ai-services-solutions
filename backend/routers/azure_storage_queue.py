@@ -2,10 +2,10 @@ from logging import getLogger
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
+from internals.azure_storage_queue import Client
+from schemas import azure_storage_queue as azure_storage_queue_schemas
 
-from backend.internals.azure_storage_queue import Client
-from backend.schemas import azure_storage_queue as azure_storage_queue_schemas
-from backend.settings.azure_storage_queue import Settings
+from settings.azure_storage_queue import Settings
 
 logger = getLogger(__name__)
 

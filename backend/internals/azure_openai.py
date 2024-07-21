@@ -4,7 +4,7 @@ from logging import getLogger
 
 from openai import AzureOpenAI
 
-from backend.settings.azure_openai import Settings
+from settings.azure_openai import Settings
 
 logger = getLogger(__name__)
 

@@ -2,7 +2,7 @@ from logging import getLogger
 
 from azure.storage.blob import BlobServiceClient
 
-from backend.settings.azure_storage_blob import Settings
+from settings.azure_storage_blob import Settings
 
 logger = getLogger(__name__)
 

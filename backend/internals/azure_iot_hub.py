@@ -4,7 +4,7 @@ from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.hub import IoTHubRegistryManager
 from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult
 
-from backend.settings.azure_iot_hub import Settings
+from settings.azure_iot_hub import Settings
 
 logger = getLogger(__name__)
 

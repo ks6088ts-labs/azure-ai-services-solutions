@@ -3,10 +3,10 @@ from logging import getLogger
 from fastapi import APIRouter, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from internals.agent_search import Client
+from schemas import agents as agents_schemas
 
-from backend.internals.agent_search import Client
-from backend.schemas import agents as agents_schemas
-from backend.settings.agents import Settings
+from settings.agents import Settings
 
 logger = getLogger(__name__)
 

@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 
 import requests
 
-from backend.settings.azure_ai_speech import Settings
+from settings.azure_ai_speech import Settings
 
 logger = getLogger(__name__)
 

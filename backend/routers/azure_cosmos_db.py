@@ -1,10 +1,10 @@
 from logging import getLogger
 
 from fastapi import APIRouter
+from internals.azure_cosmos_db import Client
+from schemas import azure_cosmos_db as azure_cosmos_db_schemas
 
-from backend.internals.azure_cosmos_db import Client
-from backend.schemas import azure_cosmos_db as azure_cosmos_db_schemas
-from backend.settings.azure_cosmos_db import Settings
+from settings.azure_cosmos_db import Settings
 
 logger = getLogger(__name__)
 

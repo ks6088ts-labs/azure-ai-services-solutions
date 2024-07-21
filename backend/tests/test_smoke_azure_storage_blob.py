@@ -2,8 +2,7 @@ from logging import getLogger
 from uuid import uuid4
 
 import pytest
-
-from backend.tests.utilities import RUN_TEST, client, image
+from tests.utilities import RUN_TEST, client, image
 
 logger = getLogger(__name__)
 

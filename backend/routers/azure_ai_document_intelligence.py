@@ -1,10 +1,10 @@
 from logging import getLogger
 
 from fastapi import APIRouter, UploadFile
+from internals.azure_ai_document_intelligence import Client
+from schemas import azure_ai_document_intelligence as azure_ai_document_intelligence_schemas
 
-from backend.internals.azure_ai_document_intelligence import Client
-from backend.schemas import azure_ai_document_intelligence as azure_ai_document_intelligence_schemas
-from backend.settings.azure_ai_document_intelligence import Settings
+from settings.azure_ai_document_intelligence import Settings
 
 logger = getLogger(__name__)
 

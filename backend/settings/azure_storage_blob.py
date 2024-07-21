@@ -7,6 +7,6 @@ class Settings(BaseSettings):
     azure_storage_blob_container_name: str = "<blob-container-name>"
 
     model_config = SettingsConfigDict(
-        env_file="settings/azure_storage_blob.env",
+        env_file="azure_storage_blob.env",
         env_file_encoding="utf-8",
     )

@@ -28,10 +28,11 @@ def backend(
     reload: Annotated[bool, typer.Option(help="Enable auto-reload")] = False,
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):
-    from backend.entrypoint import start
+    import uvicorn
 
     setup_logging(debug)
-    start(
+    uvicorn.run(
+        "core:app",
         host=host,
         port=port,
         log_level=get_log_level(debug),
@@ -46,7 +47,7 @@ def generate_openapi_spec(
 ):
     import json
 
-    from backend.fastapi import app
+    from core import app
 
     setup_logging(debug)
 
