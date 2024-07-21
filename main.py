@@ -24,7 +24,7 @@ app = typer.Typer()
 @app.command()
 def backend(
     host="0.0.0.0",
-    port: Annotated[int, typer.Option(help="Port number")] = 8000,
+    port: Annotated[int, typer.Option(help="Port number")] = 8888,
     reload: Annotated[bool, typer.Option(help="Enable auto-reload")] = False,
     debug: Annotated[bool, typer.Option(help="Enable debug mode")] = False,
 ):

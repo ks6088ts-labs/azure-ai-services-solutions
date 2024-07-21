@@ -20,6 +20,6 @@ services:
     ports:
       - 8501:8501
     volumes:
-      - ./settings:/app/settings
+      - ./frontend/.env:/app/.env
     environment:
       - PYTHONUNBUFFERED=1

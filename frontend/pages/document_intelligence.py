@@ -1,12 +1,15 @@
 import asyncio
 import logging
 from io import BytesIO
+from os import getenv
 from urllib.parse import urljoin
 
 import streamlit as st
+from dotenv import load_dotenv
 from utilities import http_post_file
 
 logger = logging.getLogger(__name__)
+load_dotenv()
 
 
 def main(
@@ -44,6 +47,6 @@ def main(
 
 if __name__ == "__main__":
     main(
-        backend_url="http://localhost:8000",
+        backend_url=getenv("BACKEND_URL"),
         log_level=logging.DEBUG,
     )

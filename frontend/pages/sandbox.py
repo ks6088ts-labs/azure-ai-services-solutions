@@ -1,11 +1,14 @@
 import asyncio
 import logging
+from os import getenv
 from urllib.parse import urljoin
 
 import streamlit as st
+from dotenv import load_dotenv
 from utilities import http_get
 
 logger = logging.getLogger(__name__)
+load_dotenv()
 
 
 async def chat_completions_post(
@@ -78,6 +81,6 @@ def main(
 
 if __name__ == "__main__":
     main(
-        backend_url="http://localhost:8000",
+        backend_url=getenv("BACKEND_URL"),
         log_level=logging.DEBUG,
     )

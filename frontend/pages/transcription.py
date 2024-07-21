@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 from openai.types.audio import Transcription
 
-load_dotenv("frontend.env")
 logger = logging.getLogger(__name__)
+load_dotenv()
 
 
 # TODO: call backend API instead of using Azure OpenAI
@@ -67,6 +67,6 @@ def main(
 
 if __name__ == "__main__":
     main(
-        backend_url="http://localhost:8000",
+        backend_url=getenv("BACKEND_URL"),
         log_level=logging.DEBUG,
     )

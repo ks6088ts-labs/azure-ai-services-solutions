@@ -41,6 +41,7 @@ def main(
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True,
         )
+
         with st.chat_message("assistant", avatar="assistant"):
             placeholder = st.empty()
             assistant_text = ""
@@ -56,6 +57,6 @@ def main(
 
 if __name__ == "__main__":
     main(
-        backend_url="http://localhost:8000",
+        backend_url=getenv("BACKEND_URL"),
         log_level=logging.DEBUG,
     )
