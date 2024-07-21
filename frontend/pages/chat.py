@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 
 logger = logging.getLogger(__name__)
-load_dotenv("./settings/frontend.env")
+load_dotenv()
 
 
-def start(
+def main(
     backend_url: str,
     log_level: int,
 ):
@@ -52,3 +52,10 @@ def start(
                     assistant_text += content
                     placeholder.write(assistant_text)
             st.session_state.messages.append({"role": "assistant", "content": assistant_text})
+
+
+if __name__ == "__main__":
+    main(
+        backend_url="http://localhost:8000",
+        log_level=logging.DEBUG,
+    )

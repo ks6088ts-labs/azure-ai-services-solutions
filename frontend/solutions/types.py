@@ -1,9 +1,0 @@
-from enum import Enum
-
-
-class SolutionType(Enum):
-    SANDBOX = "SANDBOX"
-    CHAT = "CHAT"
-    TRANSCRIPTION = "TRANSCRIPTION"
-    DOCUMENT_INTELLIGENCE = "DOCUMENT_INTELLIGENCE"
-    AZURE_AI_VISION = "AZURE_AI_VISION"

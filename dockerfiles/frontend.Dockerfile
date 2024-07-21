@@ -21,4 +21,4 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-CMD ["python", "main.py", "frontend", "--help"]
+CMD ["streamlit", "run", "frontend/main.py", "--help"]

@@ -101,18 +101,14 @@ ci-test-docker: docker-compose-lint ## run CI test for Docker
 # ---
 # Application
 # ---
-SOLUTION_NAME ?= "SANDBOX"
-BACKEND_URL ?= "http://localhost:8000"
-
 .PHONY: backend
 backend: ## run backend
 	poetry run python main.py backend --reload
 
 .PHONY: frontend
 frontend: ## run frontend
-	poetry run streamlit run main.py -- frontend -- \
-		--solution-name=$(SOLUTION_NAME) \
-		--backend-url=$(BACKEND_URL)
+	cd frontend \
+		&& poetry run streamlit run main.py
 
 # ---
 # Azure Functions

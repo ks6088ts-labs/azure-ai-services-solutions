@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: dockerfiles/backend.Dockerfile
     image: ks6088ts/azure-ai-services-solutions:backend-latest
-    command: python main.py backend --port 8888 --debug
+    command: python main.py backend --port 8888
     ports:
       - 8888:8888
     volumes:
@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: dockerfiles/frontend.Dockerfile
     image: ks6088ts/azure-ai-services-solutions:frontend-latest
-    command: streamlit run main.py --server.port=8501 --server.address=0.0.0.0 -- frontend --solution-name sandbox --backend-url http://backend:8888 --debug
+    command: streamlit run frontend/main.py
     ports:
       - 8501:8501
     volumes:
