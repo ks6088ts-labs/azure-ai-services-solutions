@@ -44,6 +44,9 @@ param iotHubName string = '${prefix}iothub'
 @description('Specifies the name of the Azure Log Analytics workspace.')
 param logAnalyticsWorkspaceName string = '${prefix}law'
 
+@description('Specifies the name of the Azure AI Search resource.')
+param aiSearchName string = '${prefix}aisearch'
+
 module openAi './modules/openAi.bicep' = {
   name: 'openAi'
   params: {
@@ -128,6 +131,15 @@ module logAnalytics './modules/logAnalytics.bicep' = {
   name: 'logAnalytics'
   params: {
     name: logAnalyticsWorkspaceName
+    location: location
+    tags: tags
+  }
+}
+
+module aiSearch './modules/aiSearch.bicep' = {
+  name: 'aiSearch'
+  params: {
+    name: aiSearchName
     location: location
     tags: tags
   }
