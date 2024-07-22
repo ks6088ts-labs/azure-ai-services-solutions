@@ -72,7 +72,7 @@ var locations = [
   }
 ]
 
-resource account 'Microsoft.DocumentDB/databaseAccounts@2024-02-15-preview' = {
+resource account 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
   name: accountName
   location: location
   tags: tags
@@ -82,6 +82,11 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2024-02-15-preview' = {
     locations: locations
     databaseAccountOfferType: 'Standard'
     enableAutomaticFailover: systemManagedFailover
+    capabilities: [
+      {
+        name: 'EnableNoSQLVectorSearch'
+      }
+    ]
   }
 }
 

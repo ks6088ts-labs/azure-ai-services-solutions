@@ -278,13 +278,13 @@ aio = ["aiohttp (>=3.0)"]
 
 [[package]]
 name = "azure-cosmos"
-version = "4.6.1"
+version = "4.7.0"
 description = "Microsoft Azure Cosmos Client Library for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "azure-cosmos-4.6.1.tar.gz", hash = "sha256:67ec3c1aec6cfc254c10a5a9c60d3f3532b5141e3f6d1e1af49b7facfd50341c"},
-    {file = "azure_cosmos-4.6.1-py3-none-any.whl", hash = "sha256:38345f66bca36dc43ddf5bc3922827488f240bc6270d76689400aa9f423e97b6"},
+    {file = "azure-cosmos-4.7.0.tar.gz", hash = "sha256:72d714033134656302a2e8957c4b93590673bd288b0ca60cb123e348ae99a241"},
+    {file = "azure_cosmos-4.7.0-py3-none-any.whl", hash = "sha256:03d8c7740ddc2906fb16e07b136acc0fe6a6a02656db46c5dd6f1b127b58cc96"},
 ]
 
 [package.dependencies]
@@ -1721,20 +1721,20 @@ tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<9.0.0"
 
 [[package]]
 name = "langchain-community"
-version = "0.2.5"
+version = "0.2.9"
 description = "Community contributed LangChain integrations."
 optional = false
 python-versions = "<4.0,>=3.8.1"
 files = [
-    {file = "langchain_community-0.2.5-py3-none-any.whl", hash = "sha256:bf37a334952e42c7676d083cf2d2c4cbfbb7de1949c4149fe19913e2b06c485f"},
-    {file = "langchain_community-0.2.5.tar.gz", hash = "sha256:476787b8c8c213b67e7b0eceb53346e787f00fbae12d8e680985bd4f93b0bf64"},
+    {file = "langchain_community-0.2.9-py3-none-any.whl", hash = "sha256:b51d3adf9346a1161c1098917585b9e303cf24e2f5c71f5d232a0504edada5f2"},
+    {file = "langchain_community-0.2.9.tar.gz", hash = "sha256:1e7c180232916cbe35fe00509680dd1f805e32d7c87b5e80b3a9ec8754ecae37"},
 ]
 
 [package.dependencies]
 aiohttp = ">=3.8.3,<4.0.0"
 dataclasses-json = ">=0.5.7,<0.7"
-langchain = ">=0.2.5,<0.3.0"
-langchain-core = ">=0.2.7,<0.3.0"
+langchain = ">=0.2.9,<0.3.0"
+langchain-core = ">=0.2.22,<0.3.0"
 langsmith = ">=0.1.0,<0.2.0"
 numpy = [
     {version = ">=1,<2", markers = "python_version < \"3.12\""},
@@ -1743,7 +1743,7 @@ numpy = [
 PyYAML = ">=5.3"
 requests = ">=2,<3"
 SQLAlchemy = ">=1.4,<3"
-tenacity = ">=8.1.0,<9.0.0"
+tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<9.0.0"
 
 [[package]]
 name = "langchain-core"
@@ -5002,4 +5002,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "56fb42804651f1c31e8fc0749467269814a40797a1ec4b9912e5208dfb513034"
+content-hash = "0f740c71ed6ff07bb8ba4dce046aa3839a3d5002fb2c24c63c6bd02820ce2659"
