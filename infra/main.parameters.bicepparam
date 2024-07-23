@@ -14,7 +14,7 @@ param openAiDeployments = [
   {
     name: 'whisper'
     version: '001'
-    capacity: 3
+    capacity: 1
   }
 ]
 
