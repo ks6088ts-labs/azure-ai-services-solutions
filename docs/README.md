@@ -11,6 +11,10 @@
 - [Get started with LangSmith](https://docs.smith.langchain.com/)
 - [Add message history (memory) > In-memory](https://python.langchain.com/v0.1/docs/expression_language/how_to/message_history/#in-memory)
 
+### GitHub
+
+- [Use GitHub Actions to connect to Azure](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-cli%2Clinux)
+
 ### Tools
 
 - [Tool calling agent](https://python.langchain.com/v0.1/docs/modules/agents/agent_types/tool_calling/)

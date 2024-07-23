@@ -83,3 +83,20 @@ To publish the docker image to Docker Hub via GitHub Actions, you need to set th
 gh secret set DOCKERHUB_USERNAME --body $DOCKERHUB_USERNAME
 gh secret set DOCKERHUB_TOKEN --body $DOCKERHUB_TOKEN
 ```
+
+### Continuous Integration
+
+To configure OIDC authentication, run the following command.
+
+```shell
+# Configure OIDC authentication
+sh scripts/configure-oidc-github.sh
+
+# Register parameters to GitHub Secrets
+AZURE_SUBSCRIPTION_ID=$(az account show --query 'id' --output tsv)
+
+gh secret set AZURE_CLIENT_ID --body $AZURE_CLIENT_ID
+gh secret set AZURE_TENANT_ID --body $AZURE_TENANT_ID
+gh secret set AZURE_SUBSCRIPTION_ID --body $AZURE_SUBSCRIPTION_ID
+gh secret set AZURE_RG --body $AZURE_RG
+```
