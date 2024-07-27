@@ -37,7 +37,7 @@ def main(
             st.markdown(prompt)
 
         response = client.chat.completions.create(
-            model=getenv("AZURE_OPENAI_GPT_MODEL"),
+            model=getenv("AZURE_OPENAI_MODEL_CHAT"),
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True,
         )
