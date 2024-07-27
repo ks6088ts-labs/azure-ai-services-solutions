@@ -62,6 +62,7 @@ langchain-community = "^0.2.10"
 youtube-transcript-api = "^0.6.2"
 pytube = "^15.0.0"
 duckduckgo-search = "^6.2.3"
+azure-search-documents = "^11.5.0"
 
 
 [tool.poetry.group.azure-functions.dependencies]

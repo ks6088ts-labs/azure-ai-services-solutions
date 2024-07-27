@@ -9,6 +9,7 @@ from langchain_community.callbacks import StreamlitCallbackHandler
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import AzureChatOpenAI
+from tools.fetch_contoso_rules import fetch_contoso_rules
 from tools.search_ddg import search_ddg
 
 logger = logging.getLogger(__name__)
@@ -64,7 +65,10 @@ def init_messages():
 
 
 def create_agent():
-    tools = [search_ddg]
+    tools = [
+        search_ddg,
+        fetch_contoso_rules,
+    ]
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", CUSTOM_SYSTEM_PROMPT),
