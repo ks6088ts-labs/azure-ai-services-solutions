@@ -21,7 +21,7 @@ def get_transcription(file_path: str) -> Transcription:
 
     return client.audio.transcriptions.create(
         file=open(file=file_path, mode="rb"),
-        model=getenv("AZURE_OPENAI_WHISPER_MODEL"),
+        model=getenv("AZURE_OPENAI_MODEL_WHISPER"),
     )
 
 
