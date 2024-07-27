@@ -51,7 +51,7 @@ class Client:
                 api_key=self.settings.agents_azure_openai_api_key,
                 api_version=self.settings.agents_azure_openai_api_version,
                 azure_endpoint=self.settings.agents_azure_openai_endpoint,
-                azure_deployment=self.settings.agents_azure_openai_gpt_model,
+                azure_deployment=self.settings.agents_azure_openai_model_chat,
             ).bind_tools(create_tools()),
             system=system_prompt,
         )
