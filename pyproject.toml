@@ -61,6 +61,7 @@ langchain-openai = "^0.1.19"
 langchain-community = "^0.2.10"
 youtube-transcript-api = "^0.6.2"
 pytube = "^15.0.0"
+duckduckgo-search = "^6.2.3"
 
 
 [tool.poetry.group.azure-functions.dependencies]
